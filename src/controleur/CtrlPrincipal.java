@@ -13,17 +13,18 @@ import javax.swing.JOptionPane;
 public class CtrlPrincipal {
 
     
-    private CtrlMenu ctrlMenu = null;
+    
+    private CtrlConnexion ctrlConnexion = null;
 
     /**
      * action par défaut action au démarrage de l'application
      */
     public void action() {
-        if (ctrlMenu == null) {
-            ctrlMenu = new CtrlMenu(this);
+        if (ctrlConnexion == null) {
+            ctrlConnexion = new CtrlConnexion(this);
         }
-        ctrlMenu.getVue().setEnabled(true);
-        ctrlMenu.getVue().setVisible(true);
+        ctrlConnexion.getVue().setEnabled(true);
+        ctrlConnexion.getVue().setVisible(true);
     }
 
     public void action(EnumAction action) {        

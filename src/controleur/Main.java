@@ -9,10 +9,10 @@ import javax.swing.JOptionPane;
 
 
 /**
- * Ambulances
+ * GSB
  *
  * @version v2 21 novembre 2013
- * @author nbourgeois 
+ * @author bdixneuf 
  * Objectif : 
  * - exemple de dynamique Vue/Controleur avec controleur principal
  * - exemple de pattern Dao
