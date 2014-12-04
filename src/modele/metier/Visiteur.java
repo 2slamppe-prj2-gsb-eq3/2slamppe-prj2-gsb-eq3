@@ -7,6 +7,7 @@ package modele.metier;
 
 import java.util.Date;
 import javax.persistence.*;
+import static javax.persistence.TemporalType.DATE;
 
 /**
  *
@@ -22,7 +23,7 @@ public class Visiteur {
     @Id
     @GeneratedValue
     @Column(name ="VIS_MATRICULE")
-    private int id;
+    private String id;
     @Column(name ="VIS_NOM")
     private String nom;
     @Column(name ="VIS_PRENOM")
@@ -33,17 +34,24 @@ public class Visiteur {
     private String adresse;
     @Column(name ="VIS_VILLE")
     private String ville;
+    @Temporal(DATE)
     @Column(name ="VIS_DATEEMBAUCHE")
-    private Date dateDEmbauche;
+    private java.util.Date dateDEmbauche;
     
     @OneToOne
+    @JoinColumn(name ="SEC_CODE")
     private Secteur secteur;
     
     @OneToOne
+    @JoinColumn(name ="LAB_CODE")
     private Labo labo;
+    
+    
+    public Visiteur(){
+    }
 
     //constructeur
-    public Visiteur(int id, String nom, String prenom, String cp, String adresse, String ville, Date dateDEmbauche, Secteur secteur, Labo labo) {
+    public Visiteur(String id, String nom, String prenom, String cp, String adresse, String ville, Date dateDEmbauche, Secteur secteur, Labo labo) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
@@ -61,11 +69,11 @@ public class Visiteur {
         return "Visiteur{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", cp=" + cp + ", adresse=" + adresse + ", ville=" + ville + ", dateDEmbauche=" + dateDEmbauche + ", secteur=" + secteur + ", labo=" + labo + '}';
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

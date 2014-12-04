@@ -21,25 +21,29 @@ public class Labo {
     @Id
     @GeneratedValue
     @Column(name = "LAB_CODE")
-    private int id; 
+    private String id; 
     @Column(name = "LAB_NOM" )    
     private String nom;    
     @Column(name = "LAB_CHEFVENTE")
     private String chefVente;
     
+    public Labo(){
+    
+    }
+    
     //constructeur
-    public Labo(int id, String nom, String chefVente) {
+    public Labo(String id, String nom, String chefVente) {
         this.id = id;
         this.nom = nom;
         this.chefVente = chefVente;
     }
 
     // Getter Setter toString
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

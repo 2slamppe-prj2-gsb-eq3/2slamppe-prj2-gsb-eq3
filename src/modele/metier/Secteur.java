@@ -22,12 +22,16 @@ public class Secteur {
     @Id
     @GeneratedValue
     @Column(name ="SEC_CODE")
-    private int code;
+    private String code;
     @Column(name = "SEC_LIBELLE")
     private String libelle;
 
+    
+    public Secteur(){
+    }
+    
     //constructeur
-    public Secteur(int code, String libelle) {
+    public Secteur(String code, String libelle) {
         this.code = code;
         this.libelle = libelle;
     }
@@ -41,11 +45,11 @@ public class Secteur {
 
     
     
-    public int getCode() {
+    public String getCode() {
         return code;
     }
 
-    public void setCode(int code) {
+    public void setCode(String code) {
         this.code = code;
     }
 
