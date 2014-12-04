@@ -12,10 +12,13 @@ import javax.persistence.*;
  *
  * @author btssio
  */
+
+//classe Persistente
 @Entity
 @Table(name = "VISITEUR")
 public class Visiteur {
     
+    //attribut
     @Id
     @GeneratedValue
     @Column(name ="VIS_MATRICULE")
@@ -39,6 +42,7 @@ public class Visiteur {
     @OneToOne
     private Labo labo;
 
+    //constructeur
     public Visiteur(int id, String nom, String prenom, String cp, String adresse, String ville, Date dateDEmbauche, Secteur secteur, Labo labo) {
         this.id = id;
         this.nom = nom;
@@ -51,6 +55,7 @@ public class Visiteur {
         this.labo = labo;
     }
 
+    //toString Getter Setter
     @Override
     public String toString() {
         return "Visiteur{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", cp=" + cp + ", adresse=" + adresse + ", ville=" + ville + ", dateDEmbauche=" + dateDEmbauche + ", secteur=" + secteur + ", labo=" + labo + '}';
