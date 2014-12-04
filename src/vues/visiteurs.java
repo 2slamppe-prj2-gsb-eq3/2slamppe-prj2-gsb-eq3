@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package pkg2slamppe.prj2.gsb.eq3.vues;
+package vues;
 
 /**
  *
