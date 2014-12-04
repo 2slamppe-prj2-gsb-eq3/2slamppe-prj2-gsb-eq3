@@ -5,21 +5,36 @@
  */
 package modele.metier;
 
+import javax.persistence.*;
+
 /**
  *
  * @author btssio
  */
-public class Labo {
-    private int id;
-    private String nom;
-    private String chefVente;
 
+//classe persistente
+@Entity
+@Table(name = "LABO")
+public class Labo {
+    
+    //attribut
+    @Id
+    @GeneratedValue
+    @Column(name = "LAB_CODE")
+    private int id; 
+    @Column(name = "LAB_NOM" )    
+    private String nom;    
+    @Column(name = "LAB_CHEFVENTE")
+    private String chefVente;
+    
+    //constructeur
     public Labo(int id, String nom, String chefVente) {
         this.id = id;
         this.nom = nom;
         this.chefVente = chefVente;
     }
 
+    // Getter Setter toString
     public int getId() {
         return id;
     }
