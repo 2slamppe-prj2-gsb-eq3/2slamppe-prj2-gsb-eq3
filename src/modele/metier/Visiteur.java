@@ -6,22 +6,38 @@
 package modele.metier;
 
 import java.util.Date;
+import javax.persistence.*;
 
 /**
  *
  * @author btssio
  */
+@Entity
+@Table(name = "VISITEUR")
 public class Visiteur {
-	
-	private int id;
-	private String nom;
-        private String prenom;
-        private String cp;
-	private String adresse;
-	private String ville;
-        private Date dateDEmbauche;
-	private Secteur secteur;        
-	private Labo labo;
+    
+    @Id
+    @GeneratedValue
+    @Column(name ="VIS_MATRICULE")
+    private int id;
+    @Column(name ="VIS_NOM")
+    private String nom;
+    @Column(name ="VIS_PRENOM")
+    private String prenom;
+    @Column(name ="VIS_CP")
+    private String cp;
+    @Column(name ="VIS_ADRESSE")
+    private String adresse;
+    @Column(name ="VIS_VILLE")
+    private String ville;
+    @Column(name ="VIS_DATEEMBAUCHE")
+    private Date dateDEmbauche;
+    
+    @OneToOne
+    private Secteur secteur;
+    
+    @OneToOne
+    private Labo labo;
 
     public Visiteur(int id, String nom, String prenom, String cp, String adresse, String ville, Date dateDEmbauche, Secteur secteur, Labo labo) {
         this.id = id;
@@ -39,8 +55,6 @@ public class Visiteur {
     public String toString() {
         return "Visiteur{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", cp=" + cp + ", adresse=" + adresse + ", ville=" + ville + ", dateDEmbauche=" + dateDEmbauche + ", secteur=" + secteur + ", labo=" + labo + '}';
     }
-    
-    
 
     public int getId() {
         return id;
@@ -97,7 +111,5 @@ public class Visiteur {
     public void setDateDEmbauche(Date dateDEmbauche) {
         this.dateDEmbauche = dateDEmbauche;
     }
-
-        
 
 }
