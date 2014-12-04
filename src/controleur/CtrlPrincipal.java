@@ -15,11 +15,12 @@ public class CtrlPrincipal {
     
     
     private CtrlConnexion ctrlConnexion = null;
+    private CtrlVisiteur ctrlVisteur = null;
 
     /**
      * action par défaut action au démarrage de l'application
      */
-    public void action() {
+   /* public void action() {
         if (ctrlConnexion == null) {
             ctrlConnexion = new CtrlConnexion(this);
         }
@@ -29,8 +30,18 @@ public class CtrlPrincipal {
 
     public void action(EnumAction action) {        
 
-    }
+    }*/
 
+    /**
+     * action par défaut action au démarrage de l'application
+     */
+     public void action() {
+        if (ctrlVisteur == null) {
+            ctrlVisteur = new CtrlVisiteur(this);
+        }
+        ctrlVisteur.getVue().setEnabled(true);
+        ctrlVisteur.getVue().setVisible(true);
+    }
     
 
    
