@@ -15,9 +15,9 @@ import controleur.CtrlAbstrait;
  *
  * @author btssio
  */
-public class menu extends VueAbstraite {
+public class VueMenu extends VueAbstraite {
 
-    public menu(CtrlAbstrait ctrl) {
+    public VueMenu(CtrlAbstrait ctrl) {
         super(ctrl);
         initComponents();
         this.setLocation(500, 200);

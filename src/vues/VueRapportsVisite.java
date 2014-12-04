@@ -11,12 +11,12 @@ import controleur.CtrlAbstrait;
  *
  * @author btssio
  */
-public class rapports_visite extends VueAbstraite {
+public class VueRapportsVisite extends VueAbstraite {
 
     /**
      * Creates new form rapports_visite
      */
-    public rapports_visite(CtrlAbstrait ctrl) {
+    public VueRapportsVisite(CtrlAbstrait ctrl) {
         super(ctrl);
         initComponents();
         this.setLocation(500, 200);

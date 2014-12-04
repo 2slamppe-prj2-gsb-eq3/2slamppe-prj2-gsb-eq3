@@ -1,7 +1,7 @@
 package controleur;
 
 import javax.swing.JOptionPane;
-import vues.menu;
+import vues.VueMenu;
 
 /**
  * Contrôleur de la fenêtre VueMenu
@@ -13,12 +13,15 @@ public class CtrlMenu extends CtrlAbstrait {
 
     public CtrlMenu(CtrlPrincipal ctrlPrincipal) {
         super(ctrlPrincipal);
-        vue = new menu(this);
+        vue = new VueMenu(this);
     }
     
     
     @Override
-    public menu getVue() {
-        return (menu) vue;
+    public VueMenu getVue() {
+        return (VueMenu) vue;
     }
+    
+    
+    
 }

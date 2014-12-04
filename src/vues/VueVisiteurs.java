@@ -11,12 +11,12 @@ import controleur.CtrlAbstrait;
  *
  * @author btssio
  */
-public class visiteurs extends VueAbstraite {
+public class VueVisiteurs extends VueAbstraite {
 
     /**
      * Creates new form visiteurs
      */
-    public visiteurs(CtrlAbstrait ctrl) {
+    public VueVisiteurs(CtrlAbstrait ctrl) {
         super(ctrl);
         initComponents();
         this.setLocation(500, 200);

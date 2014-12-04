@@ -12,12 +12,12 @@ import controleur.CtrlAbstrait;
  *
  * @author btssio
  */
-public class praticiens extends VueAbstraite {
+public class VuePraticiens extends VueAbstraite {
 
     /**
      * Creates new form praticiens
      */
-    public praticiens(CtrlAbstrait ctrl) {
+    public VuePraticiens(CtrlAbstrait ctrl) {
         super(ctrl);
         initComponents();
         this.setLocation(500, 200);

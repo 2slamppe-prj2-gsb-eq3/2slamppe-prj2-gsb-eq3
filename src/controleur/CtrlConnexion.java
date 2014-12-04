@@ -1,7 +1,7 @@
 package controleur;
 
 import javax.swing.JOptionPane;
-import vues.connexion;
+import vues.VueConnexion;
 
 /**
  * Contrôleur de la fenêtre VueMenu
@@ -13,12 +13,12 @@ public class CtrlConnexion extends CtrlAbstrait {
 
     public CtrlConnexion(CtrlPrincipal ctrlPrincipal) {
         super(ctrlPrincipal);
-        vue = new connexion(this);
+        vue = new VueConnexion(this);
     }
     
     
     @Override
-    public connexion getVue() {
-        return (connexion) vue;
+    public VueConnexion getVue() {
+        return (VueConnexion) vue;
     }
 }

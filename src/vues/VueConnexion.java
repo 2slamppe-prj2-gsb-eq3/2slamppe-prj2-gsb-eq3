@@ -11,12 +11,12 @@ import controleur.CtrlAbstrait;
  *
  * @author btssio
  */
-public class connexion extends VueAbstraite {
+public class VueConnexion extends VueAbstraite {
 
     /**
      * Creates new form connexion
      */
-    public connexion(CtrlAbstrait ctrl) {
+    public VueConnexion(CtrlAbstrait ctrl) {
         super(ctrl);
         initComponents();
         this.setLocation(500, 200);

@@ -12,12 +12,12 @@ import controleur.CtrlAbstrait;
  *
  * @author btssio
  */
-public class medicaments extends VueAbstraite {
+public class VueMedicaments extends VueAbstraite {
 
     /**
      * Creates new form medicaments
      */
-    public medicaments (CtrlAbstrait ctrl) {
+    public VueMedicaments (CtrlAbstrait ctrl) {
         super(ctrl);
         initComponents();
         this.setLocation(500, 200);
