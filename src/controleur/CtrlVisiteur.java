@@ -1,6 +1,8 @@
 
 package controleur;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.swing.JOptionPane;
@@ -46,8 +48,8 @@ public class CtrlVisiteur extends CtrlAbstrait {
     
     
     /**
-     * Afficher la liste des labos
-     * 
+     * Liste des labos
+     * @param lesLabos 
      */
     public void afficherListeLabo(List<Labo> lesLabos){
         vue.jComboBoxlabo.removeAllItems();
@@ -64,6 +66,19 @@ public class CtrlVisiteur extends CtrlAbstrait {
     public void setVue(VueVisiteurs vue) {
         this.vue = vue;
     }
+    
+    public void search(){
+    
+        vue.jButtonok.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("coucou labi");
+                
+            }
+        });
+    }
+    
     
     
 
