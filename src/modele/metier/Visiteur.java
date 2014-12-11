@@ -45,6 +45,22 @@ public class Visiteur {
     @OneToOne
     @JoinColumn(name ="LAB_CODE")
     private Labo labo;
+
+    public Secteur getSecteur() {
+        return secteur;
+    }
+
+    public void setSecteur(Secteur secteur) {
+        this.secteur = secteur;
+    }
+
+    public Labo getLabo() {
+        return labo;
+    }
+
+    public void setLabo(Labo labo) {
+        this.labo = labo;
+    }
     
     
     public Visiteur(){

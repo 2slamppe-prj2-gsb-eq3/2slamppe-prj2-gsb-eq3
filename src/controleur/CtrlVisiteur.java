@@ -70,6 +70,15 @@ public class CtrlVisiteur extends CtrlAbstrait {
         });
         
         
+        vue.jButtonfermer.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                System.exit(0);
+            }
+        });
+        
+        
     }
     public void afficherListeVisiteurs(List<Visiteur> lesVisiteurs){
         System.out.println("coucou");
