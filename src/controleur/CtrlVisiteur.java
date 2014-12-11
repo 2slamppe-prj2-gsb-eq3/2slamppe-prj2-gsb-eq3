@@ -50,6 +50,14 @@ public class CtrlVisiteur extends CtrlAbstrait {
         System.out.println(lesSecteurs);
         afficherListeSecteur(lesSecteurs);
         
+        
+        vue.jButtonfermer.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                System.exit(0);
+            }
+        });
     }
     public void afficherListeVisiteurs(List<Visiteur> lesVisiteurs){
         System.out.println("coucou");
