@@ -36,6 +36,6 @@ public class DaoLabo {
         lesLabos = query.getResultList();
         return lesLabos;
     }
-
     
+        
 }

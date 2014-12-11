@@ -66,7 +66,7 @@ public class Visiteur {
     //toString Getter Setter
     @Override
     public String toString() {
-        return "Visiteur{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", cp=" + cp + ", adresse=" + adresse + ", ville=" + ville + ", dateDEmbauche=" + dateDEmbauche + ", secteur=" + secteur + ", labo=" + labo + '}';
+        return   nom + " " + prenom;
     }
 
     public String getId() {

@@ -24,6 +24,7 @@ public class CtrlVisiteur extends CtrlAbstrait {
     
      EntityManager em;
      private List<Visiteur> lesVisiteurs;
+     private Visiteur unVisiteur;
      private List<Labo> lesLabos;
      private List<Secteur> lesSecteurs;
      private VueVisiteurs vue = new  VueVisiteurs(this);
@@ -37,7 +38,7 @@ public class CtrlVisiteur extends CtrlAbstrait {
         em = EntityManagerFactorySingleton.getInstance().createEntityManager();
         em.getTransaction().begin();
         
-        
+        // Affichage
         lesVisiteurs = DaoVisiteur.selectAll(em);
         System.out.println(lesVisiteurs);
         afficherListeVisiteurs(lesVisiteurs);
@@ -50,12 +51,31 @@ public class CtrlVisiteur extends CtrlAbstrait {
         System.out.println(lesSecteurs);
         afficherListeSecteur(lesSecteurs);
         
+        //Ecouteurs Bouton ok
+        vue.jButtonok.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                unVisiteur= (Visiteur) (vue.jComboBoxsearch.getSelectedItem());
+                System.out.println(unVisiteur.getId()); 
+                unVisiteur= DaoVisiteur.selectOne(em, unVisiteur.getId());
+                vue.jTextFieldnom.setText(unVisiteur.getNom());
+                vue.jTextFieldprenom.setText(unVisiteur.getPrenom());
+                vue.jTextFieldadresse.setText(unVisiteur.getAdresse());
+                vue.jTextFieldcdp.setText(unVisiteur.getCp());
+                vue.jTextFieldville.setText(unVisiteur.getVille());
+                
+                
+            }
+        });
+        
+        
     }
     public void afficherListeVisiteurs(List<Visiteur> lesVisiteurs){
         System.out.println("coucou");
         vue.jComboBoxsearch.removeAllItems();
         for(int i=0; i<lesVisiteurs.size(); i++ ){            
-            vue.jComboBoxsearch.addItem(lesVisiteurs.get(i).getNom()+" "+lesVisiteurs.get(i).getPrenom());
+            vue.jComboBoxsearch.addItem(lesVisiteurs.get(i));
         }
         
     }
@@ -86,17 +106,8 @@ public class CtrlVisiteur extends CtrlAbstrait {
         this.vue = vue;
     }
     
-    public void search(){
     
-        vue.jButtonok.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("coucou labi");
-                
-            }
-        });
-    }
+    
     
     
     
