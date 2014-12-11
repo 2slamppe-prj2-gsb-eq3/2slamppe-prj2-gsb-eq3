@@ -29,7 +29,7 @@ public class TestDaoVisiteur {
         lesVisiteurs = DaoVisiteur.selectAll(em);
         System.out.println("Les visiteurs sont : ");
         for (int i = 0; i < lesVisiteurs.size(); i++) {
-            System.out.println(lesVisiteurs.get(i));
+            System.out.println(lesVisiteurs.get(i).toString2());
         }
         
         //Test de selectOne
@@ -37,6 +37,6 @@ public class TestDaoVisiteur {
         Visiteur unVisiteur;
         String matricule = "a131";
         unVisiteur = DaoVisiteur.selectOne(em, matricule);
-        System.out.println("Le visiteur qui a pour matricule : " + matricule + " est : \n" + unVisiteur);
+        System.out.println("Le visiteur qui a pour matricule : " + matricule + " est : \n" + unVisiteur.toString2());
     }
 }
