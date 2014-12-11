@@ -1,4 +1,3 @@
-
 package controleur;
 
 import java.awt.event.ActionEvent;
@@ -21,73 +20,46 @@ import vues.VueVisiteurs;
  * @author btssio
  */
 public class CtrlVisiteur extends CtrlAbstrait {
-    
-     EntityManager em;
-     private List<Visiteur> lesVisiteurs;
-     private Visiteur unVisiteur;
-     private List<Labo> lesLabos;
-     private List<Secteur> lesSecteurs;
-     private VueVisiteurs vue = new  VueVisiteurs(this);
-     
+
+    EntityManager em;
+    private List<Visiteur> lesVisiteurs;
+    private Visiteur unVisiteur;
+    private int visiteurCourant;
+    private List<Labo> lesLabos;
+    private List<Secteur> lesSecteurs;
+    private VueVisiteurs vue = new VueVisiteurs(this);
 
     public CtrlVisiteur(CtrlPrincipal l) {
         super(l);
      //   vue = new  VueVisiteurs(this);
-        
+
         // Gérer la persistance
         em = EntityManagerFactorySingleton.getInstance().createEntityManager();
         em.getTransaction().begin();
-        
+
         // Affichage
         lesVisiteurs = DaoVisiteur.selectAll(em);
         System.out.println(lesVisiteurs);
         afficherListeVisiteurs(lesVisiteurs);
-        
+
         lesLabos = DaoLabo.selectAll(em);
         System.out.println(lesLabos);
         afficherListeLabo(lesLabos);
-        
+
         lesSecteurs = DaoSecteur.selectAll(em);
         System.out.println(lesSecteurs);
         afficherListeSecteur(lesSecteurs);
-        
+
         //Ecouteurs Bouton ok
         vue.jButtonok.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                unVisiteur= (Visiteur) (vue.jComboBoxsearch.getSelectedItem());
-                System.out.println(unVisiteur.getId()); 
-                unVisiteur= DaoVisiteur.selectOne(em, unVisiteur.getId());
-                vue.jTextFieldnom.setText(unVisiteur.getNom());
-                vue.jTextFieldprenom.setText(unVisiteur.getPrenom());
-                vue.jTextFieldadresse.setText(unVisiteur.getAdresse());
-                vue.jTextFieldcdp.setText(unVisiteur.getCp());
-                vue.jTextFieldville.setText(unVisiteur.getVille());
-                //System.out.println(unVisiteur.toString2());
-                Secteur secteur= unVisiteur.getSecteur();
-               // System.out.println("Cpokfnsdofg"+secteur);
-                if(secteur!=null){
-                    vue.jComboBoxsecteur.setSelectedItem(secteur.getLibelle());
-                }else{
-                     vue.jComboBoxsecteur.setSelectedItem("aucun");
-                }
-                
-                Labo labo= unVisiteur.getLabo();
-               // System.out.println("Cpokfnsdofg"+secteur);
-                if(labo!=null){
-                    vue.jComboBoxlabo.setSelectedItem(labo.getNom());
-                }else{
-                     vue.jComboBoxlabo.setSelectedItem("aucun");
-                }
-               
-                
-                
-                
+                afficherVisteur();
             }
         });
-        
-        
+
+        //Bouton fermer
         vue.jButtonfermer.addActionListener(new ActionListener() {
 
             @Override
@@ -95,36 +67,90 @@ public class CtrlVisiteur extends CtrlAbstrait {
                 System.exit(0);
             }
         });
+
+        //Bouton Précédent
+        vue.jButtonprec.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                visiteurCourant = vue.jComboBoxsearch.getSelectedIndex();
+                visiteurCourant=visiteurCourant-1;
+                unVisiteur=lesVisiteurs.get(visiteurCourant);
+                vue.jComboBoxsearch.setSelectedItem(unVisiteur);
+                afficherVisteur();
+                
+            }
+        });
         
-        
+        //Bouton Suivant
+        vue.jButtonsuiv.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                visiteurCourant = vue.jComboBoxsearch.getSelectedIndex();
+                visiteurCourant=visiteurCourant+1;
+                unVisiteur=lesVisiteurs.get(visiteurCourant);
+                vue.jComboBoxsearch.setSelectedItem(unVisiteur);
+                afficherVisteur();
+                
+            }
+        });
+
     }
-    public void afficherListeVisiteurs(List<Visiteur> lesVisiteurs){
-        System.out.println("coucou");
+    
+    public void afficherVisteur(){
+        unVisiteur = (Visiteur) (vue.jComboBoxsearch.getSelectedItem());
+                System.out.println(unVisiteur.getId());
+                unVisiteur = DaoVisiteur.selectOne(em, unVisiteur.getId());
+                vue.jTextFieldnom.setText(unVisiteur.getNom());
+                vue.jTextFieldprenom.setText(unVisiteur.getPrenom());
+                vue.jTextFieldadresse.setText(unVisiteur.getAdresse());
+                vue.jTextFieldcdp.setText(unVisiteur.getCp());
+                vue.jTextFieldville.setText(unVisiteur.getVille());
+
+                Secteur secteur = unVisiteur.getSecteur();
+                if (secteur != null) {
+                    vue.jComboBoxsecteur.setSelectedItem(secteur.getLibelle());
+                } else {
+                    vue.jComboBoxsecteur.setSelectedItem("aucun");
+                }
+
+                Labo labo = unVisiteur.getLabo();
+                if (labo != null) {
+                    vue.jComboBoxlabo.setSelectedItem(labo.getNom());
+                } else {
+                    vue.jComboBoxlabo.setSelectedItem("aucun");
+                }
+
+    }
+
+    public void afficherListeVisiteurs(List<Visiteur> lesVisiteurs) {
         vue.jComboBoxsearch.removeAllItems();
-        for(int i=0; i<lesVisiteurs.size(); i++ ){            
+        for (int i = 0; i < lesVisiteurs.size(); i++) {
             vue.jComboBoxsearch.addItem(lesVisiteurs.get(i));
         }
-        
+
     }
-    
+
     /**
      * Liste des labos
-     * @param lesLabos 
+     *
+     * @param lesLabos
      */
-    public void afficherListeLabo(List<Labo> lesLabos){
+    public void afficherListeLabo(List<Labo> lesLabos) {
         vue.jComboBoxlabo.removeAllItems();
         vue.jComboBoxlabo.addItem("aucun");
-        for(int i=0; i<lesLabos.size(); i++ ){            
+        for (int i = 0; i < lesLabos.size(); i++) {
             vue.jComboBoxlabo.addItem(lesLabos.get(i).getNom());
-        }        
+        }
     }
-    
-    public void afficherListeSecteur(List<Secteur> lesSecteurs){
+
+    public void afficherListeSecteur(List<Secteur> lesSecteurs) {
         vue.jComboBoxsecteur.removeAllItems();
         vue.jComboBoxsecteur.addItem("aucun");
-        for(int i=0; i<lesSecteurs.size(); i++ ){            
+        for (int i = 0; i < lesSecteurs.size(); i++) {
             vue.jComboBoxsecteur.addItem(lesSecteurs.get(i).getLibelle());
-        }        
+        }
     }
 
     public VueVisiteurs getVue() {
@@ -134,14 +160,5 @@ public class CtrlVisiteur extends CtrlAbstrait {
     public void setVue(VueVisiteurs vue) {
         this.vue = vue;
     }
-    
-    
-    
-    
-    
-    
 
-    
-
-    
 }
