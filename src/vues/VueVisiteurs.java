@@ -76,7 +76,11 @@ public class VueVisiteurs extends VueAbstraite {
 
         jComboBoxsecteur.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jComboBoxlabo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxlabo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxlaboActionPerformed(evt);
+            }
+        });
 
         jButtonprec.setText("Précédent");
 
@@ -177,6 +181,10 @@ public class VueVisiteurs extends VueAbstraite {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jComboBoxlaboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxlaboActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxlaboActionPerformed
 
     
 

@@ -50,7 +50,8 @@ public class CtrlVisiteur extends CtrlAbstrait {
      * 
      */
     public void afficherListeLabo(List<Labo> lesLabos){
-        for(int i=0; i<lesLabos.size(); i++ ){
+        vue.jComboBoxlabo.removeAllItems();
+        for(int i=0; i<lesLabos.size(); i++ ){            
             vue.jComboBoxlabo.addItem(lesLabos.get(i).getNom());
         }
         
