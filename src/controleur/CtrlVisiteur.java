@@ -8,13 +8,13 @@ import javax.persistence.EntityManager;
 import javax.swing.JOptionPane;
 import javax.swing.JOptionPane;
 import modele.dao.DaoLabo;
+import modele.dao.DaoSecteur;
 import modele.dao.DaoVisiteur;
-//import modele.dao.*;
-//import modele.metier.*;
-import vues.VueVisiteurs;
 import modele.dao.EntityManagerFactorySingleton;
 import modele.metier.Labo;
+import modele.metier.Secteur;
 import modele.metier.Visiteur;
+import vues.VueVisiteurs;
 
 /**
  *
@@ -25,6 +25,7 @@ public class CtrlVisiteur extends CtrlAbstrait {
      EntityManager em;
      private List<Visiteur> lesVisiteurs;
      private List<Labo> lesLabos;
+     private List<Secteur> lesSecteurs;
      private VueVisiteurs vue = new  VueVisiteurs(this);
      
 
@@ -35,7 +36,7 @@ public class CtrlVisiteur extends CtrlAbstrait {
         // Gérer la persistance
         em = EntityManagerFactorySingleton.getInstance().createEntityManager();
         em.getTransaction().begin();
-
+        
         
         lesVisiteurs = DaoVisiteur.selectAll(em);
         System.out.println(lesVisiteurs);
@@ -44,6 +45,10 @@ public class CtrlVisiteur extends CtrlAbstrait {
         lesLabos = DaoLabo.selectAll(em);
         System.out.println(lesLabos);
         afficherListeLabo(lesLabos);
+        
+        lesSecteurs = DaoSecteur.selectAll(em);
+        System.out.println(lesSecteurs);
+        afficherListeSecteur(lesSecteurs);
         
     }
     public void afficherListeVisiteurs(List<Visiteur> lesVisiteurs){
@@ -63,8 +68,14 @@ public class CtrlVisiteur extends CtrlAbstrait {
         vue.jComboBoxlabo.removeAllItems();
         for(int i=0; i<lesLabos.size(); i++ ){            
             vue.jComboBoxlabo.addItem(lesLabos.get(i).getNom());
-        }
-        
+        }        
+    }
+    
+    public void afficherListeSecteur(List<Secteur> lesSecteurs){
+        vue.jComboBoxsecteur.removeAllItems();
+        for(int i=0; i<lesSecteurs.size(); i++ ){            
+            vue.jComboBoxsecteur.addItem(lesSecteurs.get(i).getLibelle());
+        }        
     }
 
     public VueVisiteurs getVue() {
