@@ -181,13 +181,13 @@ public class VueVisiteurs extends VueAbstraite {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonfermer;
-    private javax.swing.JButton jButtonok;
-    private javax.swing.JButton jButtonprec;
-    private javax.swing.JButton jButtonsuiv;
-    private javax.swing.JComboBox jComboBoxlabo;
-    private javax.swing.JComboBox jComboBoxsearch;
-    private javax.swing.JComboBox jComboBoxsecteur;
+    public javax.swing.JButton jButtonfermer;
+    public javax.swing.JButton jButtonok;
+    public javax.swing.JButton jButtonprec;
+    public javax.swing.JButton jButtonsuiv;
+    public javax.swing.JComboBox jComboBoxlabo;
+    public javax.swing.JComboBox jComboBoxsearch;
+    public javax.swing.JComboBox jComboBoxsecteur;
     private javax.swing.JLabel jLabeladresse;
     private javax.swing.JLabel jLabellabo;
     private javax.swing.JLabel jLabelnom;
@@ -196,10 +196,10 @@ public class VueVisiteurs extends VueAbstraite {
     private javax.swing.JLabel jLabelsecteur;
     private javax.swing.JLabel jLabeltitre;
     private javax.swing.JLabel jLabelville;
-    private javax.swing.JTextField jTextFieldadresse;
-    private javax.swing.JTextField jTextFieldcdp;
-    private javax.swing.JTextField jTextFieldnom;
-    private javax.swing.JTextField jTextFieldprenom;
-    private javax.swing.JTextField jTextFieldville;
+    public javax.swing.JTextField jTextFieldadresse;
+    public javax.swing.JTextField jTextFieldcdp;
+    public javax.swing.JTextField jTextFieldnom;
+    public javax.swing.JTextField jTextFieldprenom;
+    public javax.swing.JTextField jTextFieldville;
     // End of variables declaration//GEN-END:variables
 }
