@@ -20,10 +20,10 @@ public class DaoVisiteur {
      * @param id
      * @return 
      */
-    public static Visiteur selectOne(EntityManager em, int idVisiteur) throws PersistenceException {
-        Visiteur visteur = null;
-        visteur = em.find(Visiteur.class, idVisiteur);
-        return visteur;
+    public static Visiteur selectOne(EntityManager em, String matricule) throws PersistenceException {
+        Visiteur unVisiteur = null;
+        unVisiteur = em.find(Visiteur.class, matricule);
+        return unVisiteur;
     }
 
     public static List<Visiteur> selectAll(EntityManager em) throws PersistenceException  {
