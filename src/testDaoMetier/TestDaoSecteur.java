@@ -25,11 +25,11 @@ public class TestDaoSecteur {
 
         //Test de selectAll
         System.out.println("Test de selectAll : \n");
-        List<Secteur> lesVisteurs = new ArrayList<Secteur>();
-        lesVisteurs = DaoSecteur.selectAll(em);
-        System.out.println("Les visiteurs sont : ");
-        for (int i = 0; i < lesVisteurs.size(); i++) {
-            System.out.println(lesVisteurs.get(i));
+        List<Secteur> lesSecteurs = new ArrayList<Secteur>();
+        lesSecteurs = DaoSecteur.selectAll(em);
+        System.out.println("Les secteurs sont : ");
+        for (int i = 0; i < lesSecteurs.size(); i++) {
+            System.out.println(lesSecteurs.get(i));
         }
         
         //Test de selectOne
@@ -37,6 +37,6 @@ public class TestDaoSecteur {
         Secteur unSecteur;
         String sec_code = "E";
         unSecteur = DaoSecteur.selectOne(em, sec_code);
-        System.out.println("Le visiteur qui a pour matricule : " + sec_code + " est : \n" + unSecteur);
+        System.out.println("Le secteur qui a pour sec_code : " + sec_code + " est : \n" + unSecteur);
     }
 }
