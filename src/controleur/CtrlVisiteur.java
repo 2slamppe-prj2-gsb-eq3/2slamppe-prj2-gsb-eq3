@@ -23,7 +23,7 @@ import modele.metier.Visiteur;
 public class CtrlVisiteur extends CtrlAbstrait {
     
      EntityManager em;
-     private List<Visiteur> lesVisteurs;
+     private List<Visiteur> lesVisiteurs;
      private List<Labo> lesLabos;
      private VueVisiteurs vue = new  VueVisiteurs(this);
      
@@ -37,15 +37,23 @@ public class CtrlVisiteur extends CtrlAbstrait {
         em.getTransaction().begin();
 
         
-        lesVisteurs = DaoVisiteur.selectAll(em);
-        System.out.println(lesVisteurs);
+        lesVisiteurs = DaoVisiteur.selectAll(em);
+        System.out.println(lesVisiteurs);
+        afficherListeVisiteurs(lesVisiteurs);
         
         lesLabos = DaoLabo.selectAll(em);
         System.out.println(lesLabos);
         afficherListeLabo(lesLabos);
         
     }
-    
+    public void afficherListeVisiteurs(List<Visiteur> lesVisiteurs){
+        System.out.println("coucou");
+        vue.jComboBoxsearch.removeAllItems();
+        for(int i=0; i<lesVisiteurs.size(); i++ ){            
+            vue.jComboBoxsearch.addItem(lesVisiteurs.get(i).getNom()+" "+lesVisiteurs.get(i).getPrenom());
+        }
+        
+    }
     
     /**
      * Liste des labos
