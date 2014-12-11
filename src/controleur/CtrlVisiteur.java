@@ -64,6 +64,24 @@ public class CtrlVisiteur extends CtrlAbstrait {
                 vue.jTextFieldadresse.setText(unVisiteur.getAdresse());
                 vue.jTextFieldcdp.setText(unVisiteur.getCp());
                 vue.jTextFieldville.setText(unVisiteur.getVille());
+                //System.out.println(unVisiteur.toString2());
+                Secteur secteur= unVisiteur.getSecteur();
+               // System.out.println("Cpokfnsdofg"+secteur);
+                if(secteur!=null){
+                    vue.jComboBoxsecteur.setSelectedItem(secteur.getLibelle());
+                }else{
+                     vue.jComboBoxsecteur.setSelectedItem("aucun");
+                }
+                
+                Labo labo= unVisiteur.getLabo();
+               // System.out.println("Cpokfnsdofg"+secteur);
+                if(labo!=null){
+                    vue.jComboBoxlabo.setSelectedItem(labo.getNom());
+                }else{
+                     vue.jComboBoxlabo.setSelectedItem("aucun");
+                }
+               
+                
                 
                 
             }
@@ -95,6 +113,7 @@ public class CtrlVisiteur extends CtrlAbstrait {
      */
     public void afficherListeLabo(List<Labo> lesLabos){
         vue.jComboBoxlabo.removeAllItems();
+        vue.jComboBoxlabo.addItem("aucun");
         for(int i=0; i<lesLabos.size(); i++ ){            
             vue.jComboBoxlabo.addItem(lesLabos.get(i).getNom());
         }        
@@ -102,6 +121,7 @@ public class CtrlVisiteur extends CtrlAbstrait {
     
     public void afficherListeSecteur(List<Secteur> lesSecteurs){
         vue.jComboBoxsecteur.removeAllItems();
+        vue.jComboBoxsecteur.addItem("aucun");
         for(int i=0; i<lesSecteurs.size(); i++ ){            
             vue.jComboBoxsecteur.addItem(lesSecteurs.get(i).getLibelle());
         }        

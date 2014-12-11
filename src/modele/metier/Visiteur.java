@@ -46,21 +46,7 @@ public class Visiteur {
     @JoinColumn(name ="LAB_CODE")
     private Labo labo;
 
-    public Secteur getSecteur() {
-        return secteur;
-    }
-
-    public void setSecteur(Secteur secteur) {
-        this.secteur = secteur;
-    }
-
-    public Labo getLabo() {
-        return labo;
-    }
-
-    public void setLabo(Labo labo) {
-        this.labo = labo;
-    }
+    
     
     
     public Visiteur(){
@@ -83,6 +69,11 @@ public class Visiteur {
     @Override
     public String toString() {
         return   nom + " " + prenom;
+    }
+
+   
+    public String toString2() {
+        return "Visiteur{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", cp=" + cp + ", adresse=" + adresse + ", ville=" + ville + ", dateDEmbauche=" + dateDEmbauche + ", secteur=" + secteur + ", labo=" + labo + '}';
     }
 
     public String getId() {
@@ -139,6 +130,22 @@ public class Visiteur {
 
     public void setDateDEmbauche(Date dateDEmbauche) {
         this.dateDEmbauche = dateDEmbauche;
+    }
+    
+    public Secteur getSecteur() {
+        return secteur;
+    }
+
+    public void setSecteur(Secteur secteur) {
+        this.secteur = secteur;
+    }
+
+    public Labo getLabo() {
+        return labo;
+    }
+
+    public void setLabo(Labo labo) {
+        this.labo = labo;
     }
 
 }
