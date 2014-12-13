@@ -48,7 +48,10 @@ public class CtrlConnexion extends CtrlAbstrait {
         
     }
     
-    
+    /**
+     * Valider une connexion
+     * Message D'erreur dans JOptionPane 
+     */
     public void valider(){
         
         // récupération du login et mot de passe pour vérification
@@ -68,6 +71,9 @@ public class CtrlConnexion extends CtrlAbstrait {
         }       
     }
     
+    /**
+     * Quitter 
+     */
     public void quitter(){
         CtrlPrincipal ctrlP = new CtrlPrincipal();
         ctrlP.action(EnumAction.MENU_FICHIER_QUITTER);

@@ -68,8 +68,8 @@ public class DaoVisiteur {
      * Vérifier le login d'un Visiteur
      *
      * @param em : contexte de persistance
-     * @param login: nom du visiteur
-     * @param mdp: date d'embauche avec format JJ-MMM-AA
+     * @param login : nom du visiteur
+     * @param mdp : date d'embauche avec format JJ-MMM-AA
      * @return une valeur boolean
      */
     public static boolean verifierLoginMdp(EntityManager em, String login, String mdp) throws PersistenceException {

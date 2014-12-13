@@ -20,6 +20,10 @@ public class CtrlMenu extends CtrlAbstrait {
     private EntityManager em;
     private VueMenu vue = new VueMenu(this);
 
+    /**
+     * Controleur principale CtrlMenu
+     * @param ctrlPrincipal 
+     */
     public CtrlMenu(CtrlPrincipal ctrlPrincipal) {
         super(ctrlPrincipal);
 
@@ -75,12 +79,17 @@ public class CtrlMenu extends CtrlAbstrait {
             }
         });
     }
-
+    /**
+     * Ouvre la fenetre de gestion des Visiteurs
+     */
     public void afficherVisiteur() {
         CtrlPrincipal ctrlP = new CtrlPrincipal();
         ctrlP.action(EnumAction.VISITEUR_AFFICHER);
     }
     
+    /**
+     * Quitte l'application
+     */
     public void quitter(){
         System.exit(0);
     }

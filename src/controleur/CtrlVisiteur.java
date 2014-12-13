@@ -138,9 +138,11 @@ public class CtrlVisiteur extends CtrlAbstrait {
 
     }
 
-    /*
-     * Affiche la liste des Visteurs dans la comboBox
+    /**
+     * Liste des Visiteurs
+     * @param lesVisiteurs : Liste de visiteurs
      */
+     
     public void afficherListeVisiteurs(List<Visiteur> lesVisiteurs) {
         vue.jComboBoxsearch.removeAllItems();
         for (Visiteur lesVisiteur : lesVisiteurs) {
@@ -151,9 +153,7 @@ public class CtrlVisiteur extends CtrlAbstrait {
 
     /**
      * Liste des labos
-     *
-     *
-     * @param lesLabos
+     * @param lesLabos : Liste de labos
      */
     public void afficherListeLabo(List<Labo> lesLabos) {
         vue.jComboBoxlabo.removeAllItems();
@@ -165,8 +165,7 @@ public class CtrlVisiteur extends CtrlAbstrait {
 
     /**
      * Liste des secteurs
-     *
-     * @param lesSecteurs
+     * @param lesSecteurs : Liste de Secteurs
      */
     public void afficherListeSecteur(List<Secteur> lesSecteurs) {
         vue.jComboBoxsecteur.removeAllItems();
