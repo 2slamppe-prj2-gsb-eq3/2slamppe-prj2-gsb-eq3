@@ -6,10 +6,10 @@
     <class>modele.metier.Visiteur</class>
     <class>modele.metier.Labo</class>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@172.15.11.102:1521:orcl"/>
-      <property name="javax.persistence.jdbc.password" value="equipe03"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:XE"/>
+      <property name="javax.persistence.jdbc.password" value="gsb"/>
       <property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver"/>
-      <property name="javax.persistence.jdbc.user" value="ora_2slamppe_eq3"/>
+      <property name="javax.persistence.jdbc.user" value="gsb"/>
     </properties>
   </persistence-unit>
 </persistence>

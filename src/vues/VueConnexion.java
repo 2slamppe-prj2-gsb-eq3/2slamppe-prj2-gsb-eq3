@@ -87,10 +87,10 @@ public class VueConnexion extends VueAbstraite {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonOk;
-    private javax.swing.JButton jButtonQuit;
+    public javax.swing.JButton jButtonOk;
+    public javax.swing.JButton jButtonQuit;
     private javax.swing.JLabel jLabelid;
-    private javax.swing.JTextField jTextFieldid;
-    private javax.swing.JTextField jTextFieldmdp;
+    public javax.swing.JTextField jTextFieldid;
+    public javax.swing.JTextField jTextFieldmdp;
     // End of variables declaration//GEN-END:variables
 }

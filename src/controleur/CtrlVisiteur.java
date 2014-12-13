@@ -66,7 +66,7 @@ public class CtrlVisiteur extends CtrlAbstrait {
 
             @Override
             public void actionPerformed(ActionEvent ae) {
-                System.exit(0);
+                vue.setVisible(false);
             }
         });
 

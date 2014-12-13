@@ -8,7 +8,9 @@ package controleur;
  * @author btssio
  */
 public enum EnumAction {
-    MENU_PRESENCE_AJOUTER
-    ,PRESENCE_RETOUR
+    AFFICHER_MENU
+    ,MENU_RETOUR
+    ,VISITEUR_AFFICHER
+    ,VISITEUR_RETOUR
     ,MENU_FICHIER_QUITTER
 }
