@@ -3,21 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-package testDaoMetier;
+package testDao;
 
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
-import modele.dao.DaoSecteur;
+import modele.dao.DaoVisiteur;
 import modele.dao.EntityManagerFactorySingleton;
-import modele.metier.Secteur;
+import modele.metier.Visiteur;
 
 /**
  *
  * @author btssio
  */
-public class TestDaoSecteur {
+public class TestDaoVisiteur {
+
     public static void main(String[] args) {
         EntityManager em;
         em = EntityManagerFactorySingleton.getInstance().createEntityManager();
@@ -25,18 +25,18 @@ public class TestDaoSecteur {
 
         //Test de selectAll
         System.out.println("Test de selectAll : \n");
-        List<Secteur> lesSecteurs = new ArrayList<Secteur>();
-        lesSecteurs = DaoSecteur.selectAll(em);
-        System.out.println("Les secteurs sont : ");
-        for (int i = 0; i < lesSecteurs.size(); i++) {
-            System.out.println(lesSecteurs.get(i));
+        List<Visiteur> lesVisiteurs = new ArrayList<Visiteur>();
+        lesVisiteurs = DaoVisiteur.selectAll(em);
+        System.out.println("Les visiteurs sont : ");
+        for (int i = 0; i < lesVisiteurs.size(); i++) {
+            System.out.println(lesVisiteurs.get(i).toString2());
         }
         
         //Test de selectOne
         System.out.println("\nTest du selectOne : \n");
-        Secteur unSecteur;
-        String sec_code = "E";
-        unSecteur = DaoSecteur.selectOne(em, sec_code);
-        System.out.println("Le secteur qui a pour sec_code : " + sec_code + " est : \n" + unSecteur);
+        Visiteur unVisiteur;
+        String matricule = "a131";
+        unVisiteur = DaoVisiteur.selectOne(em, matricule);
+        System.out.println("Le visiteur qui a pour matricule : " + matricule + " est : \n" + unVisiteur.toString2());
     }
 }

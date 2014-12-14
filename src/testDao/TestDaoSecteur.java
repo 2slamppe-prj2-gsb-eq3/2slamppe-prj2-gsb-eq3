@@ -3,21 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package testDaoMetier;
+
+package testDao;
 
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
-import modele.dao.DaoLabo;
+import modele.dao.DaoSecteur;
 import modele.dao.EntityManagerFactorySingleton;
-import modele.metier.Labo;
+import modele.metier.Secteur;
 
 /**
  *
  * @author btssio
  */
-public class TestDaoLabo {
-
+public class TestDaoSecteur {
     public static void main(String[] args) {
         EntityManager em;
         em = EntityManagerFactorySingleton.getInstance().createEntityManager();
@@ -25,18 +25,18 @@ public class TestDaoLabo {
 
         //Test de selectAll
         System.out.println("Test de selectAll : \n");
-        List<Labo> lesLabos = new ArrayList<Labo>();
-        lesLabos = DaoLabo.selectAll(em);
-        System.out.println("Les labos sont : ");
-        for (int i = 0; i < lesLabos.size(); i++) {
-            System.out.println(lesLabos.get(i));
+        List<Secteur> lesSecteurs = new ArrayList<Secteur>();
+        lesSecteurs = DaoSecteur.selectAll(em);
+        System.out.println("Les secteurs sont : ");
+        for (int i = 0; i < lesSecteurs.size(); i++) {
+            System.out.println(lesSecteurs.get(i));
         }
-
+        
         //Test de selectOne
         System.out.println("\nTest du selectOne : \n");
-        Labo unLabo;
-        String lab_code = "BC";
-        unLabo = DaoLabo.selectOne(em, lab_code);
-        System.out.println("Le labo qui a pour lab_code : " + lab_code + " est : \n" + unLabo);
+        Secteur unSecteur;
+        String sec_code = "E";
+        unSecteur = DaoSecteur.selectOne(em, sec_code);
+        System.out.println("Le secteur qui a pour sec_code : " + sec_code + " est : \n" + unSecteur);
     }
 }
