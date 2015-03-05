@@ -5,9 +5,8 @@
  */
 package modele.metier;
 
-import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import javax.persistence.*;
 import javax.persistence.Table;
 import static javax.persistence.TemporalType.DATE;
@@ -16,31 +15,35 @@ import static javax.persistence.TemporalType.DATE;
  *
  * @author btssio
  */
-/*
+
 @Entity
 @Table(name = "RAPPORT_VISITE")
-@IdClass(RapportVisitePk.class)*/
+@IdClass(RapportVisitePk.class)
 public class RapportVisite implements Serializable {
-/*
+
 @Id
     private String vis_matricule;
 @Id
     private int rap_num;
+
     @OneToOne
     @JoinColumn(name ="PRA_NUM")
-    private int pra_num;
-    @Temporal(DATE)
-    @Column(name ="VIS_DATEEMBAUCHE")
+    private Praticien pra_num;
+    
+    @Temporal(TemporalType.DATE)
+    @Column(name ="RAP_DATE")
     private Date rap_date;
+    
     @Column(name ="RAP_BILAN")
     private String rap_bilan;
+    
     @Column(name ="RAP_MOTIF")
     private String rap_motif;
 
     public RapportVisite() {
     }
 
-    public RapportVisite(String vis_matricule, int rap_num, int pra_num, Date rap_date, String rap_bilan, String rap_motif) {
+    public RapportVisite(String vis_matricule, int rap_num, Praticien pra_num, Date rap_date, String rap_bilan, String rap_motif) {
         this.vis_matricule = vis_matricule;
         this.rap_num = rap_num;
         this.pra_num = pra_num;
@@ -49,7 +52,6 @@ public class RapportVisite implements Serializable {
         this.rap_motif = rap_motif;
     }
 
-    
     public String getVis_matricule() {
         return vis_matricule;
     }
@@ -57,6 +59,7 @@ public class RapportVisite implements Serializable {
     public void setVis_matricule(String vis_matricule) {
         this.vis_matricule = vis_matricule;
     }
+
     public int getRap_num() {
         return rap_num;
     }
@@ -65,11 +68,11 @@ public class RapportVisite implements Serializable {
         this.rap_num = rap_num;
     }
 
-    public int getPra_num() {
+    public Praticien getPra_num() {
         return pra_num;
     }
 
-    public void setPra_num(int pra_num) {
+    public void setPra_num(Praticien pra_num) {
         this.pra_num = pra_num;
     }
 
@@ -96,7 +99,19 @@ public class RapportVisite implements Serializable {
     public void setRap_motif(String rap_motif) {
         this.rap_motif = rap_motif;
     }
-    */
+
+    @Override
+    public String toString() {
+        return "RapportVisite{" + "vis_matricule=" + vis_matricule + ", rap_num=" + rap_num + ", pra_num=" + pra_num + ", rap_date=" + rap_date + ", rap_bilan=" + rap_bilan + ", rap_motif=" + rap_motif + '}';
+    }
+    
+    
+
+    
+   
+    
+    
+    
     
     
 
