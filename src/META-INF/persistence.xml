@@ -5,6 +5,8 @@
     <class>modele.metier.Secteur</class>
     <class>modele.metier.Visiteur</class>
     <class>modele.metier.Labo</class>
+    <class>modele.metier.RapportVisite</class>
+    <class>modele.metier.RapportVisitePk</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="${properties.javax.persistence.jdbc.url}"/>
       <property name="javax.persistence.jdbc.password" value="${properties.javax.persistence.jdbc.password}"/>
