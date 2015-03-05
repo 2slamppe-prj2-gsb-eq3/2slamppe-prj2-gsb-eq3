@@ -115,6 +115,12 @@ public class Medicament {
     public void setFamille(Famille famille) {
         this.famille = famille;
     }
+
+    @Override
+    public String toString() {
+        return "Medicament{" + "depotLegal=" + depotLegal + ", nomCommercial=" + nomCommercial + ", composition=" + composition + ", effets=" + effets + ", contreIndic=" + contreIndic + ", prixEchantillon=" + prixEchantillon + ", famille=" + famille + '}';
+    }
+    
     
     
     

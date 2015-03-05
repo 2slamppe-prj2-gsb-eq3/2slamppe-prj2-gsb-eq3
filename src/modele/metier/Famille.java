@@ -5,20 +5,20 @@
  */
 package modele.metier;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+
+
+import java.io.Serializable;
+import javax.persistence.*;
 
 /**
  *
  * @author btssio
  */
+
 //classe persistente
 @Entity
 @Table(name = "FAMILLE")
-public class Famille {
+public class Famille implements Serializable{
     
     //attribut
     @Id
@@ -52,4 +52,11 @@ public class Famille {
     public void setLibelle(String libelle) {
         this.libelle = libelle;
     }  
+
+    @Override
+    public String toString() {
+        return "Famille{" + "code=" + code + ", libelle=" + libelle + '}';
+    }
+    
+    
 }

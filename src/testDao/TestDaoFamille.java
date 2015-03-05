@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import modele.dao.DaoFamille;
-import modele.dao.DaoLabo;
 import modele.dao.EntityManagerFactorySingleton;
 import modele.metier.Famille;
 
@@ -28,7 +27,7 @@ public class TestDaoFamille {
         System.out.println("Test de selectAll : \n");
         List<Famille> lesFamilles = new ArrayList<Famille>();
         lesFamilles = DaoFamille.selectAll(em);
-        System.out.println("Les labos sont : ");
+        System.out.println("Les familles sont : ");
         for (int i = 0; i < lesFamilles.size(); i++) {
             System.out.println(lesFamilles.get(i));
         }

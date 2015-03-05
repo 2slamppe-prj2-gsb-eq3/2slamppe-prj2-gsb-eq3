@@ -19,9 +19,9 @@ import modele.metier.Famille;
 public class DaoFamille {
     
     
-    public static Famille selectOne(EntityManager em, String FamilleCode) throws PersistenceException {
+    public static Famille selectOne(EntityManager em, String fam_code) throws PersistenceException {
         Famille famille = null;
-        famille = em.find(Famille.class, FamilleCode);
+        famille = em.find(Famille.class, fam_code);
         return famille;
     }
     

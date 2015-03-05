@@ -17,9 +17,9 @@ import modele.metier.Medicament;
  */
 public class DaoMedicament {
     
-    public static Medicament selectOne(EntityManager em, String FamilleCode) throws PersistenceException {
+    public static Medicament selectOne(EntityManager em, String med_code) throws PersistenceException {
         Medicament medicament = null;
-        medicament = em.find(Medicament.class, FamilleCode);
+        medicament = em.find(Medicament.class, med_code);
         return medicament;
     }
     

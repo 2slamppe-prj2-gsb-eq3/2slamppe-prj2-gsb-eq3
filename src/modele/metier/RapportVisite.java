@@ -16,12 +16,12 @@ import static javax.persistence.TemporalType.DATE;
  *
  * @author btssio
  */
-
+/*
 @Entity
 @Table(name = "RAPPORT_VISITE")
-@IdClass(RapportVisitePk.class)
+@IdClass(RapportVisitePk.class)*/
 public class RapportVisite implements Serializable {
-
+/*
 @Id
     private String vis_matricule;
 @Id
@@ -96,7 +96,7 @@ public class RapportVisite implements Serializable {
     public void setRap_motif(String rap_motif) {
         this.rap_motif = rap_motif;
     }
-    
+    */
     
     
 

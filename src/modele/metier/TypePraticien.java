@@ -28,12 +28,18 @@ TYP_LIEU*/
     @Id
     @GeneratedValue
     @Column(name = "TYP_CODE")
-    private String code; 
+    private String code;
+    
     @Column(name = "TYP_LIBELLE")
     private String libelle;
+    
     @Column(name="TYP_LIEU")
     private String lieu;
 
+    public TypePraticien() {
+    }
+
+    
     public TypePraticien(String code, String libelle, String lieu) {
         this.code = code;
         this.libelle = libelle;
