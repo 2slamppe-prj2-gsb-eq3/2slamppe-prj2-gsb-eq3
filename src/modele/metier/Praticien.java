@@ -28,16 +28,22 @@ public class Praticien {
     @GeneratedValue
     @Column(name = "PRA_NUM")
     private String id; 
+    
     @Column(name = "PRA_NOM")
     private String nom;
+    
     @Column(name = "PRA_PRENOM")
     private String prenom;
+    
     @Column(name = "PRA_ADRESSE")
     private String adresse;
+    
     @Column(name = "PRA_CP")
     private String cp;
+    
     @Column(name = "PRA_VILLE")
     private String ville;
+    
     @Column(name= "PRA_COEFNOTORIETE")
     private float coef;
 
@@ -45,6 +51,9 @@ public class Praticien {
     @JoinColumn(name ="TYP_CODE")
     private TypePraticien typePraticien;
 
+    public Praticien() {
+    }
+        
     public Praticien(String id, String nom, String prenom, String adresse, String cp, String ville, float coef, TypePraticien typePraticien) {
         this.id = id;
         this.nom = nom;

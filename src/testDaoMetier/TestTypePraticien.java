@@ -16,7 +16,7 @@ import modele.metier.TypePraticien;
  *
  * @author btssio
  */
-public class testTypePraticien {    
+public class TestTypePraticien {    
     public static void main(String[] args) {
         TypePraticien unTypePra=null;
         //Test n°1: instanciation et accesseurs
