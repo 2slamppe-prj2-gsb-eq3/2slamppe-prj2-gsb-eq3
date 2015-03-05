@@ -5,10 +5,17 @@
  */
 package modele.dao;
 
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceException;
+import javax.persistence.Query;
+import modele.metier.Labo;
+
 /**
  *
  * @author btssio
  */
 public class DaoOffrir {
     
+   
 }
