@@ -90,7 +90,7 @@ public class VueRapportsVisite extends VueAbstraite {
                 {null, null}
             },
             new String [] {
-                "Title 1", "Title 2"
+                "Médicament", "Nb. Echantillons"
             }
         ));
         jScrollPane2.setViewportView(jTableoffre);
