@@ -26,7 +26,7 @@ public class DaoTypePraticien {
     
     public static List<TypePraticien> selectAll(EntityManager em) throws PersistenceException  {
         List<TypePraticien> lesTypPra;
-        Query query= em.createQuery("select tp from Type_praticien tp");
+        Query query= em.createQuery("select tp from TypePraticien tp");
         lesTypPra = query.getResultList();
         return lesTypPra;
     }

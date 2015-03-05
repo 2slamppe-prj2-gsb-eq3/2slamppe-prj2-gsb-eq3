@@ -21,9 +21,6 @@ import javax.persistence.Table;
 @Table(name = "TYPE_PRATICIEN")
 public class TypePraticien {
     
-    /*TYP_CODE
-TYP_LIBELLE
-TYP_LIEU*/
     //attribut
     @Id
     @GeneratedValue

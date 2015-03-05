@@ -17,26 +17,26 @@ import modele.metier.TypePraticien;
  *
  * @author btssio
  */
-public class testDaoTypePraticien {
+public class TestDaoTypePraticien {
     public static void main(String[] args) {
         EntityManager em;
         em = EntityManagerFactorySingleton.getInstance().createEntityManager();
         em.getTransaction().begin();
 
-        /*//Test de selectAll
+        //Test de selectAll
         System.out.println("Test de selectAll : \n");
         List<TypePraticien> lesTypePra = new ArrayList<TypePraticien>();
         lesTypePra = DaoTypePraticien.selectAll(em);
-        System.out.println("Les Types praticien sont : ");
+        System.out.println("Les types praticien sont : ");
         for (int i = 0; i < lesTypePra.size(); i++) {
             System.out.println(lesTypePra.get(i));
-        }*/
+        }
 
         //Test de selectOne
         System.out.println("\nTest du selectOne : \n");
         TypePraticien unTypePra;
         String typeCode = "MV";
         unTypePra = DaoTypePraticien.selectOne(em, typeCode);
-        System.out.println("Le labo qui a pour lab_code : " + typeCode + " est : \n" + unTypePra);
+        System.out.println("Le type praticien qui a pour typeCode : " + typeCode + " est : \n" + unTypePra);
     }
 }
