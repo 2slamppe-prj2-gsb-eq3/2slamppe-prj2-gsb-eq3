@@ -3,9 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package modele.metier;
 
+
+
+import java.io.Serializable;
 import javax.persistence.*;
 
 /**
@@ -13,34 +15,26 @@ import javax.persistence.*;
  * @author btssio
  */
 
-//classe Persistente
+//classe persistente
 @Entity
-@Table(name = "TYPE_PRATICIEN")
-public class TypePraticien {
+@Table(name = "FAMILLE")
+public class Famille implements Serializable{
     
     //attribut
     @Id
-    @Column(name = "TYP_CODE")
-    private String code;
+    @GeneratedValue
+    @Column(name = "FAM_CODE")
+    private String code; 
     
-    @Column(name = "TYP_LIBELLE")
-    private String libelle;
-    
-    @Column(name="TYP_LIEU")
-    private String lieu;
+    @Column(name = "FAM_LIBELLE" )    
+    private String libelle;    
 
-    public TypePraticien() {
+    public Famille() {
     }
-    
-    public TypePraticien(String code, String libelle, String lieu) {
+
+    public Famille(String code, String libelle) {
         this.code = code;
         this.libelle = libelle;
-        this.lieu = lieu;
-    }
-
-    @Override
-    public String toString() {
-        return "TypePraticien{" + "code=" + code + ", libelle=" + libelle + ", lieu=" + lieu + '}';
     }
 
     public String getCode() {
@@ -57,14 +51,11 @@ public class TypePraticien {
 
     public void setLibelle(String libelle) {
         this.libelle = libelle;
-    }
+    }  
 
-    public String getLieu() {
-        return lieu;
-    }
-
-    public void setLieu(String lieu) {
-        this.lieu = lieu;
+    @Override
+    public String toString() {
+        return "Famille{" + "code=" + code + ", libelle=" + libelle + '}';
     }
     
     

@@ -16,7 +16,7 @@ import modele.metier.Praticien;
  * @author btssio
  */
 public class DaoPraticien {
-    
+
     /**
      * Sélectionne un Praticien en fonction du praNum
      * @param em :EntityManager
@@ -29,7 +29,6 @@ public class DaoPraticien {
         unPraticien = em.find(Praticien.class, praNum);
         return unPraticien;
     }
-    
     /**
      * Sélectionne tous les Praticiens
      * @param em : EntityManager
@@ -42,5 +41,4 @@ public class DaoPraticien {
         lesPraticiens = query.getResultList();
         return lesPraticiens;
     }
-
 }

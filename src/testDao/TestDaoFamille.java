@@ -3,21 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package testDao;
 
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
-import modele.dao.DaoTypePraticien;
+import modele.dao.DaoFamille;
 import modele.dao.EntityManagerFactorySingleton;
-import modele.metier.TypePraticien;
+import modele.metier.Famille;
 
 /**
  *
  * @author btssio
  */
-public class TestDaoTypePraticien {
+public class TestDaoFamille {
+    
     public static void main(String[] args) {
         EntityManager em;
         em = EntityManagerFactorySingleton.getInstance().createEntityManager();
@@ -25,18 +25,18 @@ public class TestDaoTypePraticien {
 
         //Test de selectAll
         System.out.println("Test de selectAll : \n");
-        List<TypePraticien> lesTypePra = new ArrayList<TypePraticien>();
-        lesTypePra = DaoTypePraticien.selectAll(em);
-        System.out.println("Les Types praticiens sont : ");
-        for (int i = 0; i < lesTypePra.size(); i++) {
-            System.out.println(lesTypePra.get(i));
+        List<Famille> lesFamilles = new ArrayList<Famille>();
+        lesFamilles = DaoFamille.selectAll(em);
+        System.out.println("Les familles sont : ");
+        for (int i = 0; i < lesFamilles.size(); i++) {
+            System.out.println(lesFamilles.get(i));
         }
 
         //Test de selectOne
         System.out.println("\nTest du selectOne : \n");
-        TypePraticien unTypePra;
-        String typeCode = "MV";
-        unTypePra = DaoTypePraticien.selectOne(em, typeCode);
-        System.out.println("Le type praticien qui a pour typeCode : " + typeCode + " est : \n" + unTypePra);
+        Famille uneFamille;
+        String fam_code = "AA";
+        uneFamille = DaoFamille.selectOne(em, fam_code);
+        System.out.println("La famille qui a pour fam_code : " + fam_code + " est : \n" + uneFamille);
     }
 }

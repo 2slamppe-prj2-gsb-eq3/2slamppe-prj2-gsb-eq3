@@ -45,6 +45,9 @@ public class Praticien {
     @JoinColumn(name ="TYP_CODE")
     private TypePraticien typePraticien;
 
+    public Praticien() {
+    }
+        
     public Praticien(int id, String nom, String prenom, String adresse, String cp, String ville, float coef, TypePraticien typePraticien) {
         this.id = id;
         this.nom = nom;
@@ -54,10 +57,6 @@ public class Praticien {
         this.ville = ville;
         this.coef = coef;
         this.typePraticien = typePraticien;
-    }
-
-    public Praticien(){
-        
     }
     
     @Override
