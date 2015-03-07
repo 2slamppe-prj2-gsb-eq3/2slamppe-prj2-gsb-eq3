@@ -27,7 +27,7 @@ public class Praticien {
     @Id
     @GeneratedValue
     @Column(name = "PRA_NUM")
-    private String id; 
+    private int id; 
     @Column(name = "PRA_NOM")
     private String nom;
     @Column(name = "PRA_PRENOM")
@@ -45,7 +45,7 @@ public class Praticien {
     @JoinColumn(name ="TYP_CODE")
     private TypePraticien typePraticien;
 
-    public Praticien(String id, String nom, String prenom, String adresse, String cp, String ville, float coef, TypePraticien typePraticien) {
+    public Praticien(int id, String nom, String prenom, String adresse, String cp, String ville, float coef, TypePraticien typePraticien) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
@@ -56,16 +56,20 @@ public class Praticien {
         this.typePraticien = typePraticien;
     }
 
+    public Praticien(){
+        
+    }
+    
     @Override
     public String toString() {
         return "Praticien{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse + ", cp=" + cp + ", ville=" + ville + ", coef=" + coef + ", typePraticien=" + typePraticien + '}';
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

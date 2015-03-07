@@ -18,15 +18,28 @@ import modele.metier.TypePraticien;
  */
 public class DaoTypePraticien {
     
+    /**
+     * Sélectionne un TypePraticien en fonction du typeCode
+     * @param em :EntityManager
+     * @param typeCode : String -> code du TypePraticien
+     * @return : TypePraticien -> une instance de TypePraticien
+     * @throws PersistenceException 
+     */
     public static TypePraticien selectOne(EntityManager em, String typeCode) throws PersistenceException {
         TypePraticien unTypePra = null;
         unTypePra = em.find(TypePraticien.class, typeCode);
         return unTypePra;
     }
     
+    /**
+     * Sélectionne tous les TypePraticiens
+     * @param em : EntityManager
+     * @return : Liste de TypePraticien -> Une liste de TypePraticien
+     * @throws PersistenceException 
+     */
     public static List<TypePraticien> selectAll(EntityManager em) throws PersistenceException  {
         List<TypePraticien> lesTypPra;
-        Query query= em.createQuery("select tp from Type_praticien tp");
+        Query query= em.createQuery("select tp from TypePraticien tp");
         lesTypPra = query.getResultList();
         return lesTypPra;
     }

@@ -6,27 +6,20 @@
 
 package modele.metier;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  *
  * @author btssio
  */
+
 //classe Persistente
 @Entity
 @Table(name = "TYPE_PRATICIEN")
 public class TypePraticien {
     
-    /*TYP_CODE
-TYP_LIBELLE
-TYP_LIEU*/
     //attribut
     @Id
-    @GeneratedValue
     @Column(name = "TYP_CODE")
     private String code; 
     @Column(name = "TYP_LIBELLE")
@@ -34,6 +27,9 @@ TYP_LIEU*/
     @Column(name="TYP_LIEU")
     private String lieu;
 
+    public TypePraticien() {
+    }
+    
     public TypePraticien(String code, String libelle, String lieu) {
         this.code = code;
         this.libelle = libelle;
