@@ -49,16 +49,16 @@ public class CtrlRapportVisite extends CtrlAbstrait {
         afficherListePraticien(lesPraticiens);
         
         
-        //ON récuypère tous les rapports de visite
+        //ON récupère tous les rapports de visite
         lesRapportsVisite = DaoRapportVisite.selectAll(em);
         System.out.println(lesRapportsVisite);
         
-        //ON récuypère tous les medicaments
+        //ON récupère tous les medicaments
         lesMedicaments = DaoMedicament.selectAll(em);
         System.out.println(lesMedicaments);
         
-        //ON récuypère tous les offres
-        //lesOffres = DaoOffrir.selectAll(em);
+        //ON récupère toutes les offres
+        lesOffres = DaoOffrir.selectAll(em);
         System.out.println(lesOffres);
         
         afficherRapportVisite();
@@ -123,6 +123,25 @@ public class CtrlRapportVisite extends CtrlAbstrait {
         vue.getjTextFieldmotif().setText(unRapportVisite.getRap_motif());
         vue.getjTextAreabilan().setText(unRapportVisite.getRap_bilan());
         Praticien unPraticien = unRapportVisite.getPra_num();
+        int j=0;
+        
+        for(int i=0; i< lesOffres.size(); i++ ) {
+             vue.getjTableoffre().removeAll();
+        }
+        
+        for(int i=0; i< lesOffres.size(); i++ ) {
+            
+            Offrir uneOffre= lesOffres.get(i);
+            
+            if(uneOffre.getRap_num() == unRapportVisite.getRap_num()){
+                
+                vue.getjTableoffre().setValueAt(uneOffre.getMed_depotLegal(), j, 0);
+                vue.getjTableoffre().setValueAt(uneOffre.getQuantite(), j, 1);
+                j++;
+            }
+            
+        }
+        
         
         vue.getjComboBoxpraticien().setSelectedItem(unPraticien.getNom()+" "+unPraticien.getPrenom());
     }
