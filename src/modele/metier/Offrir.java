@@ -34,12 +34,12 @@ public class Offrir implements Serializable {
     private String med_depotLegal;
 
     @Column(name = "OFF_QTE")
-    private String quantite;
+    private int quantite;
 
     public Offrir() {
     }
 
-    public Offrir(String vis_matricule, int rap_num, String med_depotLegal, String quantite) {
+    public Offrir(String vis_matricule, int rap_num, String med_depotLegal, int quantite) {
         this.vis_matricule = vis_matricule;
         this.rap_num = rap_num;
         this.med_depotLegal = med_depotLegal;
@@ -70,11 +70,11 @@ public class Offrir implements Serializable {
         this.med_depotLegal = med_depotLegal;
     }
 
-    public String getQuantite() {
+    public int getQuantite() {
         return quantite;
     }
 
-    public void setQuantite(String quantite) {
+    public void setQuantite(int quantite) {
         this.quantite = quantite;
     }
 
