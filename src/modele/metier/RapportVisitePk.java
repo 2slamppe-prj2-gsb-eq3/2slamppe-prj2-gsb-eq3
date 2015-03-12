@@ -6,6 +6,8 @@
 
 package modele.metier;
 
+import java.util.Objects;
+
 /**
  *
  * @author btssio
@@ -18,55 +20,58 @@ public class RapportVisitePk implements java.io.Serializable {
     
     public RapportVisitePk(){
     }
-    
-    public RapportVisitePk(String vis_matricule, int rap_num) {
-    this.vis_matricule = vis_matricule;
-    this.rap_num = rap_num;
-  }
 
-  public String getNom() {
-    return this.vis_matricule;
-  }
-
-  public void setNom(String vis_matricule) {
-    this.vis_matricule = vis_matricule;
-  }
-
-  public int getRap_num() {
-    return rap_num;
-  }
-
-  public void setPrevis_matricule(String rap_num) {
-    this.vis_matricule = rap_num;
-  }
-
-    @Override
-  public boolean equals(Object obj) {
-    boolean resultat = false;
-
-    if (obj == this) {
-      resultat = true;
-    } else {
-      if (!(obj instanceof RapportVisitePk)) {
-        resultat = false;
-      } else {
-        RapportVisitePk autre = (RapportVisitePk) obj;
-        if (!vis_matricule.equals(autre.vis_matricule)) {
-          resultat = false;
-        } else {
-          if (rap_num != autre.rap_num) {
-            resultat = false;
-          } else {
-            resultat = true;
-          }
-        }
-      }
+    public String getVis_matricule() {
+        return vis_matricule;
     }
-    return resultat;
-  }
+
+    public void setVis_matricule(String vis_matricule) {
+        this.vis_matricule = vis_matricule;
+    }
+
+    public int getRap_num() {
+        return rap_num;
+    }
+
+    public void setRap_num(int rap_num) {
+        this.rap_num = rap_num;
+    }
+
+    public RapportVisitePk(String vis_matricule, int rap_num) {
+        this.vis_matricule = vis_matricule;
+        this.rap_num = rap_num;
+    }
 
     @Override
-  public int hashCode() {
-    return (vis_matricule + rap_num).hashCode();
-  }
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.vis_matricule);
+        hash = 97 * hash + this.rap_num;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final RapportVisitePk other = (RapportVisitePk) obj;
+        if (!Objects.equals(this.vis_matricule, other.vis_matricule)) {
+            return false;
+        }
+        if (this.rap_num != other.rap_num) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "RapportVisitePk{" + "vis_matricule=" + vis_matricule + ", rap_num=" + rap_num + '}';
+    }
+    
+    
 }

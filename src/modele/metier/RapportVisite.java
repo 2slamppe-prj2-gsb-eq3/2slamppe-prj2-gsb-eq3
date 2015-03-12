@@ -7,6 +7,7 @@ package modele.metier;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 import javax.persistence.*;
 import javax.persistence.Table;
 import static javax.persistence.TemporalType.DATE;
@@ -20,10 +21,10 @@ import static javax.persistence.TemporalType.DATE;
 @Table(name = "RAPPORT_VISITE")
 @IdClass(RapportVisitePk.class)
 public class RapportVisite implements Serializable {
-
-@Id
+    
+    @Id
     private String vis_matricule;
-@Id
+    @Id
     private int rap_num;
 
     @OneToOne
@@ -42,16 +43,7 @@ public class RapportVisite implements Serializable {
 
     public RapportVisite() {
     }
-
-    public RapportVisite(String vis_matricule, int rap_num, Praticien pra_num, Date rap_date, String rap_bilan, String rap_motif) {
-        this.vis_matricule = vis_matricule;
-        this.rap_num = rap_num;
-        this.pra_num = pra_num;
-        this.rap_date = rap_date;
-        this.rap_bilan = rap_bilan;
-        this.rap_motif = rap_motif;
-    }
-
+    
     public String getVis_matricule() {
         return vis_matricule;
     }
@@ -59,7 +51,7 @@ public class RapportVisite implements Serializable {
     public void setVis_matricule(String vis_matricule) {
         this.vis_matricule = vis_matricule;
     }
-
+    
     public int getRap_num() {
         return rap_num;
     }
@@ -100,19 +92,19 @@ public class RapportVisite implements Serializable {
         this.rap_motif = rap_motif;
     }
 
+    public RapportVisite(String vis_matricule, int rap_num, Praticien pra_num, Date rap_date, String rap_bilan, String rap_motif) {
+        this.vis_matricule = vis_matricule;
+        this.rap_num = rap_num;
+        this.pra_num = pra_num;
+        this.rap_date = rap_date;
+        this.rap_bilan = rap_bilan;
+        this.rap_motif = rap_motif;
+    }
+
     @Override
     public String toString() {
         return "RapportVisite{" + "vis_matricule=" + vis_matricule + ", rap_num=" + rap_num + ", pra_num=" + pra_num + ", rap_date=" + rap_date + ", rap_bilan=" + rap_bilan + ", rap_motif=" + rap_motif + '}';
     }
-    
-    
 
     
-   
-    
-    
-    
-    
-    
-
 }

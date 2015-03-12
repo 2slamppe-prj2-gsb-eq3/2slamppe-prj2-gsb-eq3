@@ -9,6 +9,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
 import javax.persistence.Query;
+import modele.metier.RapportVisitePk;
 import modele.metier.Praticien;
 import modele.metier.RapportVisite;
 
@@ -18,9 +19,12 @@ import modele.metier.RapportVisite;
  */
 public class DaoRapportVisite {
     
-    public static RapportVisite selectOne(EntityManager em, String pk) throws PersistenceException {
+    public static RapportVisite selectOne(EntityManager em, String vis_matricule, int rap_num) throws PersistenceException {
         RapportVisite  unRapportVisite = null;
-        unRapportVisite = em.find(RapportVisite.class, pk);
+        RapportVisitePk clePk = new RapportVisitePk(vis_matricule, rap_num);
+        
+        unRapportVisite = em.find(RapportVisite.class, clePk);
+//        unRapportVisite = em.createQuery("select p from RapportVisite p where p.vis_matricule = '" + vis_matricule + "'", RapportVisite.class);
         return unRapportVisite;
     }
     
