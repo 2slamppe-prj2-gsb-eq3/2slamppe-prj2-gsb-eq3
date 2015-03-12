@@ -50,14 +50,14 @@ public class CtrlVisiteur extends CtrlAbstrait {
         afficherListeSecteur(lesSecteurs);
         
         //Initialisation du premier élément
-        afficherVisteur();
+        afficherVisiteur();
 
         //Ecouteurs Bouton ok
         vue.jButtonok.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                afficherVisteur();
+                afficherVisiteur();
             }
         });
 
@@ -83,7 +83,7 @@ public class CtrlVisiteur extends CtrlAbstrait {
                 }
                 unVisiteur = lesVisiteurs.get(indiceVisiteurCourant);
                 vue.jComboBoxsearch.setSelectedItem(unVisiteur);
-                afficherVisteur();
+                afficherVisiteur();
 
             }
         });
@@ -101,7 +101,7 @@ public class CtrlVisiteur extends CtrlAbstrait {
                 }
                 unVisiteur = lesVisiteurs.get(indiceVisiteurCourant);
                 vue.jComboBoxsearch.setSelectedItem(unVisiteur);
-                afficherVisteur();
+                afficherVisiteur();
 
             }
         });
@@ -111,7 +111,7 @@ public class CtrlVisiteur extends CtrlAbstrait {
     /*
      * Affiche un Visteur
      */
-    public void afficherVisteur() {
+    public void afficherVisiteur() {
         //Sélectionne le visiteur
         unVisiteur = (Visiteur) (vue.jComboBoxsearch.getSelectedItem());     
         
@@ -175,6 +175,7 @@ public class CtrlVisiteur extends CtrlAbstrait {
         }
     }
 
+    @Override
     public VueVisiteurs getVue() {
         return vue;
     }

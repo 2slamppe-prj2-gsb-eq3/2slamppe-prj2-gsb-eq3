@@ -6,6 +6,13 @@
 
 package vues;
 import controleur.CtrlAbstrait;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 /**
  *
@@ -21,6 +28,169 @@ public class VueRapportsVisite extends VueAbstraite {
         initComponents();
         this.setLocation(500, 200);
     }
+
+    public JButton getjButtondetais() {
+        return jButtondetais;
+    }
+
+    public void setjButtondetais(JButton jButtondetais) {
+        this.jButtondetais = jButtondetais;
+    }
+
+    public JButton getjButtonfermer() {
+        return jButtonfermer;
+    }
+
+    public void setjButtonfermer(JButton jButtonfermer) {
+        this.jButtonfermer = jButtonfermer;
+    }
+
+    public JButton getjButtonnouv() {
+        return jButtonnouv;
+    }
+
+    public void setjButtonnouv(JButton jButtonnouv) {
+        this.jButtonnouv = jButtonnouv;
+    }
+
+    public JButton getjButtonprec() {
+        return jButtonprec;
+    }
+
+    public void setjButtonprec(JButton jButtonprec) {
+        this.jButtonprec = jButtonprec;
+    }
+
+    public JButton getjButtonsuiv() {
+        return jButtonsuiv;
+    }
+
+    public void setjButtonsuiv(JButton jButtonsuiv) {
+        this.jButtonsuiv = jButtonsuiv;
+    }
+
+    public JComboBox getjComboBoxpraticien() {
+        return jComboBoxpraticien;
+    }
+
+    public void setjComboBoxpraticien(JComboBox jComboBoxpraticien) {
+        this.jComboBoxpraticien = jComboBoxpraticien;
+    }
+
+    public JLabel getjLabelbilan() {
+        return jLabelbilan;
+    }
+
+    public void setjLabelbilan(JLabel jLabelbilan) {
+        this.jLabelbilan = jLabelbilan;
+    }
+
+    public JLabel getjLabeldate() {
+        return jLabeldate;
+    }
+
+    public void setjLabeldate(JLabel jLabeldate) {
+        this.jLabeldate = jLabeldate;
+    }
+
+    public JLabel getjLabelmotif() {
+        return jLabelmotif;
+    }
+
+    public void setjLabelmotif(JLabel jLabelmotif) {
+        this.jLabelmotif = jLabelmotif;
+    }
+
+    public JLabel getjLabelnum() {
+        return jLabelnum;
+    }
+
+    public void setjLabelnum(JLabel jLabelnum) {
+        this.jLabelnum = jLabelnum;
+    }
+
+    public JLabel getjLabeloffre() {
+        return jLabeloffre;
+    }
+
+    public void setjLabeloffre(JLabel jLabeloffre) {
+        this.jLabeloffre = jLabeloffre;
+    }
+
+    public JLabel getjLabelpraticien() {
+        return jLabelpraticien;
+    }
+
+    public void setjLabelpraticien(JLabel jLabelpraticien) {
+        this.jLabelpraticien = jLabelpraticien;
+    }
+
+    public JLabel getjLabeltitre() {
+        return jLabeltitre;
+    }
+
+    public void setjLabeltitre(JLabel jLabeltitre) {
+        this.jLabeltitre = jLabeltitre;
+    }
+
+    public JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public void setjScrollPane1(JScrollPane jScrollPane1) {
+        this.jScrollPane1 = jScrollPane1;
+    }
+
+    public JScrollPane getjScrollPane2() {
+        return jScrollPane2;
+    }
+
+    public void setjScrollPane2(JScrollPane jScrollPane2) {
+        this.jScrollPane2 = jScrollPane2;
+    }
+
+    public JTable getjTableoffre() {
+        return jTableoffre;
+    }
+
+    public void setjTableoffre(JTable jTableoffre) {
+        this.jTableoffre = jTableoffre;
+    }
+
+    public JTextArea getjTextAreabilan() {
+        return jTextAreabilan;
+    }
+
+    public void setjTextAreabilan(JTextArea jTextAreabilan) {
+        this.jTextAreabilan = jTextAreabilan;
+    }
+
+    public JTextField getjTextFielddate() {
+        return jTextFielddate;
+    }
+
+    public void setjTextFielddate(JTextField jTextFielddate) {
+        this.jTextFielddate = jTextFielddate;
+    }
+
+    public JTextField getjTextFieldmotif() {
+        return jTextFieldmotif;
+    }
+
+    public void setjTextFieldmotif(JTextField jTextFieldmotif) {
+        this.jTextFieldmotif = jTextFieldmotif;
+    }
+
+    public JTextField getjTextFieldnum() {
+        return jTextFieldnum;
+    }
+
+    public void setjTextFieldnum(JTextField jTextFieldnum) {
+        this.jTextFieldnum = jTextFieldnum;
+    }
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -70,6 +240,9 @@ public class VueRapportsVisite extends VueAbstraite {
         jTextAreabilan.setRows(5);
         jScrollPane1.setViewportView(jTextAreabilan);
 
+        jTextFieldnum.setEditable(false);
+
+        jComboBoxpraticien.setEditable(true);
         jComboBoxpraticien.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jButtondetais.setText("Détails");

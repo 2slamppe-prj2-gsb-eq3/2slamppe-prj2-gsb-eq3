@@ -36,8 +36,7 @@ public class CtrlMenu extends CtrlAbstrait {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame("JOptionPane showMessageDialog example");
-                JOptionPane.showMessageDialog(frame, "Fonctionnalité Comptes-Rendues - Bientôt..");
+                afficherRapportVisite();
             }
         });
 
@@ -85,6 +84,11 @@ public class CtrlMenu extends CtrlAbstrait {
     public void afficherVisiteur() {
         CtrlPrincipal ctrlP = new CtrlPrincipal();
         ctrlP.action(EnumAction.VISITEUR_AFFICHER);
+    }
+    
+    public void afficherRapportVisite() {
+        CtrlPrincipal ctrlP = new CtrlPrincipal();
+        ctrlP.action(EnumAction.RAPPORT_AFFICHER);
     }
     
     /**
