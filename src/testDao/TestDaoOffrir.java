@@ -36,10 +36,13 @@ public class TestDaoOffrir {
         }
 
         //Test de selectOne
-        /*System.out.println("\nTest du selectOne : \n");
-        Offir unPra;
-        int numPra = 1;
-        unPra = DaoPraticien.selectOne(em, numPra);
-        System.out.println("Le type praticien qui a pour typeCode : " + numPra + " est : \n" + unPra);*/
+        System.out.println("\nTest du selectOne : \n");
+        Offrir unPra;
+        String vis_matricule = "a17";
+        int rap_num = 4;
+        String med_depotLegal = "3MYC7";
+        
+        unPra = DaoOffrir.selectOne(em, vis_matricule, rap_num, med_depotLegal);
+        System.out.println("Le type praticien qui a pour typeCode : " + rap_num + " est : \n" + unPra);
     }
 }

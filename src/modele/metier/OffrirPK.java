@@ -15,13 +15,13 @@ public class OffrirPK implements java.io.Serializable {
     
     private static final long serialVersionUID = 1L;
     private String vis_matricule;
-    private String rap_num;
+    private int rap_num;
     private String med_depotLegal;
 
     public OffrirPK() {
     }
 
-    public OffrirPK(String vis_matricule, String rap_num, String med_depotLegal) {
+    public OffrirPK(String vis_matricule, int rap_num, String med_depotLegal) {
         this.vis_matricule = vis_matricule;
         this.rap_num = rap_num;
         this.med_depotLegal = med_depotLegal;
@@ -35,11 +35,11 @@ public class OffrirPK implements java.io.Serializable {
         this.vis_matricule = vis_matricule;
     }
 
-    public String getRap_num() {
+    public int getRap_num() {
         return rap_num;
     }
 
-    public void setRap_num(String rap_num) {
+    public void setRap_num(int rap_num) {
         this.rap_num = rap_num;
     }
 
@@ -79,6 +79,11 @@ public class OffrirPK implements java.io.Serializable {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "OffrirPK{" + "vis_matricule=" + vis_matricule + ", rap_num=" + rap_num + ", med_depotLegal=" + med_depotLegal + '}';
     }
     
     
