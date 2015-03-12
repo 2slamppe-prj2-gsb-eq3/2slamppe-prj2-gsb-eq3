@@ -21,6 +21,7 @@ public class TestDaoRapportVisite {
         EntityManager em;
         em = EntityManagerFactorySingleton.getInstance().createEntityManager();
         em.getTransaction().begin();
+         
 
         //Test de selectAll
         System.out.println("Test de selectAll : \n");
@@ -33,9 +34,10 @@ public class TestDaoRapportVisite {
 
         //Test de selectOne
         System.out.println("\nTest du selectOne : \n");
-        /*RapportVisite unRapportVisite;
-        String pk = "a131323";
-        unRapportVisite = DaoRapportVisite.selectOne(em, pk);
-        System.out.println("Le  Rapport Visite qui a pour pk : " + pk + " est : \n" + unRapportVisite);*/
+        RapportVisite unRapportVisite;
+        String pk = "a131";
+        int cle2 = 3;
+        unRapportVisite = DaoRapportVisite.selectOne(em, pk, cle2);
+        System.out.println("Le  Rapport Visite qui a pour pk : " + pk + " est : \n" + unRapportVisite);
     }
 }
