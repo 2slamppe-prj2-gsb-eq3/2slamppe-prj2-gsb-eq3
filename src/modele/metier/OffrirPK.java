@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package modele.metier;
 
 import java.util.Objects;
@@ -12,15 +11,22 @@ import java.util.Objects;
  *
  * @author btssio
  */
-public class RapportVisitePk implements java.io.Serializable {
+public class OffrirPK implements java.io.Serializable {
     
     private static final long serialVersionUID = 1L;
     private String vis_matricule;
     private int rap_num;
-    
-    public RapportVisitePk(){
+    private String med_depotLegal;
+
+    public OffrirPK() {
     }
 
+    public OffrirPK(String vis_matricule, int rap_num, String med_depotLegal) {
+        this.vis_matricule = vis_matricule;
+        this.rap_num = rap_num;
+        this.med_depotLegal = med_depotLegal;
+    }
+    
     public String getVis_matricule() {
         return vis_matricule;
     }
@@ -37,16 +43,20 @@ public class RapportVisitePk implements java.io.Serializable {
         this.rap_num = rap_num;
     }
 
-    public RapportVisitePk(String vis_matricule, int rap_num) {
-        this.vis_matricule = vis_matricule;
-        this.rap_num = rap_num;
+    public String getMed_depotLegal() {
+        return med_depotLegal;
+    }
+
+    public void setMed_depotLegal(String med_depotLegal) {
+        this.med_depotLegal = med_depotLegal;
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 97 * hash + Objects.hashCode(this.vis_matricule);
-        hash = 97 * hash + this.rap_num;
+        hash = 89 * hash + Objects.hashCode(this.vis_matricule);
+        hash = 89 * hash + Objects.hashCode(this.rap_num);
+        hash = 89 * hash + Objects.hashCode(this.med_depotLegal);
         return hash;
     }
 
@@ -58,11 +68,14 @@ public class RapportVisitePk implements java.io.Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final RapportVisitePk other = (RapportVisitePk) obj;
+        final OffrirPK other = (OffrirPK) obj;
         if (!Objects.equals(this.vis_matricule, other.vis_matricule)) {
             return false;
         }
-        if (this.rap_num != other.rap_num) {
+        if (!Objects.equals(this.rap_num, other.rap_num)) {
+            return false;
+        }
+        if (!Objects.equals(this.med_depotLegal, other.med_depotLegal)) {
             return false;
         }
         return true;
@@ -70,8 +83,10 @@ public class RapportVisitePk implements java.io.Serializable {
 
     @Override
     public String toString() {
-        return "RapportVisitePk{" + "vis_matricule=" + vis_matricule + ", rap_num=" + rap_num + '}';
+        return "OffrirPK{" + "vis_matricule=" + vis_matricule + ", rap_num=" + rap_num + ", med_depotLegal=" + med_depotLegal + '}';
     }
+    
+    
     
     
 }

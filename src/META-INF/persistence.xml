@@ -11,6 +11,7 @@
     <class>modele.metier.Famille</class>
     <class>modele.metier.Medicament</class>
     <class>modele.metier.Praticien</class>
+    <class>modele.metier.Offrir</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="${properties.javax.persistence.jdbc.url}"/>
       <property name="javax.persistence.jdbc.password" value="${properties.javax.persistence.jdbc.password}"/>

@@ -9,13 +9,32 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
 import javax.persistence.Query;
-import modele.metier.Labo;
+import modele.metier.OffrirPK;
+import modele.metier.Offrir;
+
 
 /**
  *
  * @author btssio
  */
 public class DaoOffrir {
+    
+    
+    
+    public static Offrir selectOne(EntityManager em, String vis_matricule, int rap_num, String med_depotLegal) throws PersistenceException {
+        Offrir  uneOffre = null;
+        OffrirPK clePk = new OffrirPK(vis_matricule, rap_num, med_depotLegal);
+        uneOffre = em.find(Offrir.class, clePk);
+        return uneOffre;
+    }
+    
+    
+    public static List<Offrir> selectAll(EntityManager em) throws PersistenceException  {
+        List<Offrir> lesOffres;
+        Query query= em.createQuery("select p from Offrir p");
+        lesOffres = query.getResultList();
+        return lesOffres;
+    }
     
    
 }
