@@ -123,23 +123,20 @@ public class CtrlRapportVisite extends CtrlAbstrait {
         vue.getjTextFieldmotif().setText(unRapportVisite.getRap_motif());
         vue.getjTextAreabilan().setText(unRapportVisite.getRap_bilan());
         Praticien unPraticien = unRapportVisite.getPra_num();
-        int j=0;
+        
         
         for(int i=0; i< lesOffres.size(); i++ ) {
-             vue.getjTableoffre().removeAll();
+            vue.getjTableoffre().setValueAt("", i, 0);
+            vue.getjTableoffre().setValueAt("", i, 1);
         }
         
-        for(int i=0; i< lesOffres.size(); i++ ) {
-            
-            Offrir uneOffre= lesOffres.get(i);
-            
-            if(uneOffre.getRap_num() == unRapportVisite.getRap_num()){
-                
+        int j=0;
+        for (Offrir uneOffre : lesOffres) {
+            if(uneOffre.getRap_num() == unRapportVisite.getRap_num()){                
                 vue.getjTableoffre().setValueAt(uneOffre.getMed_depotLegal(), j, 0);
                 vue.getjTableoffre().setValueAt(uneOffre.getQuantite(), j, 1);
                 j++;
             }
-            
         }
         
         
