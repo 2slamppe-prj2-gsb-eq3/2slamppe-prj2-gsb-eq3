@@ -48,4 +48,16 @@ public class DaoRapportVisite {
         lesRapportsVisite = query.getResultList();
         return lesRapportsVisite;
     }
+    
+    /**
+     * Permet d'insérer en Base de de données une instance de Rapport Visite
+     * @param em :EntityManager
+     * @param unRapportVisite une instance de Rapport Visite
+     */
+    public static void insert(EntityManager em,RapportVisite unRapportVisite){
+        em.getTransaction().begin();
+        em.persist(unRapportVisite);
+        em.getTransaction().commit();
+    }   
+    
 }
