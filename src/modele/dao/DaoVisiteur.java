@@ -7,7 +7,6 @@ package modele.dao;
 
 import java.text.Format;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import javax.persistence.EntityManager;
@@ -74,7 +73,7 @@ public class DaoVisiteur {
      */
     public static boolean verifierLoginMdp(EntityManager em, String login, String mdp) throws PersistenceException {
         boolean ok = false;
-        String dateEmbauche=null;
+        String dateEmbauche = null;
         Visiteur unVisiteur = selectOneByLogin(em, login);
 
         if (unVisiteur != null) {
@@ -82,7 +81,7 @@ public class DaoVisiteur {
             dateEmbauche = formatter.format(unVisiteur.getDateDEmbauche());
         }
 
-        if (dateEmbauche!=null && dateEmbauche.toLowerCase().equals(mdp)) {
+        if (dateEmbauche != null && dateEmbauche.toLowerCase().equals(mdp)) {
             ok = true;
         }
 

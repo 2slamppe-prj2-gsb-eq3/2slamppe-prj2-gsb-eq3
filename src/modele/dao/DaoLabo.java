@@ -31,7 +31,7 @@ public class DaoLabo {
         return labo;
     }
     /**
-     * 
+     * Sélectionne tous les labos
      * @param em :EntityManager
      * @return : List Labo -> Liste de labo
      * @throws PersistenceException 

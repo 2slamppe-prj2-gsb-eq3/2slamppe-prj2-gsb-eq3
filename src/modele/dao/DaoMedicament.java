@@ -17,13 +17,25 @@ import modele.metier.Medicament;
  */
 public class DaoMedicament {
     
+    /**
+     * Sélmectionne un medicament en fonction du code
+     * @param em :EntityManager
+     * @param med_code :String med_code
+     * @return Medicament une instance de medicament
+     * @throws PersistenceException 
+     */
     public static Medicament selectOne(EntityManager em, String med_code) throws PersistenceException {
         Medicament medicament = null;
         medicament = em.find(Medicament.class, med_code);
         return medicament;
     }
     
-    
+    /**
+     * Sélectionne tous les medicaments
+     * @param em :EntityManager
+     * @return List Medicament Liste des medicaments
+     * @throws PersistenceException 
+     */
     public static List<Medicament> selectAll(EntityManager em) throws PersistenceException  {
         List<Medicament> lesMedicaments;
         Query query= em.createQuery("select m from Medicament m");

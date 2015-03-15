@@ -10,7 +10,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
 import javax.persistence.Query;
 import modele.metier.RapportVisitePk;
-import modele.metier.Praticien;
 import modele.metier.RapportVisite;
 
 /**
@@ -19,15 +18,27 @@ import modele.metier.RapportVisite;
  */
 public class DaoRapportVisite {
     
+    /**
+     * Sélectionne un rapport de visite en fonction du matricule de visite et du numéro de rapport
+     * @param em :EntityManager
+     * @param vis_matricule  String vis_matricule
+     * @param rap_num int rap_num
+     * @return RapportVisite -> Une instance de RapportVisite
+     * @throws PersistenceException 
+     */
     public static RapportVisite selectOne(EntityManager em, String vis_matricule, int rap_num) throws PersistenceException {
         RapportVisite  unRapportVisite = null;
-        RapportVisitePk clePk = new RapportVisitePk(vis_matricule, rap_num);
-        
+        RapportVisitePk clePk = new RapportVisitePk(vis_matricule, rap_num);        
         unRapportVisite = em.find(RapportVisite.class, clePk);
-//        unRapportVisite = em.createQuery("select p from RapportVisite p where p.vis_matricule = '" + vis_matricule + "'", RapportVisite.class);
         return unRapportVisite;
     }
     
+    /**
+     * Sélectionne tous les rapports de Visite
+     * @param em :EntityManager
+     * @return  List RapportVisite -> Liste des rapports de visite
+     * @throws PersistenceException 
+     */
      public static List<RapportVisite> selectAll(EntityManager em) throws PersistenceException  {
         List<RapportVisite> lesRapportsVisite;
         Query query= em.createQuery("select p from RapportVisite p");

@@ -28,128 +28,133 @@ import vues.VueRapportsVisite;
  * @author btssio
  */
 public class CtrlRapportVisite extends CtrlAbstrait {
+
     EntityManager em;
     private VueRapportsVisite vue = new VueRapportsVisite(this);
-    private int indiceRapportVisiteCourant=0;
+    private int indiceRapportVisiteCourant = 0;
     private List<Praticien> lesPraticiens;
     private List<RapportVisite> lesRapportsVisite;
     private List<Medicament> lesMedicaments;
     private List<Offrir> lesOffres;
-    
 
     public CtrlRapportVisite(CtrlPrincipal ctrlPrincipal) {
         super(ctrlPrincipal);
         // Gérer la persistance
         em = EntityManagerFactorySingleton.getInstance().createEntityManager();
         em.getTransaction().begin();
-        
+
         //Afficher les praticens
         lesPraticiens = DaoPraticien.selectAll(em);
         System.out.println(lesPraticiens);
         afficherListePraticien(lesPraticiens);
-        
-        
+
         //ON récupère tous les rapports de visite
         lesRapportsVisite = DaoRapportVisite.selectAll(em);
         System.out.println(lesRapportsVisite);
-        
+
         //ON récupère tous les medicaments
         lesMedicaments = DaoMedicament.selectAll(em);
         System.out.println(lesMedicaments);
-        
+
         //ON récupère toutes les offres
         lesOffres = DaoOffrir.selectAll(em);
         System.out.println(lesOffres);
-        
+
         afficherRapportVisite();
-       
-        
-        
-        
-       vue.getjButtonprec().addActionListener(new ActionListener() {
+
+        vue.getjButtonprec().addActionListener(new ActionListener() {
 
             @Override
-            public void actionPerformed(ActionEvent ae) {                
+            public void actionPerformed(ActionEvent ae) {
                 indiceRapportVisiteCourant = indiceRapportVisiteCourant - 1;
                 //Si arrive au début de la liste
-                if (indiceRapportVisiteCourant<0) {
-                    indiceRapportVisiteCourant=lesRapportsVisite.size()-1;
-                }               
+                if (indiceRapportVisiteCourant < 0) {
+                    indiceRapportVisiteCourant = lesRapportsVisite.size() - 1;
+                }
                 afficherRapportVisite();
 
             }
 
-            
         });
 
         //Bouton Suivant
-        vue.getjButtonsuiv().addActionListener(new ActionListener() {
+        vue.getjButtonSuiv().addActionListener(new ActionListener() {
 
             @Override
-            public void actionPerformed(ActionEvent ae) {                
+            public void actionPerformed(ActionEvent ae) {
                 indiceRapportVisiteCourant = indiceRapportVisiteCourant + 1;
                 //Si arrive à la fin de la liste
-                if (indiceRapportVisiteCourant>lesRapportsVisite.size()-1) {
-                    indiceRapportVisiteCourant=0;
-                }                
+                if (indiceRapportVisiteCourant > lesRapportsVisite.size() - 1) {
+                    indiceRapportVisiteCourant = 0;
+                }
                 afficherRapportVisite();
 
             }
         });
-        
-        vue.getjButtonnouv().addActionListener(new ActionListener() {
+
+        vue.getjButtonNouv().addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                nouveau();
             }
-            
-        });
-    
-    
-    
-    }
-  
-    
-    
 
-    
-        
-    public void afficherRapportVisite(){
+        });
+
+        vue.getjButtonSauvegarder().addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                enregistrer();
+            }
+
+        });
+
+    }
+
+    public void nouveau() {
+        vue.getjTextFieldNum().setEditable(false);
+        vue.getjTextFieldDate().setText("");
+        vue.getjTextFieldMotif().setText("");
+        vue.getjTextAreabilan().setText("");
+    }
+
+    public void enregistrer() {
+        vue.getjTextFieldMotif().getText();
+        vue.getjTextAreabilan().getText();
+    }
+
+    public void afficherRapportVisite() {
         //Sélectionne le visiteur
-        RapportVisite unRapportVisite = lesRapportsVisite.get(indiceRapportVisiteCourant);        
-        vue.getjTextFieldnum().setText(Integer.toString(unRapportVisite.getRap_num()));
-        vue.getjTextFielddate().setText(unRapportVisite.getRap_date().toString());
-        vue.getjTextFieldmotif().setText(unRapportVisite.getRap_motif());
+        RapportVisite unRapportVisite = lesRapportsVisite.get(indiceRapportVisiteCourant);
+        vue.getjTextFieldNum().setText(Integer.toString(unRapportVisite.getRap_num()));
+        vue.getjTextFieldDate().setText(unRapportVisite.getRap_date().toString());
+        vue.getjTextFieldMotif().setText(unRapportVisite.getRap_motif());
         vue.getjTextAreabilan().setText(unRapportVisite.getRap_bilan());
         Praticien unPraticien = unRapportVisite.getPra_num();
-        
-        
-        for(int i=0; i< lesOffres.size(); i++ ) {
-            vue.getjTableoffre().setValueAt("", i, 0);
-            vue.getjTableoffre().setValueAt("", i, 1);
+
+        for (int i = 0; i < lesOffres.size(); i++) {
+            vue.getjTableOffre().setValueAt("", i, 0);
+            vue.getjTableOffre().setValueAt("", i, 1);
         }
-        
-        int j=0;
+
+        int j = 0;
         for (Offrir uneOffre : lesOffres) {
-            if(uneOffre.getRap_num() == unRapportVisite.getRap_num()){                
-                vue.getjTableoffre().setValueAt(uneOffre.getMed_depotLegal(), j, 0);
-                vue.getjTableoffre().setValueAt(uneOffre.getQuantite(), j, 1);
+            if (uneOffre.getRap_num() == unRapportVisite.getRap_num()) {
+                vue.getjTableOffre().setValueAt(uneOffre.getMed_depotLegal(), j, 0);
+                vue.getjTableOffre().setValueAt(uneOffre.getQuantite(), j, 1);
                 j++;
             }
         }
-        
-        
-        vue.getjComboBoxpraticien().setSelectedItem(unPraticien.getNom()+" "+unPraticien.getPrenom());
+
+        vue.getjComboBoxpraticien().setSelectedItem(unPraticien.getNom() + " " + unPraticien.getPrenom());
     }
-    
-    
 
     public void afficherListePraticien(List<Praticien> lesPraticiens) {
         vue.getjComboBoxpraticien().removeAllItems();
         vue.getjComboBoxpraticien().addItem("aucun");
         for (Praticien unPraticien : lesPraticiens) {
-            vue.getjComboBoxpraticien().addItem(unPraticien.getNom()+" "+unPraticien.getPrenom());
+            vue.getjComboBoxpraticien().addItem(unPraticien.getNom() + " " + unPraticien.getPrenom());
         }
     }
 
@@ -161,5 +166,5 @@ public class CtrlRapportVisite extends CtrlAbstrait {
     public void setVue(VueRapportsVisite vue) {
         this.vue = vue;
     }
-    
+
 }
