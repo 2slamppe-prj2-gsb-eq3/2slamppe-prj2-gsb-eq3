@@ -17,7 +17,7 @@ import modele.metier.Famille;
  * @author btssio
  */
 public class TestDaoFamille {
-    
+
     public static void main(String[] args) {
         EntityManager em;
         em = EntityManagerFactorySingleton.getInstance().createEntityManager();

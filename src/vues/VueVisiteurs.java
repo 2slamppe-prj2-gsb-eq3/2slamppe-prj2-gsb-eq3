@@ -3,8 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package vues;
+
 import controleur.CtrlAbstrait;
 
 /**
@@ -187,8 +187,6 @@ public class VueVisiteurs extends VueAbstraite {
     private void jComboBoxlaboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxlaboActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxlaboActionPerformed
-
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton jButtonfermer;

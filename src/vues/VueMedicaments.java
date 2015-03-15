@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package vues;
-import controleur.CtrlAbstrait;
 
+import controleur.CtrlAbstrait;
 
 /**
  *
@@ -17,7 +16,7 @@ public class VueMedicaments extends VueAbstraite {
     /**
      * Creates new form medicaments
      */
-    public VueMedicaments (CtrlAbstrait ctrl) {
+    public VueMedicaments(CtrlAbstrait ctrl) {
         super(ctrl);
         initComponents();
         this.setLocation(500, 200);
@@ -188,8 +187,6 @@ public class VueMedicaments extends VueAbstraite {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonfermer;

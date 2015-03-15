@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package vues;
-import controleur.CtrlAbstrait;
 
+import controleur.CtrlAbstrait;
 
 /**
  *
@@ -197,8 +196,6 @@ public class VuePraticiens extends VueAbstraite {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonfermer;

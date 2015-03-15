@@ -12,7 +12,7 @@ import java.util.Objects;
  * @author btssio
  */
 public class OffrirPK implements java.io.Serializable {
-    
+
     private static final long serialVersionUID = 1L;
     private String vis_matricule;
     private int rap_num;
@@ -26,7 +26,7 @@ public class OffrirPK implements java.io.Serializable {
         this.rap_num = rap_num;
         this.med_depotLegal = med_depotLegal;
     }
-    
+
     public String getVis_matricule() {
         return vis_matricule;
     }
@@ -85,8 +85,5 @@ public class OffrirPK implements java.io.Serializable {
     public String toString() {
         return "OffrirPK{" + "vis_matricule=" + vis_matricule + ", rap_num=" + rap_num + ", med_depotLegal=" + med_depotLegal + '}';
     }
-    
-    
-    
-    
+
 }

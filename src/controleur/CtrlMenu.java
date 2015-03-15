@@ -22,7 +22,8 @@ public class CtrlMenu extends CtrlAbstrait {
 
     /**
      * Controleur principale CtrlMenu
-     * @param ctrlPrincipal 
+     *
+     * @param ctrlPrincipal
      */
     public CtrlMenu(CtrlPrincipal ctrlPrincipal) {
         super(ctrlPrincipal);
@@ -68,7 +69,7 @@ public class CtrlMenu extends CtrlAbstrait {
                 JOptionPane.showMessageDialog(frame, "Fonctionnalité Medicaments - Bientôt.");
             }
         });
-        
+
         //Ecouteurs Bouton Quitter
         vue.jButtonQuitter.addActionListener(new ActionListener() {
 
@@ -78,6 +79,7 @@ public class CtrlMenu extends CtrlAbstrait {
             }
         });
     }
+
     /**
      * Ouvre la fenetre de gestion des Visiteurs
      */
@@ -85,16 +87,16 @@ public class CtrlMenu extends CtrlAbstrait {
         CtrlPrincipal ctrlP = new CtrlPrincipal();
         ctrlP.action(EnumAction.VISITEUR_AFFICHER);
     }
-    
+
     public void afficherRapportVisite() {
         CtrlPrincipal ctrlP = new CtrlPrincipal();
         ctrlP.action(EnumAction.RAPPORT_AFFICHER);
     }
-    
+
     /**
      * Quitte l'application
      */
-    public void quitter(){
+    public void quitter() {
         System.exit(0);
     }
 

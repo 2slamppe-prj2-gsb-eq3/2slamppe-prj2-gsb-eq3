@@ -12,15 +12,16 @@ import modele.metier.TypePraticien;
  *
  * @author btssio
  */
-public class TestPraticien {    
+public class TestPraticien {
+
     public static void main(String[] args) {
-        Praticien unPra=null;
+        Praticien unPra = null;
         //Test n°1: instanciation et accesseurs
         System.out.println("\nTest n°1: instanciation et accesseurs");
-        TypePraticien unTypePra = new TypePraticien("CC", "test coucou", "local ");        
+        TypePraticien unTypePra = new TypePraticien("CC", "test coucou", "local ");
         unPra = new Praticien(150, "noulet", "sylvain", "adresse", "cp", "ville", Float.parseFloat("45.2"), unTypePra);
         System.out.println("Etat du Praticien: " + unPra);
-       
+
         // Test n°2 : mutateurs
         System.out.println("\nTest n°2 : mutateurs");
         unPra.setId(200);
@@ -30,7 +31,7 @@ public class TestPraticien {
         unPra.setCp("cp2");
         unPra.setVille("ville2");
         unPra.setCoef(Float.parseFloat("50.0"));
-        TypePraticien unTypePra2 = new TypePraticien("PC","test pas coucou","Local Jol");
+        TypePraticien unTypePra2 = new TypePraticien("PC", "test pas coucou", "Local Jol");
         unPra.setTypePraticien(unTypePra2);
         System.out.println("Etat du type : " + unPra);
     }

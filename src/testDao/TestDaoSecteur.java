@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package testDao;
 
 import java.util.ArrayList;
@@ -18,6 +17,7 @@ import modele.metier.Secteur;
  * @author btssio
  */
 public class TestDaoSecteur {
+
     public static void main(String[] args) {
         EntityManager em;
         em = EntityManagerFactorySingleton.getInstance().createEntityManager();
@@ -31,7 +31,7 @@ public class TestDaoSecteur {
         for (int i = 0; i < lesSecteurs.size(); i++) {
             System.out.println(lesSecteurs.get(i));
         }
-        
+
         //Test de selectOne
         System.out.println("\nTest du selectOne : \n");
         Secteur unSecteur;

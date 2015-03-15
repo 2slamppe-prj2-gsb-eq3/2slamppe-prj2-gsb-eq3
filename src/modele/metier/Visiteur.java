@@ -13,43 +13,39 @@ import static javax.persistence.TemporalType.DATE;
  *
  * @author btssio
  */
-
 //classe Persistente
 @Entity
 @Table(name = "VISITEUR")
 public class Visiteur {
-    
+
     //attribut
     @Id
     @GeneratedValue
-    @Column(name ="VIS_MATRICULE")
+    @Column(name = "VIS_MATRICULE")
     private String id;
-    @Column(name ="VIS_NOM")
+    @Column(name = "VIS_NOM")
     private String nom;
-    @Column(name ="VIS_PRENOM")
+    @Column(name = "VIS_PRENOM")
     private String prenom;
-    @Column(name ="VIS_CP")
+    @Column(name = "VIS_CP")
     private String cp;
-    @Column(name ="VIS_ADRESSE")
+    @Column(name = "VIS_ADRESSE")
     private String adresse;
-    @Column(name ="VIS_VILLE")
+    @Column(name = "VIS_VILLE")
     private String ville;
     @Temporal(DATE)
-    @Column(name ="VIS_DATEEMBAUCHE")
+    @Column(name = "VIS_DATEEMBAUCHE")
     private java.util.Date dateDEmbauche;
-    
+
     @OneToOne
-    @JoinColumn(name ="SEC_CODE")
+    @JoinColumn(name = "SEC_CODE")
     private Secteur secteur;
-    
+
     @OneToOne
-    @JoinColumn(name ="LAB_CODE")
+    @JoinColumn(name = "LAB_CODE")
     private Labo labo;
 
-    
-    
-    
-    public Visiteur(){
+    public Visiteur() {
     }
 
     //constructeur
@@ -68,10 +64,9 @@ public class Visiteur {
     //toString Getter Setter
     @Override
     public String toString() {
-        return   nom + " " + prenom;
+        return nom + " " + prenom;
     }
 
-   
     public String toString2() {
         return "Visiteur{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", cp=" + cp + ", adresse=" + adresse + ", ville=" + ville + ", dateDEmbauche=" + dateDEmbauche + ", secteur=" + secteur + ", labo=" + labo + '}';
     }
@@ -131,7 +126,7 @@ public class Visiteur {
     public void setDateDEmbauche(Date dateDEmbauche) {
         this.dateDEmbauche = dateDEmbauche;
     }
-    
+
     public Secteur getSecteur() {
         return secteur;
     }

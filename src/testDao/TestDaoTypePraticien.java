@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package testDao;
 
 import java.util.ArrayList;
@@ -18,6 +17,7 @@ import modele.metier.TypePraticien;
  * @author btssio
  */
 public class TestDaoTypePraticien {
+
     public static void main(String[] args) {
         EntityManager em;
         em = EntityManagerFactorySingleton.getInstance().createEntityManager();

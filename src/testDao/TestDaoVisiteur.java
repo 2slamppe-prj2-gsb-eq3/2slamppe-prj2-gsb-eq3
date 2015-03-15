@@ -31,7 +31,7 @@ public class TestDaoVisiteur {
         for (int i = 0; i < lesVisiteurs.size(); i++) {
             System.out.println(lesVisiteurs.get(i).toString2());
         }
-        
+
         //Test de selectOne
         System.out.println("\nTest du selectOne : \n");
         Visiteur unVisiteur;

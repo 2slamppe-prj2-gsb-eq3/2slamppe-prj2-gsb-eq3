@@ -8,7 +8,6 @@ import vues.VueMenu;
 import vues.VueVisiteurs;
 import vues.VueRapportsVisite;
 
-
 /**
  * Controleur principal (ou frontal) - un lien vers chaque contrôleur de base
  *
@@ -17,8 +16,6 @@ import vues.VueRapportsVisite;
  */
 public class CtrlPrincipal {
 
-    
-    
     private CtrlConnexion ctrlConnexion = null;
     private CtrlMenu ctrlMenu = null;
     private CtrlVisiteur ctrlVisiteur = null;
@@ -63,8 +60,7 @@ public class CtrlPrincipal {
     private void menuFichierQuitter() {
         System.exit(0);
     }
-    
-    
+
     /**
      * Transition vueMenu / vuePresence
      */
@@ -80,8 +76,8 @@ public class CtrlPrincipal {
         ctrlConnexion.getVue().setVisible(false);
         ctrlMenu.getVue().setVisible(true);
     }
-    
-    private void afficherVisiteurs(){
+
+    private void afficherVisiteurs() {
         if (ctrlMenu == null) {
             VueMenu vueM = new VueMenu(ctrlA);
             ctrlMenu = new CtrlMenu(this);
@@ -100,7 +96,8 @@ public class CtrlPrincipal {
         ctrlMenu.getVue().setVisible(false);
         ctrlVisiteur.getVue().setVisible(true);
     }
-    private void afficherRapportsVisite(){
+
+    private void afficherRapportsVisite() {
         if (ctrlMenu == null) {
             VueMenu vueM = new VueMenu(ctrlA);
             ctrlMenu = new CtrlMenu(this);
@@ -119,8 +116,5 @@ public class CtrlPrincipal {
         ctrlMenu.getVue().setVisible(false);
         ctrlRapportVisite.getVue().setVisible(true);
     }
-    
 
-   
 }
-

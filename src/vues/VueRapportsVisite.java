@@ -3,8 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package vues;
+
 import controleur.CtrlAbstrait;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -196,9 +196,6 @@ public class VueRapportsVisite extends VueAbstraite {
     public void setjButtonSauvegarder(JButton jButtonSauvegarder) {
         this.jButtonSauvegarder = jButtonSauvegarder;
     }
-    
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -482,8 +479,6 @@ public class VueRapportsVisite extends VueAbstraite {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonDetails;

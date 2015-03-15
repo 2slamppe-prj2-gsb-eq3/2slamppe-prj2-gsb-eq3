@@ -46,7 +46,7 @@ public class EntityManagerFactorySingleton {
             properties.put("javax.persistence.jdbc.password", data.getProperty("password"));
             properties.put("javax.persistence.jdbc.driver", data.getProperty("driver"));
             properties.put("javax.persistence.jdbc.user", data.getProperty("user"));
-            
+
             try {
                 singleton = Persistence.createEntityManagerFactory("persistence", properties);
             } catch (Exception ef) {

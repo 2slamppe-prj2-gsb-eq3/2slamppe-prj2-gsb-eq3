@@ -4,8 +4,8 @@
  * and open the template in the editor.
  */
 package vues;
-import controleur.CtrlAbstrait;
 
+import controleur.CtrlAbstrait;
 
 /**
  *
@@ -83,8 +83,6 @@ public class VueConnexion extends VueAbstraite {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton jButtonOk;

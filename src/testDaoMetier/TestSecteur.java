@@ -12,13 +12,14 @@ import modele.metier.Secteur;
  * @author btssio
  */
 public class TestSecteur {
+
     public static void main(String[] args) {
-        Secteur sec=null;
+        Secteur sec = null;
         //Test n°1: instanciation et accesseurs
         System.out.println("\nTest n°1: instanciation et accesseurs");
-        sec = new Secteur("N","Nord");
+        sec = new Secteur("N", "Nord");
         System.out.println("Etat du secteur: " + sec);
-        
+
         // Test n°2 : mutateurs
         System.out.println("\nTest n°2 : mutateurs");
         sec.setCode("S");

@@ -16,34 +16,33 @@ import static javax.persistence.TemporalType.DATE;
  *
  * @author btssio
  */
-
 @Entity
 @Table(name = "RAPPORT_VISITE")
 @IdClass(RapportVisitePk.class)
 public class RapportVisite implements Serializable {
-    
+
     @Id
     private String vis_matricule;
     @Id
     private int rap_num;
 
     @OneToOne
-    @JoinColumn(name ="PRA_NUM")
+    @JoinColumn(name = "PRA_NUM")
     private Praticien pra_num;
-    
+
     @Temporal(TemporalType.DATE)
-    @Column(name ="RAP_DATE")
+    @Column(name = "RAP_DATE")
     private Date rap_date;
-    
-    @Column(name ="RAP_BILAN")
+
+    @Column(name = "RAP_BILAN")
     private String rap_bilan;
-    
-    @Column(name ="RAP_MOTIF")
+
+    @Column(name = "RAP_MOTIF")
     private String rap_motif;
 
     public RapportVisite() {
     }
-    
+
     public String getVis_matricule() {
         return vis_matricule;
     }
@@ -51,7 +50,7 @@ public class RapportVisite implements Serializable {
     public void setVis_matricule(String vis_matricule) {
         this.vis_matricule = vis_matricule;
     }
-    
+
     public int getRap_num() {
         return rap_num;
     }
@@ -106,5 +105,4 @@ public class RapportVisite implements Serializable {
         return "RapportVisite{" + "vis_matricule=" + vis_matricule + ", rap_num=" + rap_num + ", pra_num=" + pra_num + ", rap_date=" + rap_date + ", rap_bilan=" + rap_bilan + ", rap_motif=" + rap_motif + '}';
     }
 
-    
 }

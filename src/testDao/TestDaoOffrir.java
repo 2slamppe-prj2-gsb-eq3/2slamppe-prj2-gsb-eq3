@@ -14,13 +14,12 @@ import modele.dao.DaoRapportVisite;
 import modele.dao.EntityManagerFactorySingleton;
 import modele.metier.Offrir;
 
-
 /**
  *
  * @author btssio
  */
 public class TestDaoOffrir {
-    
+
     public static void main(String[] args) {
         EntityManager em;
         em = EntityManagerFactorySingleton.getInstance().createEntityManager();
@@ -41,7 +40,7 @@ public class TestDaoOffrir {
         String vis_matricule = "a17";
         int rap_num = 4;
         String med_depotLegal = "3MYC7";
-        
+
         unPra = DaoOffrir.selectOne(em, vis_matricule, rap_num, med_depotLegal);
         System.out.println("Le type praticien qui a pour typeCode : " + rap_num + " est : \n" + unPra);
     }

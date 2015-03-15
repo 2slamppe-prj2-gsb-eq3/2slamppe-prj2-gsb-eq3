@@ -12,13 +12,14 @@ import modele.metier.Famille;
  * @author btssio
  */
 public class TestFamille {
+
     public static void main(String[] args) {
-        Famille famille=null;
+        Famille famille = null;
         //Test n°1: instanciation et accesseurs
         System.out.println("\nTest n°1: instanciation et accesseurs");
-        famille = new Famille("GYC","Gyverni");
+        famille = new Famille("GYC", "Gyverni");
         System.out.println("Etat de famille: " + famille);
-        
+
         // Test n°2 : mutateurs
         System.out.println("\nTest n°2 : mutateurs");
         famille.setCode("BIC");

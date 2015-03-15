@@ -18,8 +18,8 @@ import modele.metier.Medicament;
  * @author btssio
  */
 public class TestDaoMedicament {
-    
-     public static void main(String[] args) {
+
+    public static void main(String[] args) {
         EntityManager em;
         em = EntityManagerFactorySingleton.getInstance().createEntityManager();
         em.getTransaction().begin();

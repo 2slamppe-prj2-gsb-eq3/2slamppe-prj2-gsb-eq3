@@ -17,6 +17,7 @@ import modele.metier.Praticien;
  * @author btssio
  */
 public class TestDaoPraticien {
+
     public static void main(String[] args) {
         EntityManager em;
         em = EntityManagerFactorySingleton.getInstance().createEntityManager();

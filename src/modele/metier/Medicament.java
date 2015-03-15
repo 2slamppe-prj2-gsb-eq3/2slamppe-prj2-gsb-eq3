@@ -21,30 +21,30 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "MEDICAMENT")
 public class Medicament {
-    
+
     //attribut
     @Id
     @GeneratedValue
     @Column(name = "MED_DEPOTLEGAL")
-    private String depotLegal; 
-    
-    @Column(name = "MED_NOMCOMMERCIAL" )    
+    private String depotLegal;
+
+    @Column(name = "MED_NOMCOMMERCIAL")
     private String nomCommercial;
-    
-    @Column(name = "MED_COMPOSITION" )    
+
+    @Column(name = "MED_COMPOSITION")
     private String composition;
-    
-    @Column(name = "MED_EFFETS" )    
+
+    @Column(name = "MED_EFFETS")
     private String effets;
-    
-    @Column(name = "MED_CONTREINDIC" )    
+
+    @Column(name = "MED_CONTREINDIC")
     private String contreIndic;
-    
-    @Column(name = "MED_PRIXECHANTILLON" )    
-    private String prixEchantillon;    
-    
+
+    @Column(name = "MED_PRIXECHANTILLON")
+    private String prixEchantillon;
+
     @OneToOne
-    @JoinColumn(name ="FAM_CODE")
+    @JoinColumn(name = "FAM_CODE")
     private Famille famille;
 
     public Medicament() {
@@ -120,9 +120,5 @@ public class Medicament {
     public String toString() {
         return "Medicament{" + "depotLegal=" + depotLegal + ", nomCommercial=" + nomCommercial + ", composition=" + composition + ", effets=" + effets + ", contreIndic=" + contreIndic + ", prixEchantillon=" + prixEchantillon + ", famille=" + famille + '}';
     }
-    
-    
-    
-    
-    
+
 }

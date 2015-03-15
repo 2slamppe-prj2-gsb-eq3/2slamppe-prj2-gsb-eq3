@@ -17,11 +17,11 @@ import modele.metier.RapportVisite;
  * @author btssio
  */
 public class TestDaoRapportVisite {
-     public static void main(String[] args) {
+
+    public static void main(String[] args) {
         EntityManager em;
         em = EntityManagerFactorySingleton.getInstance().createEntityManager();
         em.getTransaction().begin();
-         
 
         //Test de selectAll
         System.out.println("Test de selectAll : \n");

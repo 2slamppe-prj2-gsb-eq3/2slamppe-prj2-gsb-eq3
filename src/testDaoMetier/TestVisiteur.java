@@ -17,16 +17,17 @@ import modele.metier.Visiteur;
  * @author btssio
  */
 public class TestVisiteur {
+
     public static void main(String[] args) throws ParseException {
-        Visiteur vis=null;
+        Visiteur vis = null;
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         //Test n°1: instanciation et accesseurs
-        System.out.println("\nTest n°1: instanciation et accesseurs");  
-        Labo lab = new Labo("GY","Gyverni","Merss Suzanne");
-        Secteur sec = new Secteur("N","Nord");
-        vis = new Visiteur("b52","Poilu","Gérard","65 rue du Bourg","44000","Nantes",sdf.parse("20/11/2012"),sec,lab);     
+        System.out.println("\nTest n°1: instanciation et accesseurs");
+        Labo lab = new Labo("GY", "Gyverni", "Merss Suzanne");
+        Secteur sec = new Secteur("N", "Nord");
+        vis = new Visiteur("b52", "Poilu", "Gérard", "65 rue du Bourg", "44000", "Nantes", sdf.parse("20/11/2012"), sec, lab);
         System.out.println("Etat du visiteur: " + vis.toString2());
-        
+
         // Test n°2 : mutateurs
         System.out.println("\nTest n°2 : mutateurs");
         vis.setId("cb03");
@@ -35,8 +36,8 @@ public class TestVisiteur {
         vis.setAdresse("26 rue de la Liberté");
         vis.setCp("44200");
         vis.setVille("Nantes");
-        lab = new Labo("LB","LaboFrance","FRANCE");
-        sec = new Secteur("S","Sud");
+        lab = new Labo("LB", "LaboFrance", "FRANCE");
+        sec = new Secteur("S", "Sud");
         vis.setSecteur(sec);
         vis.setLabo(lab);
         System.out.println("Etat du visiteur : " + vis.toString2());

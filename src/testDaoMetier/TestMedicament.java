@@ -14,15 +14,16 @@ import modele.metier.Medicament;
  * @author btssio
  */
 public class TestMedicament {
+
     public static void main(String[] args) {
-        Medicament medicament=null;
-        Famille famille=null;
+        Medicament medicament = null;
+        Famille famille = null;
         //Test n°1: instanciation et accesseurs
         System.out.println("\nTest n°1: instanciation et accesseurs");
-        famille = new Famille("GYC","Gyverni");
+        famille = new Famille("GYC", "Gyverni");
         medicament = new Medicament("TES", "TUESPORAL", "HO+CH+FG", "douleur", "Non", "3.00", famille);
         System.out.println("Etat du medicament: " + medicament);
-        
+
         // Test n°2 : mutateurs
         System.out.println("\nTest n°2 : mutateurs");
         medicament.setDepotLegal("BC");
@@ -31,7 +32,7 @@ public class TestMedicament {
         medicament.setEffets("DOULEUR");
         medicament.setContreIndic("OUI");
         medicament.setPrixEchantillon("5.0");
-        medicament.setFamille(famille); 
+        medicament.setFamille(famille);
         System.out.println("Etat du medicament: " + medicament);
     }
 }

@@ -11,26 +11,25 @@ import javax.persistence.*;
  *
  * @author btssio
  */
-
 //classe persistente
 @Entity
 @Table(name = "LABO")
 public class Labo {
-    
+
     //attribut
     @Id
     @GeneratedValue
     @Column(name = "LAB_CODE")
-    private String id; 
-    @Column(name = "LAB_NOM" )    
-    private String nom;    
+    private String id;
+    @Column(name = "LAB_NOM")
+    private String nom;
     @Column(name = "LAB_CHEFVENTE")
     private String chefVente;
-    
-    public Labo(){
-    
+
+    public Labo() {
+
     }
-    
+
     //constructeur
     public Labo(String id, String nom, String chefVente) {
         this.id = id;
@@ -67,6 +66,5 @@ public class Labo {
     public String toString() {
         return "Labo{" + "id=" + id + ", nom=" + nom + ", chefVente=" + chefVente + '}';
     }
-    
-    
+
 }

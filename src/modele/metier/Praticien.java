@@ -17,17 +17,16 @@ import javax.persistence.Table;
  *
  * @author btssio
  */
-
 //classe Persistente
 @Entity
 @Table(name = "PRATICIEN")
 public class Praticien {
-    
+
     //attribut
     @Id
     @GeneratedValue
     @Column(name = "PRA_NUM")
-    private int id; 
+    private int id;
     @Column(name = "PRA_NOM")
     private String nom;
     @Column(name = "PRA_PRENOM")
@@ -38,16 +37,16 @@ public class Praticien {
     private String cp;
     @Column(name = "PRA_VILLE")
     private String ville;
-    @Column(name= "PRA_COEFNOTORIETE")
+    @Column(name = "PRA_COEFNOTORIETE")
     private float coef;
 
     @OneToOne
-    @JoinColumn(name ="TYP_CODE")
+    @JoinColumn(name = "TYP_CODE")
     private TypePraticien typePraticien;
 
     public Praticien() {
     }
-        
+
     public Praticien(int id, String nom, String prenom, String adresse, String cp, String ville, float coef, TypePraticien typePraticien) {
         this.id = id;
         this.nom = nom;
@@ -58,7 +57,7 @@ public class Praticien {
         this.coef = coef;
         this.typePraticien = typePraticien;
     }
-    
+
     @Override
     public String toString() {
         return "Praticien{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse + ", cp=" + cp + ", ville=" + ville + ", coef=" + coef + ", typePraticien=" + typePraticien + '}';
@@ -127,6 +126,5 @@ public class Praticien {
     public void setTypePraticien(TypePraticien typePraticien) {
         this.typePraticien = typePraticien;
     }
-    
-    
+
 }

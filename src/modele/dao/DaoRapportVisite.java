@@ -17,31 +17,34 @@ import modele.metier.RapportVisite;
  * @author btssio
  */
 public class DaoRapportVisite {
-    
+
     /**
-     * Sélectionne un rapport de visite en fonction du matricule de visite et du numéro de rapport
+     * Sélectionne un rapport de visite en fonction du matricule de visite et du
+     * numéro de rapport
+     *
      * @param em :EntityManager
-     * @param vis_matricule  String vis_matricule
+     * @param vis_matricule String vis_matricule
      * @param rap_num int rap_num
      * @return RapportVisite -> Une instance de RapportVisite
-     * @throws PersistenceException 
+     * @throws PersistenceException
      */
     public static RapportVisite selectOne(EntityManager em, String vis_matricule, int rap_num) throws PersistenceException {
-        RapportVisite  unRapportVisite = null;
-        RapportVisitePk clePk = new RapportVisitePk(vis_matricule, rap_num);        
+        RapportVisite unRapportVisite = null;
+        RapportVisitePk clePk = new RapportVisitePk(vis_matricule, rap_num);
         unRapportVisite = em.find(RapportVisite.class, clePk);
         return unRapportVisite;
     }
-    
+
     /**
      * Sélectionne tous les rapports de Visite
+     *
      * @param em :EntityManager
-     * @return  List RapportVisite -> Liste des rapports de visite
-     * @throws PersistenceException 
+     * @return List RapportVisite -> Liste des rapports de visite
+     * @throws PersistenceException
      */
-     public static List<RapportVisite> selectAll(EntityManager em) throws PersistenceException  {
+    public static List<RapportVisite> selectAll(EntityManager em) throws PersistenceException {
         List<RapportVisite> lesRapportsVisite;
-        Query query= em.createQuery("select p from RapportVisite p");
+        Query query = em.createQuery("select p from RapportVisite p");
         lesRapportsVisite = query.getResultList();
         return lesRapportsVisite;
     }

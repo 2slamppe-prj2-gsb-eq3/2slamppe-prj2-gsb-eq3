@@ -83,5 +83,4 @@ public class Offrir implements Serializable {
         return "Offrir{" + "vis_matricule=" + vis_matricule + ", rap_num=" + rap_num + ", med_depotLegal=" + med_depotLegal + ", quantite=" + quantite + '}';
     }
 
-    
 }

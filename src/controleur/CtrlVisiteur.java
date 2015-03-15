@@ -17,6 +17,7 @@ import vues.VueVisiteurs;
 
 /**
  * Classe Visiteur
+ *
  * @author bdixneuf
  */
 public class CtrlVisiteur extends CtrlAbstrait {
@@ -31,7 +32,7 @@ public class CtrlVisiteur extends CtrlAbstrait {
 
     public CtrlVisiteur(CtrlPrincipal l) {
         super(l);
-     
+
         // Gérer la persistance
         em = EntityManagerFactorySingleton.getInstance().createEntityManager();
         em.getTransaction().begin();
@@ -48,7 +49,7 @@ public class CtrlVisiteur extends CtrlAbstrait {
         lesSecteurs = DaoSecteur.selectAll(em);
         System.out.println(lesSecteurs);
         afficherListeSecteur(lesSecteurs);
-        
+
         //Initialisation du premier élément
         afficherVisiteur();
 
@@ -78,8 +79,8 @@ public class CtrlVisiteur extends CtrlAbstrait {
                 indiceVisiteurCourant = vue.jComboBoxsearch.getSelectedIndex();
                 indiceVisiteurCourant = indiceVisiteurCourant - 1;
                 //Si arrive au début de la liste
-                if (indiceVisiteurCourant<0) {
-                    indiceVisiteurCourant=lesVisiteurs.size()-1;
+                if (indiceVisiteurCourant < 0) {
+                    indiceVisiteurCourant = lesVisiteurs.size() - 1;
                 }
                 unVisiteur = lesVisiteurs.get(indiceVisiteurCourant);
                 vue.jComboBoxsearch.setSelectedItem(unVisiteur);
@@ -96,8 +97,8 @@ public class CtrlVisiteur extends CtrlAbstrait {
                 indiceVisiteurCourant = vue.jComboBoxsearch.getSelectedIndex();
                 indiceVisiteurCourant = indiceVisiteurCourant + 1;
                 //Si arrive à la fin de la liste
-                if (indiceVisiteurCourant>lesVisiteurs.size()-1) {
-                    indiceVisiteurCourant=0;
+                if (indiceVisiteurCourant > lesVisiteurs.size() - 1) {
+                    indiceVisiteurCourant = 0;
                 }
                 unVisiteur = lesVisiteurs.get(indiceVisiteurCourant);
                 vue.jComboBoxsearch.setSelectedItem(unVisiteur);
@@ -113,8 +114,8 @@ public class CtrlVisiteur extends CtrlAbstrait {
      */
     public void afficherVisiteur() {
         //Sélectionne le visiteur
-        unVisiteur = (Visiteur) (vue.jComboBoxsearch.getSelectedItem());     
-        
+        unVisiteur = (Visiteur) (vue.jComboBoxsearch.getSelectedItem());
+
         //Affichage
         vue.jTextFieldnom.setText(unVisiteur.getNom());
         vue.jTextFieldprenom.setText(unVisiteur.getPrenom());
@@ -140,9 +141,9 @@ public class CtrlVisiteur extends CtrlAbstrait {
 
     /**
      * Liste des Visiteurs
+     *
      * @param lesVisiteurs : Liste de visiteurs
      */
-     
     public void afficherListeVisiteurs(List<Visiteur> lesVisiteurs) {
         vue.jComboBoxsearch.removeAllItems();
         for (Visiteur lesVisiteur : lesVisiteurs) {
@@ -153,6 +154,7 @@ public class CtrlVisiteur extends CtrlAbstrait {
 
     /**
      * Liste des labos
+     *
      * @param lesLabos : Liste de labos
      */
     public void afficherListeLabo(List<Labo> lesLabos) {
@@ -165,6 +167,7 @@ public class CtrlVisiteur extends CtrlAbstrait {
 
     /**
      * Liste des secteurs
+     *
      * @param lesSecteurs : Liste de Secteurs
      */
     public void afficherListeSecteur(List<Secteur> lesSecteurs) {

@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package modele.metier;
 
 import java.util.Objects;
@@ -13,12 +12,12 @@ import java.util.Objects;
  * @author btssio
  */
 public class RapportVisitePk implements java.io.Serializable {
-    
+
     private static final long serialVersionUID = 1L;
     private String vis_matricule;
     private int rap_num;
-    
-    public RapportVisitePk(){
+
+    public RapportVisitePk() {
     }
 
     public String getVis_matricule() {
@@ -72,6 +71,5 @@ public class RapportVisitePk implements java.io.Serializable {
     public String toString() {
         return "RapportVisitePk{" + "vis_matricule=" + vis_matricule + ", rap_num=" + rap_num + '}';
     }
-    
-    
+
 }

@@ -5,8 +5,6 @@
  */
 package modele.metier;
 
-
-
 import java.io.Serializable;
 import javax.persistence.*;
 
@@ -14,21 +12,21 @@ import javax.persistence.*;
  *
  * @author btssio
  */
-
 //classe persistente
 @Entity
 @Table(name = "FAMILLE")
-public class Famille implements Serializable{
-    
-    //attribut
+public class Famille implements Serializable {
+
+    //attributs
     @Id
     @GeneratedValue
     @Column(name = "FAM_CODE")
-    private String code; 
-    
-    @Column(name = "FAM_LIBELLE" )    
-    private String libelle;    
+    private String code;
 
+    @Column(name = "FAM_LIBELLE")
+    private String libelle;
+
+    //Constructeur
     public Famille() {
     }
 
@@ -51,12 +49,11 @@ public class Famille implements Serializable{
 
     public void setLibelle(String libelle) {
         this.libelle = libelle;
-    }  
+    }
 
     @Override
     public String toString() {
         return "Famille{" + "code=" + code + ", libelle=" + libelle + '}';
     }
-    
-    
+
 }

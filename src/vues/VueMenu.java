@@ -3,13 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package vues;
 
-
 import controleur.CtrlAbstrait;
-
-
 
 /**
  *
@@ -22,9 +18,6 @@ public class VueMenu extends VueAbstraite {
         initComponents();
         this.setLocation(500, 200);
     }
-
-      
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -121,8 +114,6 @@ public class VueMenu extends VueAbstraite {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton jButtonComptesRendus;

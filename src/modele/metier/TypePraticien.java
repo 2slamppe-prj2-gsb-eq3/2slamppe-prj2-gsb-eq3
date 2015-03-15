@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package modele.metier;
 
 import javax.persistence.*;
@@ -12,26 +11,25 @@ import javax.persistence.*;
  *
  * @author btssio
  */
-
 //classe Persistente
 @Entity
 @Table(name = "TYPE_PRATICIEN")
 public class TypePraticien {
-    
+
     //attribut
     @Id
     @Column(name = "TYP_CODE")
     private String code;
-    
+
     @Column(name = "TYP_LIBELLE")
     private String libelle;
-    
-    @Column(name="TYP_LIEU")
+
+    @Column(name = "TYP_LIEU")
     private String lieu;
 
     public TypePraticien() {
     }
-    
+
     public TypePraticien(String code, String libelle, String lieu) {
         this.code = code;
         this.libelle = libelle;
@@ -66,6 +64,5 @@ public class TypePraticien {
     public void setLieu(String lieu) {
         this.lieu = lieu;
     }
-    
-    
+
 }
