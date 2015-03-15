@@ -67,8 +67,14 @@ public class Praticien {
 
     @Override
     public String toString() {
+        return this.getNom() + " " + this.getPrenom();
+    }
+    
+    public String toString2() {
         return "Praticien{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse + ", cp=" + cp + ", ville=" + ville + ", coef=" + coef + ", typePraticien=" + typePraticien + '}';
     }
+    
+    
 
     public int getId() {
         return id;

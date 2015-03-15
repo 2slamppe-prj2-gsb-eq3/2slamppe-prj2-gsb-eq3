@@ -20,7 +20,7 @@ public class TestPraticien {
         System.out.println("\nTest n°1: instanciation et accesseurs");
         TypePraticien unTypePra = new TypePraticien("CC", "test coucou", "local ");
         unPra = new Praticien(150, "noulet", "sylvain", "adresse", "cp", "ville", Float.parseFloat("45.2"), unTypePra);
-        System.out.println("Etat du Praticien: " + unPra);
+        System.out.println("Etat du Praticien: " + unPra.toString2());
 
         // Test n°2 : mutateurs
         System.out.println("\nTest n°2 : mutateurs");
@@ -33,6 +33,6 @@ public class TestPraticien {
         unPra.setCoef(Float.parseFloat("50.0"));
         TypePraticien unTypePra2 = new TypePraticien("PC", "test pas coucou", "Local Jol");
         unPra.setTypePraticien(unTypePra2);
-        System.out.println("Etat du type : " + unPra);
+        System.out.println("Etat du type : " + unPra.toString2());
     }
 }

@@ -39,5 +39,6 @@ public class TestDaoRapportVisite {
         int cle2 = 3;
         unRapportVisite = DaoRapportVisite.selectOne(em, pk, cle2);
         System.out.println("Le  Rapport Visite qui a pour pk : " + pk + " est : \n" + unRapportVisite);
+        
     }
 }

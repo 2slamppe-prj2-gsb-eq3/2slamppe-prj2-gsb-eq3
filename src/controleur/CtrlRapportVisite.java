@@ -7,8 +7,12 @@ package controleur;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.swing.JTextField;
 import modele.dao.DaoMedicament;
 import modele.dao.DaoOffrir;
 import modele.dao.DaoPraticien;
@@ -144,8 +148,25 @@ public class CtrlRapportVisite extends CtrlAbstrait {
      * Permet d'enregistrer un rapport de visite
      */
     public void enregistrer() {
-        vue.getjTextFieldMotif().getText();
-        vue.getjTextAreabilan().getText();
+        Praticien unPraticien = (Praticien) getVue().getjComboBoxpraticien().getSelectedItem() ;       
+        Date date = null;
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+	String dateInString = vue.getjTextFieldDate().getText(); 
+	
+        try {
+ 
+		date = formatter.parse(dateInString);
+		System.out.println(date);
+		System.out.println(formatter.format(date));
+ 
+	} catch (ParseException e) {
+		e.printStackTrace();
+	}
+        
+        String motif =vue.getjTextFieldMotif().getText();
+        String bilan =vue.getjTextAreabilan().getText();
+        //RapportVisite unRapportVisite = new RapportVisite(null, null, unPraticien, date, bilan, motif);
+        
     }
 
     /**
@@ -174,7 +195,7 @@ public class CtrlRapportVisite extends CtrlAbstrait {
             }
         }
 
-        vue.getjComboBoxpraticien().setSelectedItem(unPraticien.getNom() + " " + unPraticien.getPrenom());
+        vue.getjComboBoxpraticien().setSelectedItem(unPraticien);
     }
 
     /**
@@ -186,7 +207,7 @@ public class CtrlRapportVisite extends CtrlAbstrait {
         vue.getjComboBoxpraticien().removeAllItems();
         vue.getjComboBoxpraticien().addItem("aucun");
         for (Praticien unPraticien : lesPraticiens) {
-            vue.getjComboBoxpraticien().addItem(unPraticien.getNom() + " " + unPraticien.getPrenom());
+            vue.getjComboBoxpraticien().addItem(unPraticien);
         }
     }
 
