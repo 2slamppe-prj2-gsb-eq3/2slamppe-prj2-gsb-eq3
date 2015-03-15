@@ -16,7 +16,7 @@ import javax.persistence.*;
 @Table(name = "TYPE_PRATICIEN")
 public class TypePraticien {
 
-    //attribut
+    //attributs
     @Id
     @Column(name = "TYP_CODE")
     private String code;
@@ -27,6 +27,7 @@ public class TypePraticien {
     @Column(name = "TYP_LIEU")
     private String lieu;
 
+    //Constructeur
     public TypePraticien() {
     }
 

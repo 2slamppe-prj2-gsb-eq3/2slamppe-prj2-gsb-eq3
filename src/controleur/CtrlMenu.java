@@ -12,8 +12,8 @@ import vues.VueMenu;
 /**
  * Contrôleur de la fenêtre VueMenu
  *
- * @author nbourgeois
- * @version 1 20 novembre 2013
+ * @author bdixneuf
+ * @version 20 novembre 2013
  */
 public class CtrlMenu extends CtrlAbstrait {
 
@@ -94,7 +94,7 @@ public class CtrlMenu extends CtrlAbstrait {
     }
 
     /**
-     * Quitte l'application
+     * Quitter l'application
      */
     public void quitter() {
         System.exit(0);

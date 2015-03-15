@@ -25,7 +25,7 @@ import javax.persistence.Table;
 @IdClass(OffrirPK.class)
 public class Offrir implements Serializable {
 
-    //attribut
+    //attributs
     @Id
     private String vis_matricule;
     @Id
@@ -36,6 +36,7 @@ public class Offrir implements Serializable {
     @Column(name = "OFF_QTE")
     private int quantite;
 
+    //Constructeur
     public Offrir() {
     }
 

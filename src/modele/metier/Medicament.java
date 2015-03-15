@@ -22,7 +22,7 @@ import javax.persistence.Table;
 @Table(name = "MEDICAMENT")
 public class Medicament {
 
-    //attribut
+    //attributs
     @Id
     @GeneratedValue
     @Column(name = "MED_DEPOTLEGAL")
@@ -47,6 +47,7 @@ public class Medicament {
     @JoinColumn(name = "FAM_CODE")
     private Famille famille;
 
+    //Constructeur
     public Medicament() {
     }
 

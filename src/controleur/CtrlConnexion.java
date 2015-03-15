@@ -8,13 +8,12 @@ import javax.swing.JOptionPane;
 import modele.dao.DaoVisiteur;
 import modele.dao.EntityManagerFactorySingleton;
 import vues.VueConnexion;
-import vues.VueVisiteurs;
 
 /**
  * Contrôleur de la fenêtre VueMenu
  *
- * @author nbourgeois
- * @version 1 20 novembre 2013
+ * @author bdixneuf
+ * @version 20 novembre 2013
  */
 public class CtrlConnexion extends CtrlAbstrait {
 
@@ -38,7 +37,7 @@ public class CtrlConnexion extends CtrlAbstrait {
             }
         });
 
-        //Ecouteurs Bouton ok
+        //Ecouteurs Bouton quitter
         vue.jButtonQuit.addActionListener(new ActionListener() {
 
             @Override
@@ -60,8 +59,7 @@ public class CtrlConnexion extends CtrlAbstrait {
 
         //vérification vers la bdd oracle en JPA
         connexion = DaoVisiteur.verifierLoginMdp(em, login, mdp);
-        if (connexion) {
-            //System.out.print("connexion réussi");
+        if (connexion) {            
             CtrlPrincipal ctrlP = new CtrlPrincipal();
             ctrlP.action(EnumAction.AFFICHER_MENU);
             vue.setVisible(false);
@@ -79,6 +77,7 @@ public class CtrlConnexion extends CtrlAbstrait {
         ctrlP.action(EnumAction.MENU_FICHIER_QUITTER);
     }
 
+    @Override
     public VueConnexion getVue() {
         return vue;
     }

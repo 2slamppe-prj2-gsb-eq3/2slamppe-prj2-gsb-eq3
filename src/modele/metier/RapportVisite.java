@@ -16,13 +16,16 @@ import static javax.persistence.TemporalType.DATE;
  *
  * @author btssio
  */
+//classe Persistente
 @Entity
 @Table(name = "RAPPORT_VISITE")
 @IdClass(RapportVisitePk.class)
 public class RapportVisite implements Serializable {
 
+    //Attributs
     @Id
     private String vis_matricule;
+    
     @Id
     private int rap_num;
 

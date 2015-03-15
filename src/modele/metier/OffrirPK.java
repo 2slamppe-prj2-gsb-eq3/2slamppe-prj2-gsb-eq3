@@ -13,11 +13,13 @@ import java.util.Objects;
  */
 public class OffrirPK implements java.io.Serializable {
 
+    //Attributs
     private static final long serialVersionUID = 1L;
     private String vis_matricule;
     private int rap_num;
     private String med_depotLegal;
 
+    //Constructeur
     public OffrirPK() {
     }
 

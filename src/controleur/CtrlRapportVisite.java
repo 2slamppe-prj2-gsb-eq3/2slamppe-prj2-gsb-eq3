@@ -9,18 +9,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 import javax.persistence.EntityManager;
-import modele.dao.DaoLabo;
 import modele.dao.DaoMedicament;
 import modele.dao.DaoOffrir;
 import modele.dao.DaoPraticien;
 import modele.dao.DaoRapportVisite;
 import modele.dao.EntityManagerFactorySingleton;
-import modele.metier.Labo;
 import modele.metier.Medicament;
 import modele.metier.Offrir;
 import modele.metier.Praticien;
 import modele.metier.RapportVisite;
-import modele.metier.Visiteur;
 import vues.VueRapportsVisite;
 
 /**
@@ -39,29 +36,40 @@ public class CtrlRapportVisite extends CtrlAbstrait {
 
     public CtrlRapportVisite(CtrlPrincipal ctrlPrincipal) {
         super(ctrlPrincipal);
+        
         // Gérer la persistance
         em = EntityManagerFactorySingleton.getInstance().createEntityManager();
         em.getTransaction().begin();
-
+        
+        /*
+        ----------------------------------------
+        --- On récupềre les données pour Initialiser la vue
+        ----------------------------------------
+        */
         //Afficher les praticens
-        lesPraticiens = DaoPraticien.selectAll(em);
-        System.out.println(lesPraticiens);
+        lesPraticiens = DaoPraticien.selectAll(em);       
         afficherListePraticien(lesPraticiens);
 
-        //ON récupère tous les rapports de visite
-        lesRapportsVisite = DaoRapportVisite.selectAll(em);
-        System.out.println(lesRapportsVisite);
+        //On récupère tous les rapports de visite
+        lesRapportsVisite = DaoRapportVisite.selectAll(em);        
 
-        //ON récupère tous les medicaments
-        lesMedicaments = DaoMedicament.selectAll(em);
-        System.out.println(lesMedicaments);
+        //On récupère tous les medicaments
+        lesMedicaments = DaoMedicament.selectAll(em);       
 
-        //ON récupère toutes les offres
-        lesOffres = DaoOffrir.selectAll(em);
-        System.out.println(lesOffres);
+        //On récupère toutes les offres
+        lesOffres = DaoOffrir.selectAll(em);        
 
+        //Initialisation du premier élément
         afficherRapportVisite();
-
+        
+        
+        
+        /*
+        ----------------------------------------
+        --- Ajout des écouteurs sur la vue
+        ----------------------------------------
+        */
+        //Bouton Précédent
         vue.getjButtonprec().addActionListener(new ActionListener() {
 
             @Override
@@ -92,6 +100,7 @@ public class CtrlRapportVisite extends CtrlAbstrait {
             }
         });
 
+        //Bouton Nouveau
         vue.getjButtonNouv().addActionListener(new ActionListener() {
 
             @Override
@@ -101,6 +110,7 @@ public class CtrlRapportVisite extends CtrlAbstrait {
 
         });
 
+        //Bouton sauvegarder
         vue.getjButtonSauvegarder().addActionListener(new ActionListener() {
 
             @Override
@@ -109,9 +119,21 @@ public class CtrlRapportVisite extends CtrlAbstrait {
             }
 
         });
+        
+        //Bouton fermer
+        vue.getjButtonFermer().addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                vue.setVisible(false);
+            }
+        });
 
     }
 
+    /**
+     * Permet de modifier le formualire pour pouvoir enregistrer un nouveau rapport de visite
+     */
     public void nouveau() {
         vue.getjTextFieldNum().setEditable(false);
         vue.getjTextFieldDate().setText("");
@@ -119,11 +141,17 @@ public class CtrlRapportVisite extends CtrlAbstrait {
         vue.getjTextAreabilan().setText("");
     }
 
+    /**
+     * Permet d'enregistrer un rapport de visite
+     */
     public void enregistrer() {
         vue.getjTextFieldMotif().getText();
         vue.getjTextAreabilan().getText();
     }
 
+    /**
+     * Permet d'afficher un rappport de viste
+     */
     public void afficherRapportVisite() {
         //Sélectionne le visiteur
         RapportVisite unRapportVisite = lesRapportsVisite.get(indiceRapportVisiteCourant);
@@ -150,6 +178,10 @@ public class CtrlRapportVisite extends CtrlAbstrait {
         vue.getjComboBoxpraticien().setSelectedItem(unPraticien.getNom() + " " + unPraticien.getPrenom());
     }
 
+    /**
+     * Initialise la liste des praticiens dans le comboBox
+     * @param lesPraticiens 
+     */
     public void afficherListePraticien(List<Praticien> lesPraticiens) {
         vue.getjComboBoxpraticien().removeAllItems();
         vue.getjComboBoxpraticien().addItem("aucun");

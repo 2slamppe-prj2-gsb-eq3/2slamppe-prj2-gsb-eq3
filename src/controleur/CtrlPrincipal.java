@@ -26,7 +26,7 @@ public class CtrlPrincipal {
 
     /**
      * action par défaut action au démarrage de l'application
-     */
+     */    
     public void action() {
         if (ctrlConnexion == null) {
             ctrlConnexion = new CtrlConnexion(this);
@@ -35,6 +35,10 @@ public class CtrlPrincipal {
         ctrlConnexion.getVue().setVisible(true);
     }
 
+    /**
+     * Action par défaut quand on lance une vue
+     * @param action 
+     */
     public void action(EnumAction action) {
         switch (action) {
             case AFFICHER_MENU: // activation de vueMenu depuis vueConnexion

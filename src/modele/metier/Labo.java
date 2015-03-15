@@ -16,7 +16,7 @@ import javax.persistence.*;
 @Table(name = "LABO")
 public class Labo {
 
-    //attribut
+    //attributs
     @Id
     @GeneratedValue
     @Column(name = "LAB_CODE")

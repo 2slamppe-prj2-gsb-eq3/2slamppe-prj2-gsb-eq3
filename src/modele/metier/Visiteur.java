@@ -18,21 +18,27 @@ import static javax.persistence.TemporalType.DATE;
 @Table(name = "VISITEUR")
 public class Visiteur {
 
-    //attribut
+    //attributs
     @Id
     @GeneratedValue
     @Column(name = "VIS_MATRICULE")
     private String id;
+    
     @Column(name = "VIS_NOM")
     private String nom;
+    
     @Column(name = "VIS_PRENOM")
     private String prenom;
+    
     @Column(name = "VIS_CP")
     private String cp;
+    
     @Column(name = "VIS_ADRESSE")
     private String adresse;
+    
     @Column(name = "VIS_VILLE")
     private String ville;
+    
     @Temporal(DATE)
     @Column(name = "VIS_DATEEMBAUCHE")
     private java.util.Date dateDEmbauche;
@@ -45,10 +51,10 @@ public class Visiteur {
     @JoinColumn(name = "LAB_CODE")
     private Labo labo;
 
+    //constructeur
     public Visiteur() {
     }
-
-    //constructeur
+    
     public Visiteur(String id, String nom, String prenom, String cp, String adresse, String ville, Date dateDEmbauche, Secteur secteur, Labo labo) {
         this.id = id;
         this.nom = nom;
