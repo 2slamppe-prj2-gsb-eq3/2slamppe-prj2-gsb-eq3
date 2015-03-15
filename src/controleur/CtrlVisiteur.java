@@ -37,31 +37,29 @@ public class CtrlVisiteur extends CtrlAbstrait {
         em = EntityManagerFactorySingleton.getInstance().createEntityManager();
         em.getTransaction().begin();
 
-        
         /*
-        ----------------------------------------
-        --- On récupềre les données pour Initialiser la vue
-        ----------------------------------------
-        */
+         ----------------------------------------
+         --- On récupềre les données pour Initialiser la vue
+         ----------------------------------------
+         */
         // Affichage
-        lesVisiteurs = DaoVisiteur.selectAll(em);       
+        lesVisiteurs = DaoVisiteur.selectAll(em);
         afficherListeVisiteurs(lesVisiteurs);
 
-        lesLabos = DaoLabo.selectAll(em);       
+        lesLabos = DaoLabo.selectAll(em);
         afficherListeLabo(lesLabos);
 
-        lesSecteurs = DaoSecteur.selectAll(em);        
+        lesSecteurs = DaoSecteur.selectAll(em);
         afficherListeSecteur(lesSecteurs);
 
         //Initialisation du premier élément
         afficherVisiteur();
 
-        
         /*
-        ----------------------------------------
-        --- Ajout des écouteurs sur la vue
-        ----------------------------------------
-        */
+         ----------------------------------------
+         --- Ajout des écouteurs sur la vue
+         ----------------------------------------
+         */
         //Ecouteurs Bouton ok
         vue.jButtonok.addActionListener(new ActionListener() {
 

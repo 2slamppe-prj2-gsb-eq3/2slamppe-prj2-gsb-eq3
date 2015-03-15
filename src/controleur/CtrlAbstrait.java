@@ -5,6 +5,7 @@ import vues.VueAbstraite;
 /**
  * CtrlAbstrait modèle de contrôleur de base chaque contrôleur possède : - une
  * vue - une liaison vers le contrôleur principal
+ *
  * @author BaptisteDixneuf
  * @version 22 novembre 2013
  */
@@ -14,8 +15,8 @@ public abstract class CtrlAbstrait {
     protected CtrlPrincipal ctrlPrincipal = null;
 
     /**
-     * 
-     * @param ctrlPrincipal 
+     *
+     * @param ctrlPrincipal
      */
     protected CtrlAbstrait(CtrlPrincipal ctrlPrincipal) {
         this.ctrlPrincipal = ctrlPrincipal;

@@ -25,7 +25,7 @@ public class RapportVisite implements Serializable {
     //Attributs
     @Id
     private String vis_matricule;
-    
+
     @Id
     private int rap_num;
 

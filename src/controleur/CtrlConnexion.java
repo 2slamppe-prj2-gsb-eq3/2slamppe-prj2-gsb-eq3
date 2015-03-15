@@ -59,7 +59,7 @@ public class CtrlConnexion extends CtrlAbstrait {
 
         //vérification vers la bdd oracle en JPA
         connexion = DaoVisiteur.verifierLoginMdp(em, login, mdp);
-        if (connexion) {            
+        if (connexion) {
             CtrlPrincipal ctrlP = new CtrlPrincipal();
             ctrlP.action(EnumAction.AFFICHER_MENU);
             vue.setVisible(false);

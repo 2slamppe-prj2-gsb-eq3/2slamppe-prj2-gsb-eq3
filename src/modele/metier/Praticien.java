@@ -27,25 +27,25 @@ public class Praticien {
     @GeneratedValue
     @Column(name = "PRA_NUM")
     private int id;
-    
+
     @Column(name = "PRA_NOM")
     private String nom;
-    
+
     @Column(name = "PRA_PRENOM")
     private String prenom;
-    
+
     @Column(name = "PRA_ADRESSE")
     private String adresse;
-    
+
     @Column(name = "PRA_CP")
     private String cp;
-    
+
     @Column(name = "PRA_VILLE")
     private String ville;
-    
+
     @Column(name = "PRA_COEFNOTORIETE")
     private float coef;
-    
+
     @OneToOne
     @JoinColumn(name = "TYP_CODE")
     private TypePraticien typePraticien;

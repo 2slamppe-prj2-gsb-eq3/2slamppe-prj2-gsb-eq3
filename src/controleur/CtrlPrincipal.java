@@ -26,7 +26,7 @@ public class CtrlPrincipal {
 
     /**
      * action par défaut action au démarrage de l'application
-     */    
+     */
     public void action() {
         if (ctrlConnexion == null) {
             ctrlConnexion = new CtrlConnexion(this);
@@ -37,7 +37,8 @@ public class CtrlPrincipal {
 
     /**
      * Action par défaut quand on lance une vue
-     * @param action 
+     *
+     * @param action
      */
     public void action(EnumAction action) {
         switch (action) {

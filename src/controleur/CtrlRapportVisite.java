@@ -36,39 +36,37 @@ public class CtrlRapportVisite extends CtrlAbstrait {
 
     public CtrlRapportVisite(CtrlPrincipal ctrlPrincipal) {
         super(ctrlPrincipal);
-        
+
         // Gérer la persistance
         em = EntityManagerFactorySingleton.getInstance().createEntityManager();
         em.getTransaction().begin();
-        
+
         /*
-        ----------------------------------------
-        --- On récupềre les données pour Initialiser la vue
-        ----------------------------------------
-        */
+         ----------------------------------------
+         --- On récupềre les données pour Initialiser la vue
+         ----------------------------------------
+         */
         //Afficher les praticens
-        lesPraticiens = DaoPraticien.selectAll(em);       
+        lesPraticiens = DaoPraticien.selectAll(em);
         afficherListePraticien(lesPraticiens);
 
         //On récupère tous les rapports de visite
-        lesRapportsVisite = DaoRapportVisite.selectAll(em);        
+        lesRapportsVisite = DaoRapportVisite.selectAll(em);
 
         //On récupère tous les medicaments
-        lesMedicaments = DaoMedicament.selectAll(em);       
+        lesMedicaments = DaoMedicament.selectAll(em);
 
         //On récupère toutes les offres
-        lesOffres = DaoOffrir.selectAll(em);        
+        lesOffres = DaoOffrir.selectAll(em);
 
         //Initialisation du premier élément
         afficherRapportVisite();
-        
-        
-        
+
         /*
-        ----------------------------------------
-        --- Ajout des écouteurs sur la vue
-        ----------------------------------------
-        */
+         ----------------------------------------
+         --- Ajout des écouteurs sur la vue
+         ----------------------------------------
+         */
         //Bouton Précédent
         vue.getjButtonprec().addActionListener(new ActionListener() {
 
@@ -119,7 +117,7 @@ public class CtrlRapportVisite extends CtrlAbstrait {
             }
 
         });
-        
+
         //Bouton fermer
         vue.getjButtonFermer().addActionListener(new ActionListener() {
 
@@ -132,7 +130,8 @@ public class CtrlRapportVisite extends CtrlAbstrait {
     }
 
     /**
-     * Permet de modifier le formualire pour pouvoir enregistrer un nouveau rapport de visite
+     * Permet de modifier le formualire pour pouvoir enregistrer un nouveau
+     * rapport de visite
      */
     public void nouveau() {
         vue.getjTextFieldNum().setEditable(false);
@@ -180,7 +179,8 @@ public class CtrlRapportVisite extends CtrlAbstrait {
 
     /**
      * Initialise la liste des praticiens dans le comboBox
-     * @param lesPraticiens 
+     *
+     * @param lesPraticiens
      */
     public void afficherListePraticien(List<Praticien> lesPraticiens) {
         vue.getjComboBoxpraticien().removeAllItems();
