@@ -55,8 +55,9 @@ public class DaoRapportVisite {
      * @param unRapportVisite une instance de Rapport Visite
      */
     public static void insert(EntityManager em,RapportVisite unRapportVisite){
-        em.getTransaction().begin();
-        em.persist(unRapportVisite);
+        //em.getTransaction().begin();
+        em.persist(unRapportVisite); 
+        em.flush();
         em.getTransaction().commit();
     }   
     

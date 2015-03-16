@@ -45,6 +45,23 @@ public class RapportVisite implements Serializable {
 
     public RapportVisite() {
     }
+    
+    public RapportVisite(String vis_matricule, int rap_num, Praticien pra_num, Date rap_date, String rap_bilan, String rap_motif) {
+        this.vis_matricule = vis_matricule;
+        this.rap_num = rap_num;
+        this.pra_num = pra_num;
+        this.rap_date = rap_date;
+        this.rap_bilan = rap_bilan;
+        this.rap_motif = rap_motif;
+    }
+    
+    public RapportVisite(String vis_matricule, Praticien pra_num, Date rap_date, String rap_bilan, String rap_motif) {
+        this.vis_matricule = vis_matricule;        
+        this.pra_num = pra_num;
+        this.rap_date = rap_date;
+        this.rap_bilan = rap_bilan;
+        this.rap_motif = rap_motif;
+    }
 
     public String getVis_matricule() {
         return vis_matricule;
@@ -94,14 +111,7 @@ public class RapportVisite implements Serializable {
         this.rap_motif = rap_motif;
     }
 
-    public RapportVisite(String vis_matricule, int rap_num, Praticien pra_num, Date rap_date, String rap_bilan, String rap_motif) {
-        this.vis_matricule = vis_matricule;
-        this.rap_num = rap_num;
-        this.pra_num = pra_num;
-        this.rap_date = rap_date;
-        this.rap_bilan = rap_bilan;
-        this.rap_motif = rap_motif;
-    }
+   
 
     @Override
     public String toString() {

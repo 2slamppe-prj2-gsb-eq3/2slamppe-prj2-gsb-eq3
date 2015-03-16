@@ -65,6 +65,8 @@ public class CtrlRapportVisite extends CtrlAbstrait {
 
         //Initialisation du premier élément
         afficherRapportVisite();
+        
+        //em.getTransaction().commit();
 
         /*
          ----------------------------------------
@@ -165,7 +167,9 @@ public class CtrlRapportVisite extends CtrlAbstrait {
         
         String motif =vue.getjTextFieldMotif().getText();
         String bilan =vue.getjTextAreabilan().getText();
-        //RapportVisite unRapportVisite = new RapportVisite(null, null, unPraticien, date, bilan, motif);
+        
+        RapportVisite unRapportVisite = new RapportVisite("zzz", unPraticien, date, bilan, motif);
+        DaoRapportVisite.insert(em, unRapportVisite);
         
     }
 
