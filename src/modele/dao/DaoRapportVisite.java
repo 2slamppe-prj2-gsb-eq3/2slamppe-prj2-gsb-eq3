@@ -44,7 +44,7 @@ public class DaoRapportVisite {
      */
     public static List<RapportVisite> selectAll(EntityManager em) throws PersistenceException {
         List<RapportVisite> lesRapportsVisite;
-        Query query = em.createQuery("select p from RapportVisite p");
+        Query query = em.createQuery("select p from RapportVisite p order by p.rap_num");
         lesRapportsVisite = query.getResultList();
         return lesRapportsVisite;
     }
@@ -55,10 +55,10 @@ public class DaoRapportVisite {
      * @param unRapportVisite une instance de Rapport Visite
      */
     public static void insert(EntityManager em,RapportVisite unRapportVisite){
-        //em.getTransaction().begin();
+        em.getTransaction().begin(); 
         em.persist(unRapportVisite); 
         em.flush();
-        em.getTransaction().commit();
+        em.getTransaction().commit();        
     }   
     
 }

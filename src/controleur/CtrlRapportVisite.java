@@ -12,6 +12,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import modele.dao.DaoMedicament;
 import modele.dao.DaoOffrir;
@@ -44,29 +46,8 @@ public class CtrlRapportVisite extends CtrlAbstrait {
         // Gérer la persistance
         em = EntityManagerFactorySingleton.getInstance().createEntityManager();
         em.getTransaction().begin();
-
-        /*
-         ----------------------------------------
-         --- On récupềre les données pour Initialiser la vue
-         ----------------------------------------
-         */
-        //Afficher les praticens
-        lesPraticiens = DaoPraticien.selectAll(em);
-        afficherListePraticien(lesPraticiens);
-
-        //On récupère tous les rapports de visite
-        lesRapportsVisite = DaoRapportVisite.selectAll(em);
-
-        //On récupère tous les medicaments
-        lesMedicaments = DaoMedicament.selectAll(em);
-
-        //On récupère toutes les offres
-        lesOffres = DaoOffrir.selectAll(em);
-
-        //Initialisation du premier élément
-        afficherRapportVisite();
-        
-        //em.getTransaction().commit();
+        chargementDonnees();               
+        em.getTransaction().commit();
 
         /*
          ----------------------------------------
@@ -134,13 +115,42 @@ public class CtrlRapportVisite extends CtrlAbstrait {
         });
 
     }
+    
+    public void chargementDonnees(){
+        /*
+         ----------------------------------------
+         --- On récupềre les données pour Initialiser la vue
+         ----------------------------------------
+         */
+        //Afficher les praticens
+        lesPraticiens = DaoPraticien.selectAll(em);
+        afficherListePraticien(lesPraticiens);
+
+        //On récupère tous les rapports de visite
+        lesRapportsVisite = DaoRapportVisite.selectAll(em);
+
+        //On récupère tous les medicaments
+        lesMedicaments = DaoMedicament.selectAll(em);
+
+        //On récupère toutes les offres
+        lesOffres = DaoOffrir.selectAll(em);
+
+        //Initialisation du premier élément
+        afficherRapportVisite(); 
+    }
 
     /**
      * Permet de modifier le formualire pour pouvoir enregistrer un nouveau
      * rapport de visite
      */
-    public void nouveau() {
+    public void nouveau() {        
+        vue.getjButtonNouv().setVisible(false);
+        vue.getjButtonprec().setVisible(false);
+        vue.getjButtonSuiv().setVisible(false);    
+        vue.getjButtonSauvegarder().setVisible(true); 
+        vue.getjTextFieldNum().setText("");
         vue.getjTextFieldNum().setEditable(false);
+        vue.getjComboBoxpraticien().removeItem("aucun");
         vue.getjTextFieldDate().setText("");
         vue.getjTextFieldMotif().setText("");
         vue.getjTextAreabilan().setText("");
@@ -155,21 +165,28 @@ public class CtrlRapportVisite extends CtrlAbstrait {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 	String dateInString = vue.getjTextFieldDate().getText(); 
 	
-        try {
- 
-		date = formatter.parse(dateInString);
-		System.out.println(date);
-		System.out.println(formatter.format(date));
+        try { 
+            date = formatter.parse(dateInString);
+            System.out.println(date);
+            System.out.println(formatter.format(date));
+            String motif =vue.getjTextFieldMotif().getText();
+            String bilan =vue.getjTextAreabilan().getText();
+        
+            RapportVisite unRapportVisite = new RapportVisite("zzz", unPraticien, date, bilan, motif);
+            DaoRapportVisite.insert(em, unRapportVisite);
+            
+            JFrame frame = new JFrame("JOptionPane showMessageDialog example");
+            JOptionPane.showMessageDialog(frame, "Rapport sauvegardé");
+        
+            chargementDonnees();
  
 	} catch (ParseException e) {
-		e.printStackTrace();
+            JFrame frame = new JFrame("JOptionPane showMessageDialog example");
+            JOptionPane.showMessageDialog(frame, "Le format de la date n'est pas valide(jj/mm/aaaa)");
 	}
         
-        String motif =vue.getjTextFieldMotif().getText();
-        String bilan =vue.getjTextAreabilan().getText();
+       
         
-        RapportVisite unRapportVisite = new RapportVisite("zzz", unPraticien, date, bilan, motif);
-        DaoRapportVisite.insert(em, unRapportVisite);
         
     }
 
@@ -177,6 +194,11 @@ public class CtrlRapportVisite extends CtrlAbstrait {
      * Permet d'afficher un rappport de viste
      */
     public void afficherRapportVisite() {
+        vue.getjTextFieldNum().setEditable(true);
+        vue.getjButtonNouv().setVisible(true);
+        vue.getjButtonprec().setVisible(true);
+        vue.getjButtonSuiv().setVisible(true);    
+        vue.getjButtonSauvegarder().setVisible(false);
         //Sélectionne le visiteur
         RapportVisite unRapportVisite = lesRapportsVisite.get(indiceRapportVisiteCourant);
         vue.getjTextFieldNum().setText(Integer.toString(unRapportVisite.getRap_num()));
