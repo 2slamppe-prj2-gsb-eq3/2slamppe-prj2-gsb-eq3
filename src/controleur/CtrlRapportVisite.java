@@ -171,14 +171,21 @@ public class CtrlRapportVisite extends CtrlAbstrait {
             System.out.println(formatter.format(date));
             String motif =vue.getjTextFieldMotif().getText();
             String bilan =vue.getjTextAreabilan().getText();
-        
-            RapportVisite unRapportVisite = new RapportVisite("zzz", unPraticien, date, bilan, motif);
-            DaoRapportVisite.insert(em, unRapportVisite);
             
-            JFrame frame = new JFrame("JOptionPane showMessageDialog example");
-            JOptionPane.showMessageDialog(frame, "Rapport sauvegardé");
+            if(motif.isEmpty() || bilan.isEmpty()){
+                JFrame frame = new JFrame("JOptionPane showMessageDialog example");
+                JOptionPane.showMessageDialog(frame, "Un champ est vide");
+            }else{
+                 RapportVisite unRapportVisite = new RapportVisite("zzz", unPraticien, date, bilan, motif);
+                DaoRapportVisite.insert(em, unRapportVisite);
+            
+                JFrame frame = new JFrame("JOptionPane showMessageDialog example");
+                JOptionPane.showMessageDialog(frame, "Rapport sauvegardé");
         
-            chargementDonnees();
+                chargementDonnees();
+            }
+        
+           
  
 	} catch (ParseException e) {
             JFrame frame = new JFrame("JOptionPane showMessageDialog example");
