@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import modele.dao.DaoVisiteur;
 import modele.dao.EntityManagerFactorySingleton;
+import modele.metier.Visiteur;
 import vues.VueConnexion;
 
 /**
@@ -59,10 +60,14 @@ public class CtrlConnexion extends CtrlAbstrait {
 
         //vérification vers la bdd oracle en JPA
         connexion = DaoVisiteur.verifierLoginMdp(em, login, mdp);
-        if (connexion) {
-            CtrlPrincipal ctrlP = new CtrlPrincipal();
-            ctrlP.action(EnumAction.AFFICHER_MENU);
+        if (connexion) {            
+            Visiteur unVisteur= DaoVisiteur.selectOneByLogin(em, login);
+            ctrlPrincipal.setVisiteurConnecte(unVisteur);
+            System.out.println(ctrlPrincipal.getVisiteurConnecte());
+            ctrlPrincipal.action(EnumAction.AFFICHER_MENU);
+           
             vue.setVisible(false);
+            
         } else {
             JFrame frame = new JFrame("JOptionPane showMessageDialog example");
             JOptionPane.showMessageDialog(frame, "Connexion invalide.");
@@ -72,9 +77,8 @@ public class CtrlConnexion extends CtrlAbstrait {
     /**
      * Quitter
      */
-    public void quitter() {
-        CtrlPrincipal ctrlP = new CtrlPrincipal();
-        ctrlP.action(EnumAction.MENU_FICHIER_QUITTER);
+    public void quitter() {        
+        ctrlPrincipal.action(EnumAction.MENU_FICHIER_QUITTER);
     }
 
     @Override

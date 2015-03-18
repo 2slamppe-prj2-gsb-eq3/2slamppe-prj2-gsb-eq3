@@ -84,13 +84,12 @@ public class CtrlMenu extends CtrlAbstrait {
      * Ouvre la fenetre de gestion des Visiteurs
      */
     public void afficherVisiteur() {
-        CtrlPrincipal ctrlP = new CtrlPrincipal();
-        ctrlP.action(EnumAction.VISITEUR_AFFICHER);
+        
+        ctrlPrincipal.action(EnumAction.VISITEUR_AFFICHER);
     }
 
-    public void afficherRapportVisite() {
-        CtrlPrincipal ctrlP = new CtrlPrincipal();
-        ctrlP.action(EnumAction.RAPPORT_AFFICHER);
+    public void afficherRapportVisite() {        
+        ctrlPrincipal.action(EnumAction.RAPPORT_AFFICHER);
     }
 
     /**

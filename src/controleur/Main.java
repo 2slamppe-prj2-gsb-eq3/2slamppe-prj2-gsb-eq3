@@ -24,7 +24,7 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-
+        String idVisteur;
         CtrlPrincipal ctrlPrincipal; // référence vers le contrôleur principal
 
         // Pour lancer l'application, instancier le contrôleur principal

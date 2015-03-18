@@ -176,7 +176,7 @@ public class CtrlRapportVisite extends CtrlAbstrait {
                 JFrame frame = new JFrame("JOptionPane showMessageDialog example");
                 JOptionPane.showMessageDialog(frame, "Un champ est vide");
             }else{
-                 RapportVisite unRapportVisite = new RapportVisite("zzz", unPraticien, date, bilan, motif);
+                RapportVisite unRapportVisite = new RapportVisite(ctrlPrincipal.getVisiteurConnecte().getId(), unPraticien, date, bilan, motif);
                 DaoRapportVisite.insert(em, unRapportVisite);
             
                 JFrame frame = new JFrame("JOptionPane showMessageDialog example");

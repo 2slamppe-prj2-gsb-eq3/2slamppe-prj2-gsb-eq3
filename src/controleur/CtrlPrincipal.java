@@ -2,6 +2,7 @@ package controleur;
 
 import static controleur.EnumAction.*;
 import javax.swing.JOptionPane;
+import modele.metier.Visiteur;
 import vues.VueAbstraite;
 import vues.VueConnexion;
 import vues.VueMenu;
@@ -23,6 +24,7 @@ public class CtrlPrincipal {
     VueAbstraite vueA = null;
     CtrlAbstrait ctrlA = null;
     VueConnexion vueC = new VueConnexion(ctrlA);
+    Visiteur visiteurConnecte; 
 
     /**
      * action par défaut action au démarrage de l'application
@@ -75,10 +77,7 @@ public class CtrlPrincipal {
         }
         VueMenu vueM = new VueMenu(ctrlA);
         ctrlMenu = new CtrlMenu(this);
-        // vuPresence est une fenêtre modale :
-        // -> vueMenu reste visible, mais n'est pas active
-        ctrlConnexion.getVue().setEnabled(false);
-        ctrlConnexion.getVue().setVisible(false);
+        
         ctrlMenu.getVue().setVisible(true);
     }
 
@@ -95,10 +94,7 @@ public class CtrlPrincipal {
             // il faut rafraîchir le contenu à partir de la base de données
             ctrlVisiteur.afficherVisiteur();
         }
-        // vuPresence est une fenêtre modale :
-        // -> vueMenu reste visible, mais n'est pas active
-        ctrlMenu.getVue().setEnabled(false);
-        ctrlMenu.getVue().setVisible(false);
+        
         ctrlVisiteur.getVue().setVisible(true);
     }
 
@@ -108,18 +104,25 @@ public class CtrlPrincipal {
             ctrlMenu = new CtrlMenu(this);
         }
         if (ctrlRapportVisite == null) {
-            VueRapportsVisite vueRV = new VueRapportsVisite(ctrlA);
-            ctrlRapportVisite = new CtrlRapportVisite(this);
+            VueRapportsVisite vueRV = new VueRapportsVisite(ctrlA);            
+            ctrlRapportVisite = new CtrlRapportVisite(this);            
         } else {
-            // si la le contrôleur et sa vue existent déjà
+            // si le contrôleur et sa vue existent déjà
             // il faut rafraîchir le contenu à partir de la base de données
             ctrlRapportVisite.afficherRapportVisite();
-        }
-        // vuPresence est une fenêtre modale :
-        // -> vueMenu reste visible, mais n'est pas active
-        ctrlMenu.getVue().setEnabled(false);
-        ctrlMenu.getVue().setVisible(false);
+        }       
         ctrlRapportVisite.getVue().setVisible(true);
     }
+
+    public Visiteur getVisiteurConnecte() {
+        return visiteurConnecte;
+    }
+
+    public void setVisiteurConnecte(Visiteur visiteurConnecte) {
+        this.visiteurConnecte = visiteurConnecte;
+    }
+    
+    
+    
 
 }
