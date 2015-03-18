@@ -2,6 +2,8 @@ package controleur;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import javax.persistence.EntityManager;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -35,9 +37,19 @@ public class CtrlConnexion extends CtrlAbstrait {
             @Override
             public void actionPerformed(ActionEvent e) {
                 valider();
+            } 
+        });
+        
+        vue.jTextFieldmdp.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldmdpKeyPressed(evt);
             }
         });
-
+        
+        
+             
+       
+        
         //Ecouteurs Bouton quitter
         vue.jButtonQuit.addActionListener(new ActionListener() {
 
@@ -47,6 +59,14 @@ public class CtrlConnexion extends CtrlAbstrait {
             }
         });
 
+    }
+    
+    
+    private void jTextFieldmdpKeyPressed(java.awt.event.KeyEvent evt) {
+            if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+                valider();
+                
+            }
     }
 
     /**
