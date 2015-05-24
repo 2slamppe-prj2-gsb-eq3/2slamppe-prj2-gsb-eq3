@@ -34,7 +34,12 @@ public class CtrlVisiteur extends CtrlAbstrait {
         super(l);
 
         // Gérer la persistance
-        em = EntityManagerFactorySingleton.getInstance().createEntityManager();
+        // Gérer la persistance
+        try{
+            em = EntityManagerFactorySingleton.getInstance().createEntityManager();
+        }catch(javax.persistence.PersistenceException e){
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Lanceur Main - Erreur gestion persistance ", JOptionPane.ERROR_MESSAGE);
+        }
         em.getTransaction().begin();
 
         /*
@@ -85,7 +90,7 @@ public class CtrlVisiteur extends CtrlAbstrait {
             public void actionPerformed(ActionEvent ae) {
                 indiceVisiteurCourant = vue.jComboBoxsearch.getSelectedIndex();
                 indiceVisiteurCourant = indiceVisiteurCourant - 1;
-                //Si arrive au début de la liste
+                //Si on arrive au début de la liste
                 if (indiceVisiteurCourant < 0) {
                     indiceVisiteurCourant = lesVisiteurs.size() - 1;
                 }
@@ -103,7 +108,7 @@ public class CtrlVisiteur extends CtrlAbstrait {
             public void actionPerformed(ActionEvent ae) {
                 indiceVisiteurCourant = vue.jComboBoxsearch.getSelectedIndex();
                 indiceVisiteurCourant = indiceVisiteurCourant + 1;
-                //Si arrive à la fin de la liste
+                //Si on arrive à la fin de la liste
                 if (indiceVisiteurCourant > lesVisiteurs.size() - 1) {
                     indiceVisiteurCourant = 0;
                 }

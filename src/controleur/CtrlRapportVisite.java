@@ -44,7 +44,11 @@ public class CtrlRapportVisite extends CtrlAbstrait {
         super(ctrlPrincipal);
 
         // Gérer la persistance
-        em = EntityManagerFactorySingleton.getInstance().createEntityManager();
+        try{
+            em = EntityManagerFactorySingleton.getInstance().createEntityManager();
+        }catch(javax.persistence.PersistenceException e){
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Lanceur Main - Erreur gestion persistance ", JOptionPane.ERROR_MESSAGE);
+        }
         em.getTransaction().begin();
         chargementDonnees();               
         em.getTransaction().commit();
@@ -54,6 +58,7 @@ public class CtrlRapportVisite extends CtrlAbstrait {
          --- Ajout des écouteurs sur la vue
          ----------------------------------------
          */
+        
         //Bouton Précédent
         vue.getjButtonprec().addActionListener(new ActionListener() {
 
@@ -90,7 +95,7 @@ public class CtrlRapportVisite extends CtrlAbstrait {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                nouveau();
+                FormulaireModeNouveauRappportVisite();
             }
 
         });
@@ -116,15 +121,98 @@ public class CtrlRapportVisite extends CtrlAbstrait {
 
     }
     
+    
+
+    /**
+     * Permet d'enregistrer un rapport de visite
+     */
+    public void enregistrer() {
+        //On récupère les données
+        Praticien unPraticien = (Praticien) getVue().getjComboBoxpraticien().getSelectedItem() ;       
+        Date date = null;
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+	String dateInString = vue.getjTextFieldDate().getText(); 
+	
+        try { 
+            date = formatter.parse(dateInString);
+            //System.out.println(date);
+            //System.out.println(formatter.format(date));
+            String motif =vue.getjTextFieldMotif().getText();
+            String bilan =vue.getjTextAreabilan().getText();
+            
+            
+            if(motif.isEmpty() || bilan.isEmpty()){
+                //Erreur données
+                JFrame frame = new JFrame("Erreur données");
+                JOptionPane.showMessageDialog(frame, "Un champ est vide. Merci de le remplir");
+            }else{
+                //On enregistre le rapport de visite
+                RapportVisite unRapportVisite = new RapportVisite(ctrlPrincipal.getVisiteurConnecte().getId(), unPraticien, date, bilan, motif);
+                DaoRapportVisite.insert(em, unRapportVisite);
+                
+                //Message pour l'utilisateur
+                JFrame frame = new JFrame("Enregistrement Valide");
+                JOptionPane.showMessageDialog(frame, "Rapport sauvegardé");
+                
+                //On recharge les données de la base de données pour avoir toutes les modifications
+                chargementDonnees();
+            }        
+ 
+	} catch (ParseException e) {
+            JFrame frame = new JFrame("Erreur parsing");
+            JOptionPane.showMessageDialog(frame, "Le format de la date n'est pas valide(jj/mm/aaaa)");
+	}
+        
+       
+        
+        
+    }
+
+    /**
+     * Permet d'afficher un rappport de viste
+     */
+    public void afficherRapportVisite() {
+        
+        FormulaireModeAfficherRappportVisite();
+        
+        //Sélectionne le visiteur
+        RapportVisite unRapportVisite = lesRapportsVisite.get(indiceRapportVisiteCourant);
+        Praticien unPraticien = unRapportVisite.getPra_num();
+        
+        vue.getjTextFieldNum().setText(Integer.toString(unRapportVisite.getRap_num()));
+        vue.getjTextFieldDate().setText(unRapportVisite.getRap_date().toString());
+        vue.getjTextFieldMotif().setText(unRapportVisite.getRap_motif());
+        vue.getjTextAreabilan().setText(unRapportVisite.getRap_bilan());        
+        vue.getjComboBoxpraticien().setSelectedItem(unPraticien);
+        
+        //On réinitialise le tableau des médicaments à vide
+        for (int i = 0; i < lesOffres.size(); i++) {
+            vue.getjTableOffre().setValueAt("", i, 0);
+            vue.getjTableOffre().setValueAt("", i, 1);
+        }
+
+        //On affiche les médicaments dans le tableau
+        int j = 0;
+        for (Offrir uneOffre : lesOffres) {
+            if (uneOffre.getRap_num() == unRapportVisite.getRap_num()) {
+                vue.getjTableOffre().setValueAt(uneOffre.getMed_depotLegal(), j, 0);
+                vue.getjTableOffre().setValueAt(uneOffre.getQuantite(), j, 1);
+                j++;
+            }
+        }
+
+        
+    }
+
+    
+    /*
+     Permet de charger les données quand on affiche la vue
+    */
     public void chargementDonnees(){
-        /*
-         ----------------------------------------
-         --- On récupềre les données pour Initialiser la vue
-         ----------------------------------------
-         */
+        
         //Afficher les praticens
         lesPraticiens = DaoPraticien.selectAll(em);
-        afficherListePraticien(lesPraticiens);
+        FormulaireModeAfficherAfficherListePraticien(lesPraticiens);
 
         //On récupère tous les rapports de visite
         lesRapportsVisite = DaoRapportVisite.selectAll(em);
@@ -143,7 +231,7 @@ public class CtrlRapportVisite extends CtrlAbstrait {
      * Permet de modifier le formualire pour pouvoir enregistrer un nouveau
      * rapport de visite
      */
-    public void nouveau() {        
+    public void FormulaireModeNouveauRappportVisite() {        
         vue.getjButtonNouv().setVisible(false);
         vue.getjButtonprec().setVisible(false);
         vue.getjButtonSuiv().setVisible(false);    
@@ -155,90 +243,29 @@ public class CtrlRapportVisite extends CtrlAbstrait {
         vue.getjTextFieldMotif().setText("");
         vue.getjTextAreabilan().setText("");
     }
-
+    
     /**
-     * Permet d'enregistrer un rapport de visite
+     * Permet de modifier le formualire pour pouvoir afficher un rapport de visite
      */
-    public void enregistrer() {
-        Praticien unPraticien = (Praticien) getVue().getjComboBoxpraticien().getSelectedItem() ;       
-        Date date = null;
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-	String dateInString = vue.getjTextFieldDate().getText(); 
-	
-        try { 
-            date = formatter.parse(dateInString);
-            System.out.println(date);
-            System.out.println(formatter.format(date));
-            String motif =vue.getjTextFieldMotif().getText();
-            String bilan =vue.getjTextAreabilan().getText();
-            
-            if(motif.isEmpty() || bilan.isEmpty()){
-                JFrame frame = new JFrame("JOptionPane showMessageDialog example");
-                JOptionPane.showMessageDialog(frame, "Un champ est vide");
-            }else{
-                RapportVisite unRapportVisite = new RapportVisite(ctrlPrincipal.getVisiteurConnecte().getId(), unPraticien, date, bilan, motif);
-                DaoRapportVisite.insert(em, unRapportVisite);
-            
-                JFrame frame = new JFrame("JOptionPane showMessageDialog example");
-                JOptionPane.showMessageDialog(frame, "Rapport sauvegardé");
-        
-                chargementDonnees();
-            }
-        
-           
- 
-	} catch (ParseException e) {
-            JFrame frame = new JFrame("JOptionPane showMessageDialog example");
-            JOptionPane.showMessageDialog(frame, "Le format de la date n'est pas valide(jj/mm/aaaa)");
-	}
-        
-       
-        
-        
-    }
-
-    /**
-     * Permet d'afficher un rappport de viste
-     */
-    public void afficherRapportVisite() {
+    
+    public void FormulaireModeAfficherRappportVisite() { 
         vue.getjTextFieldNum().setEditable(true);
         vue.getjButtonNouv().setVisible(true);
         vue.getjButtonprec().setVisible(true);
         vue.getjButtonSuiv().setVisible(true);    
         vue.getjButtonSauvegarder().setVisible(false);
-        //Sélectionne le visiteur
-        RapportVisite unRapportVisite = lesRapportsVisite.get(indiceRapportVisiteCourant);
-        vue.getjTextFieldNum().setText(Integer.toString(unRapportVisite.getRap_num()));
-        vue.getjTextFieldDate().setText(unRapportVisite.getRap_date().toString());
-        vue.getjTextFieldMotif().setText(unRapportVisite.getRap_motif());
-        vue.getjTextAreabilan().setText(unRapportVisite.getRap_bilan());
-        Praticien unPraticien = unRapportVisite.getPra_num();
-
-        for (int i = 0; i < lesOffres.size(); i++) {
-            vue.getjTableOffre().setValueAt("", i, 0);
-            vue.getjTableOffre().setValueAt("", i, 1);
-        }
-
-        int j = 0;
-        for (Offrir uneOffre : lesOffres) {
-            if (uneOffre.getRap_num() == unRapportVisite.getRap_num()) {
-                vue.getjTableOffre().setValueAt(uneOffre.getMed_depotLegal(), j, 0);
-                vue.getjTableOffre().setValueAt(uneOffre.getQuantite(), j, 1);
-                j++;
-            }
-        }
-
-        vue.getjComboBoxpraticien().setSelectedItem(unPraticien);
     }
-
+    
+    
     /**
      * Initialise la liste des praticiens dans le comboBox
-     *
      * @param lesPraticiens
      */
-    public void afficherListePraticien(List<Praticien> lesPraticiens) {
+    public void FormulaireModeAfficherAfficherListePraticien(List<Praticien> lesPraticiens) {
         vue.getjComboBoxpraticien().removeAllItems();
         vue.getjComboBoxpraticien().addItem("aucun");
+        
+        //On parcours la liste des praticiens et on ajoute le praticien à la combobox
         for (Praticien unPraticien : lesPraticiens) {
             vue.getjComboBoxpraticien().addItem(unPraticien);
         }

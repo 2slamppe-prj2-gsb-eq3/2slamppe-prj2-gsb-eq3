@@ -50,8 +50,7 @@ public class EntityManagerFactorySingleton {
             try {
                 singleton = Persistence.createEntityManagerFactory("persistence", properties);
             } catch (Exception ef) {
-                JOptionPane.showMessageDialog(null, ef.getMessage(), "Lanceur Main - Données d'accès Database erronnée", JOptionPane.ERROR_MESSAGE);
-                //ef.printStackTrace();
+                JOptionPane.showMessageDialog(null, ef.getMessage(), "Lanceur Main - Données d'accès Database erronnée", JOptionPane.ERROR_MESSAGE);                
             }
 
         } catch (FileNotFoundException ex) {

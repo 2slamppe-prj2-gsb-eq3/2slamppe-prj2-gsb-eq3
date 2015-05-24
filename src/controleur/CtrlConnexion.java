@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.sql.SQLException;
 import javax.persistence.EntityManager;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -28,10 +29,14 @@ public class CtrlConnexion extends CtrlAbstrait {
         super(ctrlPrincipal);
 
         // Gérer la persistance
-        em = EntityManagerFactorySingleton.getInstance().createEntityManager();
+        try{
+            em = EntityManagerFactorySingleton.getInstance().createEntityManager();
+        }catch(javax.persistence.PersistenceException e){
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Lanceur Main - Erreur gestion persistance ", JOptionPane.ERROR_MESSAGE);
+        }            
         em.getTransaction().begin();
 
-        //Ecouteurs Bouton ok
+        //Ecouteur Bouton ok
         vue.jButtonOk.addActionListener(new ActionListener() {
 
             @Override
@@ -40,17 +45,16 @@ public class CtrlConnexion extends CtrlAbstrait {
             } 
         });
         
+        //Ecouteur Bouton Entrer -> Meme action que le bouton ok
         vue.jTextFieldmdp.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextFieldmdpKeyPressed(evt);
+                if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+                    valider();                
+                }
             }
         });
-        
-        
-             
-       
-        
-        //Ecouteurs Bouton quitter
+                
+        //Ecouteur Bouton quitter
         vue.jButtonQuit.addActionListener(new ActionListener() {
 
             @Override
@@ -59,18 +63,12 @@ public class CtrlConnexion extends CtrlAbstrait {
             }
         });
 
-    }
+    }   
     
     
-    private void jTextFieldmdpKeyPressed(java.awt.event.KeyEvent evt) {
-            if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-                valider();
-                
-            }
-    }
-
     /**
-     * Valider une connexion Message D'erreur dans JOptionPane
+     * Valider une connexion 
+     * Message D'erreur dans JOptionPane
      */
     public void valider() {
 
