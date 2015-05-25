@@ -22,13 +22,13 @@ public class TestTypePraticien {
         //Test n°1: instanciation et accesseurs
         System.out.println("\nTest n°1: instanciation et accesseurs");
         unTypePra = new TypePraticien("CC", "test coucou", "local ");
-        System.out.println("Etat du TypePraticien: " + unTypePra);
+        System.out.println("Etat du TypePraticien: " + unTypePra.toString2());
 
         // Test n°2 : mutateurs
         System.out.println("\nTest n°2 : mutateurs");
         unTypePra.setCode("PC");
         unTypePra.setLibelle("test pas coucou");
         unTypePra.setLieu("Local Jol");
-        System.out.println("Etat du type : " + unTypePra);
+        System.out.println("Etat du type : " + unTypePra.toString2());
     }
 }

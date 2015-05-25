@@ -39,6 +39,10 @@ public class TypePraticien {
 
     @Override
     public String toString() {
+        return this.getLibelle();
+    }
+    
+    public String toString2() {
         return "TypePraticien{" + "code=" + code + ", libelle=" + libelle + ", lieu=" + lieu + '}';
     }
 

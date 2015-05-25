@@ -71,7 +71,7 @@ public class Praticien {
     }
     
     public String toString2() {
-        return "Praticien{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse + ", cp=" + cp + ", ville=" + ville + ", coef=" + coef + ", typePraticien=" + typePraticien + '}';
+        return "Praticien{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse + ", cp=" + cp + ", ville=" + ville + ", coef=" + coef + ", typePraticien=" + typePraticien.toString2() + '}';
     }
     
     

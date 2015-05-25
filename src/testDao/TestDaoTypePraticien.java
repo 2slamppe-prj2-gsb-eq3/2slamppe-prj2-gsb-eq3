@@ -29,7 +29,7 @@ public class TestDaoTypePraticien {
         lesTypePra = DaoTypePraticien.selectAll(em);
         System.out.println("Les Types praticiens sont : ");
         for (int i = 0; i < lesTypePra.size(); i++) {
-            System.out.println(lesTypePra.get(i));
+            System.out.println(lesTypePra.get(i).toString2());
         }
 
         //Test de selectOne
@@ -37,6 +37,6 @@ public class TestDaoTypePraticien {
         TypePraticien unTypePra;
         String typeCode = "MV";
         unTypePra = DaoTypePraticien.selectOne(em, typeCode);
-        System.out.println("Le type praticien qui a pour typeCode : " + typeCode + " est : \n" + unTypePra);
+        System.out.println("Le type praticien qui a pour typeCode : " + typeCode + " est : \n" + unTypePra.toString2());
     }
 }
