@@ -54,9 +54,8 @@ public class CtrlMenu extends CtrlAbstrait {
         vue.jButtonPraticiens.addActionListener(new ActionListener() {
 
             @Override
-            public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame("JOptionPane showMessageDialog example");
-                JOptionPane.showMessageDialog(frame, "Fonctionnalité Praticiens - Bientôt.");
+            public void actionPerformed(ActionEvent e) {               
+                    afficherPraticien();                
             }
         });
 
@@ -90,6 +89,10 @@ public class CtrlMenu extends CtrlAbstrait {
 
     public void afficherRapportVisite() {        
         ctrlPrincipal.action(EnumAction.RAPPORT_AFFICHER);
+    }
+    
+    public void afficherPraticien() {        
+        ctrlPrincipal.action(EnumAction.PRATICIEN_AFFICHER);
     }
 
     /**

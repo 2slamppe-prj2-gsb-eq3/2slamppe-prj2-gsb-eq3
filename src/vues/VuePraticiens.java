@@ -6,6 +6,10 @@
 package vues;
 
 import controleur.CtrlAbstrait;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 /**
  *
@@ -221,4 +225,119 @@ public class VuePraticiens extends VueAbstraite {
     private javax.swing.JTextField jTextFieldprenom;
     private javax.swing.JTextField jTextFieldville;
     // End of variables declaration//GEN-END:variables
+
+    public JButton getjButtonfermer() {
+        return jButtonfermer;
+    }
+
+    public void setjButtonfermer(JButton jButtonfermer) {
+        this.jButtonfermer = jButtonfermer;
+    }
+
+    public JButton getjButtonok() {
+        return jButtonok;
+    }
+
+    public void setjButtonok(JButton jButtonok) {
+        this.jButtonok = jButtonok;
+    }
+
+    public JButton getjButtonprec() {
+        return jButtonprec;
+    }
+
+    public void setjButtonprec(JButton jButtonprec) {
+        this.jButtonprec = jButtonprec;
+    }
+
+    public JButton getjButtonsuiv() {
+        return jButtonsuiv;
+    }
+
+    public void setjButtonsuiv(JButton jButtonsuiv) {
+        this.jButtonsuiv = jButtonsuiv;
+    }
+
+    public JComboBox getjComboBoxlieu() {
+        return jComboBoxlieu;
+    }
+
+    public void setjComboBoxlieu(JComboBox jComboBoxlieu) {
+        this.jComboBoxlieu = jComboBoxlieu;
+    }
+
+    public JComboBox getjComboBoxsearch() {
+        return jComboBoxsearch;
+    }
+
+    public void setjComboBoxsearch(JComboBox jComboBoxsearch) {
+        this.jComboBoxsearch = jComboBoxsearch;
+    }
+
+    public JLabel getjLabeladresse() {
+        return jLabeladresse;
+    }
+
+    public void setjLabeladresse(JLabel jLabeladresse) {
+        this.jLabeladresse = jLabeladresse;
+    }
+
+    public JTextField getjTextFieldadresse() {
+        return jTextFieldadresse;
+    }
+
+    public void setjTextFieldadresse(JTextField jTextFieldadresse) {
+        this.jTextFieldadresse = jTextFieldadresse;
+    }
+
+    public JTextField getjTextFieldcdp() {
+        return jTextFieldcdp;
+    }
+
+    public void setjTextFieldcdp(JTextField jTextFieldcdp) {
+        this.jTextFieldcdp = jTextFieldcdp;
+    }
+
+    public JTextField getjTextFieldcoeff() {
+        return jTextFieldcoeff;
+    }
+
+    public void setjTextFieldcoeff(JTextField jTextFieldcoeff) {
+        this.jTextFieldcoeff = jTextFieldcoeff;
+    }
+
+    public JTextField getjTextFieldnom() {
+        return jTextFieldnom;
+    }
+
+    public void setjTextFieldnom(JTextField jTextFieldnom) {
+        this.jTextFieldnom = jTextFieldnom;
+    }
+
+    public JTextField getjTextFieldnum() {
+        return jTextFieldnum;
+    }
+
+    public void setjTextFieldnum(JTextField jTextFieldnum) {
+        this.jTextFieldnum = jTextFieldnum;
+    }
+
+    public JTextField getjTextFieldprenom() {
+        return jTextFieldprenom;
+    }
+
+    public void setjTextFieldprenom(JTextField jTextFieldprenom) {
+        this.jTextFieldprenom = jTextFieldprenom;
+    }
+
+    public JTextField getjTextFieldville() {
+        return jTextFieldville;
+    }
+
+    public void setjTextFieldville(JTextField jTextFieldville) {
+        this.jTextFieldville = jTextFieldville;
+    }
+
+
+
 }

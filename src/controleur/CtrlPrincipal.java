@@ -6,6 +6,7 @@ import modele.metier.Visiteur;
 import vues.VueAbstraite;
 import vues.VueConnexion;
 import vues.VueMenu;
+import vues.VuePraticiens;
 import vues.VueVisiteurs;
 import vues.VueRapportsVisite;
 
@@ -21,6 +22,7 @@ public class CtrlPrincipal {
     private CtrlMenu ctrlMenu = null;
     private CtrlVisiteur ctrlVisiteur = null;
     private CtrlRapportVisite ctrlRapportVisite = null;
+    private CtrlPraticiens ctrlPraticiens = null;
     VueAbstraite vueA = null;
     CtrlAbstrait ctrlA = null;
     VueConnexion vueC = new VueConnexion(ctrlA);
@@ -52,6 +54,9 @@ public class CtrlPrincipal {
                 break;
             case RAPPORT_AFFICHER: // activation de vueVisiteurs depuis vueMenu
                 afficherRapportsVisite();
+                break;
+            case PRATICIEN_AFFICHER: // activation de vueVisiteurs depuis vueMenu
+                afficherPraticiens();
                 break;
             case MENU_FICHIER_QUITTER: // fin de l'application depuis vueMenu
                 menuFichierQuitter();
@@ -112,6 +117,23 @@ public class CtrlPrincipal {
             ctrlRapportVisite.afficherRapportVisite();
         }       
         ctrlRapportVisite.getVue().setVisible(true);
+    }
+    
+    private void afficherPraticiens() {
+        if (ctrlMenu == null) {
+            VueMenu vueM = new VueMenu(ctrlA);
+            ctrlMenu = new CtrlMenu(this);
+        }
+        if (ctrlPraticiens == null) {
+            VuePraticiens vueV = new VuePraticiens(ctrlA);
+            ctrlPraticiens = new CtrlPraticiens(this);
+        } else {
+            // si la le contrôleur et sa vue existent déjà
+            // il faut rafraîchir le contenu à partir de la base de données
+            ctrlPraticiens.afficherPraticien();
+        }
+        
+        ctrlPraticiens.getVue().setVisible(true);
     }
 
     public Visiteur getVisiteurConnecte() {
