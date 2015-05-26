@@ -24,6 +24,7 @@ public class CtrlPraticiens extends CtrlAbstrait {
     List<Praticien> lesPraticiens;
     List<TypePraticien> lesTypePraticiens;
     Praticien unPraticien;
+    private int indicePraticienCourant;
 
     public CtrlPraticiens(CtrlPrincipal ctrlPrincipal) {
         super(ctrlPrincipal);
@@ -63,6 +64,42 @@ public class CtrlPraticiens extends CtrlAbstrait {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 vue.setVisible(false);
+            }
+        });
+        
+        //Bouton Précédent
+        vue.getjButtonprec().addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                indicePraticienCourant = vue.getjComboBoxsearch().getSelectedIndex();
+                indicePraticienCourant = indicePraticienCourant - 1;
+                //Si on arrive au début de la liste
+                if (indicePraticienCourant < 0) {
+                    indicePraticienCourant = lesPraticiens.size() - 1;
+                }
+                unPraticien = lesPraticiens.get(indicePraticienCourant);
+                vue.getjComboBoxsearch().setSelectedItem(unPraticien);
+                afficherPraticien();
+
+            }
+        });
+
+        //Bouton Suivant
+        vue.getjButtonsuiv().addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                indicePraticienCourant = vue.getjComboBoxsearch().getSelectedIndex();
+                indicePraticienCourant = indicePraticienCourant + 1;
+                //Si on arrive à la fin de la liste
+                if (indicePraticienCourant > lesPraticiens.size() - 1) {
+                    indicePraticienCourant = 0;
+                }
+                unPraticien = lesPraticiens.get(indicePraticienCourant);
+                vue.getjComboBoxsearch().setSelectedItem(unPraticien);
+                afficherPraticien();
+
             }
         });
     }

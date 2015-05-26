@@ -59,6 +59,14 @@ public class CtrlRapportVisite extends CtrlAbstrait {
          ----------------------------------------
          */
         
+        //Ecouteur Bouton Details concernant un praticien
+        vue.getjButtonDetails().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {              
+                    detailsPraticien();                
+            }
+        });
+        
         //Bouton Précédent
         vue.getjButtonprec().addActionListener(new ActionListener() {
 
@@ -269,6 +277,13 @@ public class CtrlRapportVisite extends CtrlAbstrait {
         for (Praticien unPraticien : lesPraticiens) {
             vue.getjComboBoxpraticien().addItem(unPraticien);
         }
+    }
+    
+    /**
+     * Affiche les détails sur les praticiens
+     */
+    public void detailsPraticien(){
+          getCtrlPrincipal().action(EnumAction.PRATICIEN_AFFICHER);       
     }
 
     @Override
